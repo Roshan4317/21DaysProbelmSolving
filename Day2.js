@@ -72,3 +72,46 @@
 // }
 
 // console.log(checkChar(""));
+
+//***************************************************************************************************************************
+
+// 1. Check if a Character is Uppercase, Lowercase, Digit, or Special Character
+
+// function checkChar(ch) {
+//   if (ch >= "A" && ch <= "Z") {
+//     return "Uppercase Letter";
+//   } else if (ch >= "a" && ch <= "z") {
+//     return "Lowercase Letter";
+//   } else if (ch >= "0" && ch <= "9") {
+//     return "Digit";
+//   } else {
+//     return "Special Character";
+//   }
+// }
+
+// console.log(checkChar("A"));
+// console.log(checkChar("b"));
+// console.log(checkChar("5"));
+// console.log(checkChar("#"));
+
+//***************************************************************************************************************************
+
+// 2. Check Triangle Type Using Sides and Angles
+
+// function triangleBySides(a, b, c) {
+//   if (a + b <= c || a + c <= b || b + c <= a) {
+//     return "Not a valid triangle";
+//   }
+
+//   if (a === b && b === c) {
+//     return "Equilateral Triangle";
+//   } else if (a === b || b === c || a === c) {
+//     return "Isosceles Triangle";
+//   } else {
+//     return "Scalene Triangle";
+//   }
+// }
+
+// console.log(triangleBySides(5, 5, 5));
+// console.log(triangleBySides(5, 5, 3));
+// console.log(triangleBySides(3, 4, 5));

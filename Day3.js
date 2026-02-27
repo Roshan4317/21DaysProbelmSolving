@@ -169,3 +169,27 @@
 // }
 
 // console.log(hollowSquare(5));
+
+// **************************************************************************************************************************************
+
+// 6. Print Hollow Pyramid Pattern
+
+// function hollowPyramid(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     let star = "";
+
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (j === rows - i + 1 || j === rows + i - 1 || i === rows) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Hollow Pyramid";
+// }
+
+// console.log(hollowPyramid(5));

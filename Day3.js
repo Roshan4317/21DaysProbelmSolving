@@ -265,26 +265,50 @@
 
 // Print Butterfly Pattern
 
-function butterflyPattern(rows) {
-  for (let i = 1; i <= rows; i++) {
-    let line = "";
+// function butterflyPattern(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     let line = "";
 
-    line += "*".repeat(i);
-    line += " ".repeat(2 * (rows - i));
-    line += "*".repeat(i);
+//     line += "*".repeat(i);
+//     line += " ".repeat(2 * (rows - i));
+//     line += "*".repeat(i);
 
-    console.log(line);
-  }
+//     console.log(line);
+//   }
 
-  for (let i = rows - 1; i >= 1; i--) {
-    let line = "";
+//   for (let i = rows - 1; i >= 1; i--) {
+//     let line = "";
 
-    line += "*".repeat(i);
-    line += " ".repeat(2 * (rows - i));
-    line += "*".repeat(i);
+//     line += "*".repeat(i);
+//     line += " ".repeat(2 * (rows - i));
+//     line += "*".repeat(i);
 
-    console.log(line);
-  }
-}
+//     console.log(line);
+//   }
+// }
 
-butterflyPattern(5);
+// butterflyPattern(5);
+
+// **************************************************************************************************************************************
+
+// function diamondPattern(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     let line = "";
+
+//     line += " ".repeat(rows - i);
+//     line += "*".repeat(2 * i - 1);
+
+//     console.log(line);
+//   }
+
+//   for (let i = rows - 1; i >= 1; i--) {
+//     let line = "";
+
+//     line += " ".repeat(rows - i);
+//     line += "*".repeat(2 * i - 1);
+
+//     console.log(line);
+//   }
+// }
+
+// diamondPattern(5);

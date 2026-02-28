@@ -243,20 +243,48 @@
 
 // 1. Print Hollow Inverted Pyramid
 
-function hollowInvertedPyramid(rows) {
-  for (let i = rows; i >= 1; i--) {
-    let line = " ".repeat(rows - i);
+// function hollowInvertedPyramid(rows) {
+//   for (let i = rows; i >= 1; i--) {
+//     let line = " ".repeat(rows - i);
 
-    if (i === rows) {
-      line += "*".repeat(rows * 2 - 1);
-    } else if (i === 1) {
-      line += "*";
-    } else {
-      line += "*" + " ".repeat(2 * i - 3) + "*";
-    }
+//     if (i === rows) {
+//       line += "*".repeat(rows * 2 - 1);
+//     } else if (i === 1) {
+//       line += "*";
+//     } else {
+//       line += "*" + " ".repeat(2 * i - 3) + "*";
+//     }
+
+//     console.log(line);
+//   }
+// }
+
+// hollowInvertedPyramid(5);
+
+// **************************************************************************************************************************************
+
+// Print Butterfly Pattern
+
+function butterflyPattern(rows) {
+  for (let i = 1; i <= rows; i++) {
+    let line = "";
+
+    line += "*".repeat(i);
+    line += " ".repeat(2 * (rows - i));
+    line += "*".repeat(i);
+
+    console.log(line);
+  }
+
+  for (let i = rows - 1; i >= 1; i--) {
+    let line = "";
+
+    line += "*".repeat(i);
+    line += " ".repeat(2 * (rows - i));
+    line += "*".repeat(i);
 
     console.log(line);
   }
 }
 
-hollowInvertedPyramid(5);
+butterflyPattern(5);

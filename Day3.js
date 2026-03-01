@@ -316,3 +316,29 @@
 // }
 
 // console.log(butterflyPattern(5));
+
+// **************************************************************************************************************************************
+
+// 3. Print Diamond Pattern
+
+// function printDiamond(rows) {
+//   for (let i = 1; i <= rows * 2 - 1; i++) {
+//     let star = "";
+
+//     let current = i <= rows ? i : rows * 2 - i;
+
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (j === rows || (j >= rows - current + 1 && j <= rows + current - 1)) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Diamond Pattern ";
+// }
+
+// console.log(printDiamond(5));

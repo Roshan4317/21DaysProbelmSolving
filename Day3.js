@@ -221,94 +221,54 @@
 
 // 7 . Print Alternating Binary Triangle
 
-// function AlternatingBinaryTriangle(rows) {
-//   for (let i = 1; i <= rows; i++) {
-//     let count = "";
-
-//     for (let j = 1; j <= i; j++) {
-//       count += i % 2 === 1 ? j % 2 : (j + 1) % 2;
-//     }
-
-//     console.log(count);
-//   }
-
-//   return "AlternatingBinaryTriangle";
-// }
-
 // console.log(AlternatingBinaryTriangle(5));
 
 // **************************************************************************************************************************************
 
 // HomeWork
 
-// 1. Print Hollow Inverted Pyramid
+// 1. Print Alternating Binary Triangle
 
-// function hollowInvertedPyramid(rows) {
-//   for (let i = rows; i >= 1; i--) {
-//     let line = " ".repeat(rows - i);
+// function alternatingBinaryTriangle(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     let count = "";
+//     let num;
 
-//     if (i === rows) {
-//       line += "*".repeat(rows * 2 - 1);
-//     } else if (i === 1) {
-//       line += "*";
+//     if (i % 2 === 1) {
+//       num = 1;
 //     } else {
-//       line += "*" + " ".repeat(2 * i - 3) + "*";
+//       num = 0;
 //     }
 
-//     console.log(line);
+//     for (let j = 1; j <= i; j++) {
+//       count += num;
+
+//       if (num === 0) {
+//         num = 1;
+//       } else {
+//         num = 0;
+//       }
+//     }
+
+//     console.log(count);
 //   }
+
+//   return "Alternating Binary Triangle";
 // }
 
-// hollowInvertedPyramid(5);
+// console.log(alternatingBinaryTriangle(5));
 
-// **************************************************************************************************************************************
-
-// Print Butterfly Pattern
-
-// function butterflyPattern(rows) {
+// function alternatingBinaryTriangle(rows) {
 //   for (let i = 1; i <= rows; i++) {
-//     let line = "";
+//     let count = "";
 
-//     line += "*".repeat(i);
-//     line += " ".repeat(2 * (rows - i));
-//     line += "*".repeat(i);
-
-//     console.log(line);
+//     for (let j = 1; j <= i; j++) {
+//       count += i % 2 === 1 ? j % 2 : (j + 1) % 2;
+//     }
+//     console.log(count);
 //   }
 
-//   for (let i = rows - 1; i >= 1; i--) {
-//     let line = "";
-
-//     line += "*".repeat(i);
-//     line += " ".repeat(2 * (rows - i));
-//     line += "*".repeat(i);
-
-//     console.log(line);
-//   }
+//   return "Alternating Binary Triangle";
 // }
 
-// butterflyPattern(5);
-
-// **************************************************************************************************************************************
-
-// function diamondPattern(rows) {
-//   for (let i = 1; i <= rows; i++) {
-//     let line = "";
-
-//     line += " ".repeat(rows - i);
-//     line += "*".repeat(2 * i - 1);
-
-//     console.log(line);
-//   }
-
-//   for (let i = rows - 1; i >= 1; i--) {
-//     let line = "";
-
-//     line += " ".repeat(rows - i);
-//     line += "*".repeat(2 * i - 1);
-
-//     console.log(line);
-//   }
-// }
-
-// diamondPattern(5);
+// console.log(alternatingBinaryTriangle(5));

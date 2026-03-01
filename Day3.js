@@ -219,15 +219,7 @@
 
 // **************************************************************************************************************************************
 
-// 7 . Print Alternating Binary Triangle
-
-// console.log(AlternatingBinaryTriangle(5));
-
-// **************************************************************************************************************************************
-
-// HomeWork
-
-// 1. Print Alternating Binary Triangle
+// 7. Print Alternating Binary Triangle
 
 // function alternatingBinaryTriangle(rows) {
 //   for (let i = 1; i <= rows; i++) {
@@ -272,3 +264,55 @@
 // }
 
 // console.log(alternatingBinaryTriangle(5));
+
+// **************************************************************************************************************************************
+
+// HomeWork
+
+// 1. Print Hollow Inverted Pyramid
+
+// function hollowInvertedPyramid(rows) {
+//   for (let i = rows; i >= 1; i--) {
+//     let star = "";
+
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (i === rows || j === rows - i + 1 || j === rows + i - 1) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Hollow Inverted Pyramid";
+// }
+
+// console.log(hollowInvertedPyramid(5));
+
+// **************************************************************************************************************************************
+
+// 2. Print Butterfly Pattern
+
+// function butterflyPattern(rows) {
+//   for (let i = 1; i <= rows * 2 - 1; i++) {
+//     let star = "";
+
+//     const currentRow = i <= rows ? i : rows * 2 - i;
+
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (j <= currentRow || j >= rows * 2 - currentRow) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Butterfly Pattern";
+// }
+
+// console.log(butterflyPattern(5));

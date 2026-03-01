@@ -317,18 +317,32 @@
 
 // console.log(butterflyPattern(5));
 
+// function butterflyPattern(rows) {
+//   for (let i = 1; i <= rows * 2 - 1; i++) {
+//     let currentRow = i <= rows ? i : rows * 2 - i;
+
+//     let firstStar = "*".repeat(currentRow);
+//     let space = " ".repeat((rows - currentRow) * 2);
+//     let lastStar = "*".repeat(currentRow);
+//     console.log(firstStar + space + lastStar);
+//   }
+//   return "Butterfly Pattern";
+// }
+
+// butterflyPattern(5);
+
 // **************************************************************************************************************************************
 
 // 3. Print Diamond Pattern
 
-// function printDiamond(rows) {
+// function diamondPattern(rows) {
 //   for (let i = 1; i <= rows * 2 - 1; i++) {
 //     let star = "";
+//     4;
+//     let currentRow = i <= rows ? i : rows * 2 - i;
 
-//     let current = i <= rows ? i : rows * 2 - i;
-
-//     for (let j = 1; j <= rows * 2 - 1; j++) {
-//       if (j === rows || (j >= rows - current + 1 && j <= rows + current - 1)) {
+//     for (let j = 1; j <= rows * 2 + 1; j++) {
+//       if (j >= rows * 2 - currentRow && j <= rows * 2 + currentRow - 2) {
 //         star += "*";
 //       } else {
 //         star += " ";
@@ -338,7 +352,139 @@
 //     console.log(star);
 //   }
 
-//   return "Diamond Pattern ";
+//   return "Diamond Pattern";
 // }
 
-// console.log(printDiamond(5));
+// console.log(diamondPattern(3));
+
+// **************************************************************************************************************************************
+
+// 4. Print Hourglass Pattern
+
+// function hourGlassPattern(rows) {
+//   for (let i = rows * 2 - 1; i >= 1; i--) {
+//     let star = "";
+
+//     let currentRow = i >= rows ? i - rows + 1 : rows - i + 1;
+
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (
+//         i === rows * 2 - 1 ||
+//         (j >= rows - currentRow + 1 && j <= rows + currentRow - 1)
+//       ) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Hourglass Pattern";
+// }
+
+// console.log(hourGlassPattern(5));
+
+// **************************************************************************************************************************************
+
+// 5. Print Hollow Diamond Pattern
+
+// function hollowDiamond(rows) {
+//   for (let i = 1; i <= rows * 2 - 1; i++) {
+//     let star = "";
+//     let currentRow = i <= rows ? i : rows * 2 - i;
+
+//     let left = rows * 2 - currentRow;
+//     let right = rows * 2 + currentRow - 2;
+
+//     for (let j = 1; j <= rows * 2 + 1; j++) {
+//       if (j === left || j === right) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Hollow Diamond";
+// }
+
+// console.log(hollowDiamond(3));
+
+// **************************************************************************************************************************************
+
+// 6. Print Rhombus Pattern
+
+// function rhombusPattern(rows) {
+//   for (let i = 1; i <= rows; i++) {
+//     star = "";
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (j >= rows - i + 1 && j <= rows * 2 - i) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+
+//     console.log(star);
+//   }
+
+//   return "Rhombus";
+// }
+
+// console.log(rhombusPattern(5));
+
+// function rhombusPattern(rows) {
+//   for (let i = rows; i >= 1; i--) {
+//     const currentRow = rows - i;
+//     let star = "";
+//     for (let j = 1; j <= rows * 2 - 1; j++) {
+//       if (j >= i && j < rows * 2 - currentRow) {
+//         star += "*";
+//       } else {
+//         star += " ";
+//       }
+//     }
+//     console.log(star);
+//   }
+//   return "Rhombus";
+// }
+
+// console.log(rhombusPattern(5));
+
+// **************************************************************************************************************************************
+
+// 7. Print Multiplication Table (Single and Upto N)
+
+// Single
+
+// function Multiplication(num) {
+//   for (let j = 1; j <= 10; j++) {
+//     let table = `${num} X ${j} = ${num * j}`;
+//     console.log(table);
+//   }
+
+//   return `Table of ${num}`;
+// }
+
+// console.log(Multiplication(9));
+
+// Upto N
+
+// function Multiplication(num) {
+//   for (let i = 1; i <= num; i++) {
+//     console.log(`Table of ${i}`);
+
+//     for (let j = 1; j <= 10; j++) {
+//       let table = `${i} X ${j} = ${i * j}`;
+//       console.log(table);
+//     }
+
+//     console.log(`////////////////////////////`);
+//   }
+// }
+
+// console.log(Multiplication(5));

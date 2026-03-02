@@ -118,20 +118,6 @@
 
 // ****************************************************************************************************************
 
-function generateDecimalNumberFromWholeAndFractionalDigits(whole, fraction) {
-  const wholeNumber = whole.reduce((acc, element, index) => {
-    return (acc += element * Math.pow(10, whole.length - index - 1));
-  }, 0);
-
-  console.log(wholeNumber);
-
-  const fractionNumber = fraction.reduce((acc, element, index) => {
-    return (acc += element * Math.pow(10, -(index + 1)));
-  }, 0);
-
-  console.log(fractionNumber);
-
-  return wholeNumber + fractionNumber;
-}
+function generateDecimalNumberFromWholeAndFractionalDigits(whole, fraction) {}
 
 console.log(generateDecimalNumberFromWholeAndFractionalDigits([1, 2], [3, 4]));

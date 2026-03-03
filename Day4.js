@@ -118,6 +118,50 @@
 
 // ****************************************************************************************************************
 
-function generateDecimalNumberFromWholeAndFractionalDigits(whole, fraction) {}
+// HomWork
 
-console.log(generateDecimalNumberFromWholeAndFractionalDigits([1, 2], [3, 4]));
+// ****************************************************************************************************************
+
+//1. Check if a Number is a ArmStrong Number
+
+// function isArmStrong(num) {
+//   const originalNumber = num;
+//   const digit = [];
+
+//   while (num > 0) {
+//     digit.push(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   let result = 0;
+//   for (let i = 0; i < digit.length; i++) {
+//     result += digit[i] ** digit.length;
+//   }
+
+//   return originalNumber === result;
+// }
+
+// console.log(isArmStrong(407));
+
+// ****************************************************************************************************************
+
+// 2. Find the Sum of Digits
+
+// function isArmStrong(num) {
+//   const originalNumber = num;
+//   const digit = [];
+
+//   while (num > 0) {
+//     digit.push(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   let result = 0;
+//   for (let i = 0; i < digit.length; i++) {
+//     result += digit[i] ** digit.length;
+//   }
+
+//   return originalNumber === result;
+// }
+
+// console.log(isArmStrong(407));

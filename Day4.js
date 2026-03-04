@@ -158,14 +158,14 @@
 
 //   let fractionArray = [];
 
-//   while (fractionNum % 10 >= 1) {
+//   while (fractionNum >= 1) {
 //     fractionArray.push(fractionNum % 10);
 //     fractionNum = Math.floor(fractionNum / 10);
 //   }
 
 //   let wholeArray = [];
 
-//   while (whole % 10 >= 1) {
+//   while (whole >= 1) {
 //     wholeArray.push(whole % 10);
 //     whole = Math.floor(whole / 10);
 //   }
@@ -217,49 +217,56 @@
 
 // 7. Check if a Number is a Palindrome
 
-// function isPalindrome(num) {
-//   let original = num;
-//   let reversed = 0;
+// function IsPalindrome(num) {
+//   const initialNum = num;
 
-//   while (num > 0) {
-//     let digit = num % 10;
-//     reversed = reversed * 10 + digit;
+//   const digit = [];
+
+//   while (num >= 1) {
+//     digit.push(num % 10);
 //     num = Math.floor(num / 10);
 //   }
 
-//   return original === reversed;
+//   const result = digit.reduce((acc, curr, index) => {
+//     return (acc += curr * Math.pow(10, digit.length - index - 1));
+//   }, 0);
+
+//   return initialNum === result ? "Given num is Palindrome" : "Not Palindrome";
 // }
 
-// console.log(isPalindrome(128971));
-// console.log(isPalindrome(121));
+// console.log(IsPalindrome(111));
 
 // ****************************************************************************************************************
 
-// 8. Check if a Number is an Automorphic Number
-function isAutomorphic(num) {
-  let square = num * num;
+// 8. Check if a Number is an Armstrong Number (also called a Narcissistic Number)
 
-  while (num > 0) {
-    if (num % 10 !== square % 10) {
-      return false;
-    }
-    num = Math.floor(num / 10);
-    square = Math.floor(square / 10);
-  }
+// function isArmStrong(num) {
+//   let initialNum = num;
+//   const digit = [];
 
-  return true;
-}
+//   while (num > 0) {
+//     digit.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
 
-console.log(isAutomorphic(25));
+//   const result = digit.reduce((acc, curr, index) => {
+//     return (acc += Math.pow(curr, digit.length));
+//   }, 0);
+
+//   return initialNum === result ? "ArmStrong Number" : "Not ArmStrong Number";
+// }
+
+// console.log(isArmStrong(1634));
+
+// ****************************************************************************************************************
 
 // HomWork
 
 // ****************************************************************************************************************
 
-//1. Check if a Number is a ArmStrong Number
+// 1. Find the Sum of Digits
 
-// function isArmStrong(num) {
-//   const originalNumber = num;
+// function sumOfDigits(num) {
 //   const digit = [];
 
 //   while (num > 0) {
@@ -267,22 +274,40 @@ console.log(isAutomorphic(25));
 //     num = Math.floor(num / 10);
 //   }
 
-//   let result = 0;
-//   for (let i = 0; i < digit.length; i++) {
-//     result += digit[i] ** digit.length;
-//   }
+//   const sum = digit.reduce((acc, curr) => {
+//     return (acc += curr);
+//   }, 0);
 
-//   return originalNumber === result;
+//   return sum;
 // }
 
-// console.log(isArmStrong(407));
+// console.log(sumOfDigits(987));
 
 // ****************************************************************************************************************
 
-// 2. Find the Sum of Digits
+// 2. Find the Average of Digits
 
-// function isArmStrong(num) {
-//   const originalNumber = num;
+// function averageOfDigits(num) {
+//   const digit = [];
+
+//   while (num > 0) {
+//     digit.push(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+//   const sumResult = digit.reduce((acc, curr) => {
+//     return (acc += curr);
+//   });
+
+//   return Number((sumResult / digit.length).toFixed(2));
+// }
+
+// console.log(averageOfDigits(4567));
+
+// ****************************************************************************************************************
+
+// 3. Find the Largest and Smallest Digit in a Number
+
+// function largestAndSmallest(num) {
 //   const digit = [];
 
 //   while (num > 0) {
@@ -290,12 +315,178 @@ console.log(isAutomorphic(25));
 //     num = Math.floor(num / 10);
 //   }
 
-//   let result = 0;
+//   let largest = 0;
+//   let smallest = 9;
+//   console.log(digit);
+
+//   [1, 3, 8, 4, 9];
+
 //   for (let i = 0; i < digit.length; i++) {
-//     result += digit[i] ** digit.length;
+//     if (digit[i] >= largest) {
+//       largest = digit[i];
+//     }
+//     if (digit[i] < smallest) {
+//       smallest = digit[i];
+//     }
 //   }
 
-//   return originalNumber === result;
+//   return { largest, smallest };
 // }
 
-// console.log(isArmStrong(407));
+// console.log(largestAndSmallest(1123141));
+
+// function largestAndSmallest(num) {
+//   let largest = 0;
+//   let smallest = 9;
+
+//   while (num > 0) {
+//     let digit = num % 10;
+
+//     if (digit > largest) {
+//       largest = digit;
+//     }
+
+//     if (digit < smallest) {
+//       smallest = digit;
+//     }
+
+//     num = Math.floor(num / 10);
+//   }
+
+//   return { largest, smallest };
+// }
+
+// console.log(largestAndSmallest(9483));
+
+// ****************************************************************************************************************
+
+// 4. Check if a Number is a Strong Number
+
+// function isStrongNumber(num) {
+//   let initialNum = num;
+//   let digit = [];
+//   while (num > 0) {
+//     digit.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   let result = 0;
+
+//   for (let i = 0; i < digit.length; i++) {
+//     let innerValue = 1;
+
+//     for (let j = 1; j <= digit[i]; j++) {
+//       innerValue = innerValue * j;
+//     }
+
+//     result = result + innerValue;
+//   }
+
+//   return result === initialNum ? "Strong Num" : "Not a Strong Num";
+// }
+// console.log(isStrongNumber(1453));
+
+// ****************************************************************************************************************
+
+// 5. Check if a Number is an Automorphic Number
+
+// function isAutomorphic(num) {
+//   let squareOfNum = num ** 2;
+//   let digit = [];
+
+//   while (squareOfNum > 0) {
+//     digit.unshift(squareOfNum % 10);
+//     squareOfNum = Math.floor(squareOfNum / 10);
+//   }
+
+//   const lastTwoDigit =
+//     digit[digit.length - 2] * Math.pow(10, 1) +
+//     digit[digit.length - 1] * Math.pow(10, 0);
+
+//   return num === lastTwoDigit ? "Automorphic Num" : "Not an Automorphic Num";
+// }
+
+// console.log(isAutomorphic(76));
+
+// function isAutomorphic(num) {
+//   let squareOfNum = num ** 2;
+
+//   while (num > 0) {
+//     let lastDigitOfNum = num % 10;
+//     let lastDigitOfSquareNum = squareOfNum % 10;
+
+//     if (lastDigitOfNum != lastDigitOfSquareNum) {
+//       return "Not an Automorphic Num";
+//     }
+
+//     num = Math.floor(num / 10);
+//     squareOfNum = Math.floor(squareOfNum / 10);
+//   }
+
+//   return "Automorphic Num";
+// }
+
+// console.log(isAutomorphic(25));
+
+// ****************************************************************************************************************
+
+// 6. Find the Frequency of Each Digit
+
+// function frequency(num) {
+//   let digit = [];
+
+//   while (num > 0) {
+//     digit.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   let frequency = {};
+
+//   for (let i = 0; i < digit.length; i++) {
+//     if (frequency[digit[i]]) {
+//       frequency[digit[i]] = frequency[digit[i]] + 1;
+//     } else {
+//       frequency[digit[i]] = 1;
+//     }
+//   }
+
+//   return frequency;
+// }
+
+// console.log(frequency(112023334));
+
+// ****************************************************************************************************************
+
+// 7. Check if a Number is a Harshad Number
+
+// function harshadNumber(num) {
+//   let initialNum = num;
+//   let digit = [];
+
+//   while (num > 0) {
+//     digit.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   let sumOFDigit = digit.reduce((acc, curr) => {
+//     return (acc += curr);
+//   }, 0);
+
+//   return initialNum % sumOFDigit === 0 ? "Harshad Num" : "Not a Harshad Num";
+// }
+
+// console.log(harshadNumber(21));
+
+// function harshadNumber(num) {
+//   let initialNum = num;
+//   let sum = 0;
+
+//   while (num > 0) {
+//     sum += num % 10;
+//     num = Math.floor(num / 10);
+//   }
+
+//   return initialNum % sum === 0 ? "Harshad Num" : "Not a Harshad Num";
+// }
+
+// console.log(harshadNumber(21));

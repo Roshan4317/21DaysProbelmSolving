@@ -32,6 +32,18 @@
 
 // console.log(splitNumbersIntoDigits(12345));
 
+// function splitNumbersIntoDigits(num) {
+//   let digits = [];
+
+//   while (num % 10 >= 1) {
+//     digits.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+//   return digits;
+// }
+
+// console.log(splitNumbersIntoDigits(12345975));
+
 // ****************************************************************************************************************
 
 // 2. Remove the Decimal Point Mathematically
@@ -55,6 +67,16 @@
 
 // console.log(removeDecimalPoint(12.112));
 
+// function removeDecimalPoint(num) {
+//   while (!Number.isInteger(num)) {
+//     num = num * 10;
+//   }
+
+//   return num;
+// }
+
+// console.log(removeDecimalPoint(1233.34))
+
 // ****************************************************************************************************************
 
 // 3. Separate Whole and Fractional Parts of a Number
@@ -76,6 +98,15 @@
 // }
 
 // console.log(separateWholeAndFraction(522.7522));
+
+// function separateWholeAndFraction(num) {
+//   const fraction = Number((num % 1).toFixed(10));
+
+//   const whole = num - fraction;
+
+//   return `whole = ${whole} fraction = ${fraction}`;
+// }
+// console.log(separateWholeAndFraction(5.75));
 
 // ****************************************************************************************************************
 
@@ -115,6 +146,72 @@
 
 // const n = 12.345;
 // console.log(main(n));
+
+// function countWholeAndFraction(num) {
+//   const fraction = Number((num % 1).toFixed(10));
+//   let whole = num - fraction;
+
+//   let fractionNum = fraction;
+//   while (!Number.isInteger(fractionNum)) {
+//     fractionNum = fractionNum * 10;
+//   }
+
+//   let fractionArray = [];
+
+//   while (fractionNum % 10 >= 1) {
+//     fractionArray.push(fractionNum % 10);
+//     fractionNum = Math.floor(fractionNum / 10);
+//   }
+
+//   let wholeArray = [];
+
+//   while (whole % 10 >= 1) {
+//     wholeArray.push(whole % 10);
+//     whole = Math.floor(whole / 10);
+//   }
+
+//   return `Whole Count = ${wholeArray.length} Fraction Count = ${fractionArray.length} `;
+// }
+
+// console.log(countWholeAndFraction(12.345));
+
+// ****************************************************************************************************************
+
+// 5. Generate a Decimal Number from Whole and Fractional Digits
+
+// function decimalNumberFromWholeAndFraction(whole, fraction) {
+//   const wholeValue = whole.reduce((acc, curr, index) => {
+//     return (acc += curr * Math.pow(10, whole.length - index - 1));
+//   }, 0);
+
+//   const fractionValue = fraction.reduce((acc, curr, index) => {
+//     return (acc += curr * Math.pow(10, fraction.length - index - 1));
+//   }, 0);
+
+//   return Number(`${wholeValue}.${fractionValue}`);
+// }
+
+// console.log(decimalNumberFromWholeAndFraction([1, 2, 3, 4, 1, 2], [3, 2, 4]));
+
+// ****************************************************************************************************************
+
+// 6. Reverse a Number
+
+// function reverseANumber(num) {
+//   const digit = [];
+
+//   while (num >= 1) {
+//     digit.unshift(num % 10);
+//     num = Math.floor(num / 10);
+//   }
+
+//   const result = digit.reduce((acc, curr, index) => {
+//     return (acc += curr * Math.pow(10, index));
+//   }, 0);
+//   return result;
+// }
+
+// console.log(reverseANumber(1234));
 
 // ****************************************************************************************************************
 

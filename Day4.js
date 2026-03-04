@@ -217,21 +217,40 @@
 
 // 7. Check if a Number is a Palindrome
 
-function isPalindrome(num) {
-  let original = num;
-  let reversed = 0;
+// function isPalindrome(num) {
+//   let original = num;
+//   let reversed = 0;
+
+//   while (num > 0) {
+//     let digit = num % 10;
+//     reversed = reversed * 10 + digit;
+//     num = Math.floor(num / 10);
+//   }
+
+//   return original === reversed;
+// }
+
+// console.log(isPalindrome(128971));
+// console.log(isPalindrome(121));
+
+// ****************************************************************************************************************
+
+// 8. Check if a Number is an Automorphic Number
+function isAutomorphic(num) {
+  let square = num * num;
 
   while (num > 0) {
-    let digit = num % 10;
-    reversed = reversed * 10 + digit;
+    if (num % 10 !== square % 10) {
+      return false;
+    }
     num = Math.floor(num / 10);
+    square = Math.floor(square / 10);
   }
 
-  return original === reversed;
+  return true;
 }
 
-console.log(isPalindrome(128971));
-console.log(isPalindrome(121));
+console.log(isAutomorphic(25));
 
 // HomWork
 

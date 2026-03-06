@@ -124,17 +124,37 @@
 
 // 4. Find the LCM (Least Common Multiple) of Two Numbers
 
-function findLCM(a, b) {
-  let divisor = a < b ? a : b;
-  let dividend = a > b ? a : b;
-  let loopCount = 0;
+// function findLCM(a, b) {
+//   let divisor = a < b ? a : b;
+//   let dividend = a > b ? a : b;
+//   let loopCount = 0;
 
-  while (dividend % divisor !== 0) {
-    loopCount++;
-    const remainder = dividend % divisor;
-    dividend = divisor;
-    divisor = remainder;
+//   while (dividend % divisor !== 0) {
+//     loopCount++;
+//     const remainder = dividend % divisor;
+//     dividend = divisor;
+//     divisor = remainder;
+//   }
+
+//   return (a * b) / divisor;
+// }
+
+// *********************************************************************************************
+
+// 5. Count the Total Number of Factors of a Number
+
+function totalNumberOFFactors(num) {
+  const factors = [];
+
+  for (let i = 1; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      factors.push(i);
+      const anotherFactor = num / i;
+      factors.push(anotherFactor);
+    }
   }
 
-  return (a * b) / divisor;
+  return `Total number of Factors of ${num} is ${factors.length}`;
 }
+
+console.log(totalNumberOFFactors(12));

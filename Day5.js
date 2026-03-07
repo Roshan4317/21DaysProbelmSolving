@@ -124,37 +124,137 @@
 
 // 4. Find the LCM (Least Common Multiple) of Two Numbers
 
-// function findLCM(a, b) {
-//   let divisor = a < b ? a : b;
-//   let dividend = a > b ? a : b;
-//   let loopCount = 0;
+// function LCM(num1, num2) {
+//   let divisor = num1 < num2 ? num1 : num2;
+//   let dividend = num1 > num2 ? num1 : num2;
 
 //   while (dividend % divisor !== 0) {
-//     loopCount++;
 //     const remainder = dividend % divisor;
 //     dividend = divisor;
 //     divisor = remainder;
 //   }
 
-//   return (a * b) / divisor;
+//   return (num1 * num2) / divisor;
 // }
+
+// console.log(LCM(12, 18));
 
 // *********************************************************************************************
 
 // 5. Count the Total Number of Factors of a Number
 
-function totalNumberOFFactors(num) {
-  const factors = [];
+// function totalNumberOFFactors(num) {
+//   const factors = [];
 
-  for (let i = 1; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) {
-      factors.push(i);
-      const anotherFactor = num / i;
-      factors.push(anotherFactor);
-    }
-  }
+//   for (let i = 1; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       factors.push(i);
+//       const anotherFactor = num / i;
+//       factors.push(anotherFactor);
+//     }
+//   }
 
-  return `Total number of Factors of ${num} is ${factors.length}`;
-}
+//   return `Total number of Factors of ${num} is ${factors.length}`;
+// }
 
-console.log(totalNumberOFFactors(12));
+// console.log(totalNumberOFFactors(12));
+
+// *********************************************************************************************
+
+// HomeWork
+
+// 1. Sum of All Factors of a Number
+
+// function sumOfAllFactors(num) {
+//   const factors = [];
+
+//   for (let i = 1; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       factors.push(i);
+//       let anotherFactor = num / i;
+//       factors.push(anotherFactor);
+//     }
+//   }
+
+//   const sum = factors.reduce((acc, curr) => (acc += curr), 0);
+//   return sum;
+// }
+
+// console.log(sumOfAllFactors(12));
+
+// *********************************************************************************************
+
+// 2. Find the Greatest Factor of a Number (Other Than Itself)
+
+// function greatestFactorOtherThanItself(num) {
+//   const factors = [];
+
+//   for (let i = 1; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       factors.splice(factors.length / 2, 0, i);
+//       const anotherFactor = num / i;
+//       factors.splice(factors.length / 2 + 1, 0, anotherFactor);
+//     }
+//   }
+
+//   return factors[factors.length - 2];
+// }
+
+// console.log(greatestFactorOtherThanItself(36));
+
+// *********************************************************************************************
+// 3.  Check if a Number is a Perfect Number
+
+// function IsPerfectNumber(num) {
+//   const factors = [];
+//   let sum = 0;
+//   for (let i = 1; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       factors.splice(factors.length / 2, 0, i);
+//       const anotherFactor = num / i;
+//       if (i !== anotherFactor)
+//         factors.splice(factors.length / 2 + 1, 0, anotherFactor);
+//     }
+//   }
+
+//   for (let i = 0; i < factors.length - 1; i++) {
+//     sum += factors[i];
+//   }
+
+//   return num === sum ? "Perfect Number" : "Not a perfect Number";
+// }
+
+// console.log(IsPerfectNumber(28));
+
+// *********************************************************************************************
+
+// 4. Find the HCF and LCM of Three Numbers
+
+// function HCF(num1, num2) {
+//   let divisor = num1 < num2 ? num1 : num2;
+//   let dividend = num1 > num2 ? num1 : num2;
+
+//   while (dividend % divisor !== 0) {
+//     const remainder = dividend % divisor;
+//     dividend = divisor;
+//     divisor = remainder;
+//   }
+
+//   return divisor;
+// }
+
+// function LCM(num1, num2) {
+//   return (num1 * num2) / HCF(num1, num2);
+// }
+
+// function HCFAndLCM(num1, num2, num3) {
+//   const HCF12 = HCF(num1, num2);
+//   const HCFOf123 = HCF(HCF12, num3);
+
+//   const LCM12 = LCM(num1, num2);
+//   const LCMOf123 = LCM(LCM12, num3);
+
+//   return { HCFOf123, LCMOf123 };
+// }
+
+// console.log(HCFAndLCM(8, 12, 16));

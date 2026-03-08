@@ -138,3 +138,23 @@
 // }
 
 // console.log(NthFibonacci(8));
+
+// *********************************************************************************************
+
+// 5. Check if a Number Belongs to the Fibonacci Series
+
+function isFibonacciSeries(num) {
+  let series = [0, 1];
+
+  for (let i = 2; i < num; i++) {
+    const next = series[series.length - 1] + series[series.length - 2];
+    series.push(next);
+    if (next === num) {
+      return "Belongs to Fibonacci";
+    }
+  }
+
+  return "Not Belong";
+}
+
+console.log(isFibonacciSeries(21));

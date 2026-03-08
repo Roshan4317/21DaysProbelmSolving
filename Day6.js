@@ -143,18 +143,38 @@
 
 // 5. Check if a Number Belongs to the Fibonacci Series
 
-function isFibonacciSeries(num) {
-  let series = [0, 1];
+// function isFibonacciSeries(num) {
+//   let series = [0, 1];
 
-  for (let i = 2; i < num; i++) {
-    const next = series[series.length - 1] + series[series.length - 2];
-    series.push(next);
-    if (next === num) {
-      return "Belongs to Fibonacci";
-    }
-  }
+//   for (let i = 2; i < num; i++) {
+//     const next = series[series.length - 1] + series[series.length - 2];
+//     series.push(next);
+//     if (next === num) {
+//       return "Belongs to Fibonacci";
+//     }
+//   }
 
-  return "Not Belong";
-}
+//   return "Not Belong";
+// }
 
-console.log(isFibonacciSeries(21));
+// console.log(isFibonacciSeries(21));
+
+// *********************************************************************************************
+
+// 6. Check if a number is a Palindrome
+
+// function isPalindrome(num) {
+//   let original = num;
+//   let reversed = 0;
+
+//   while (num > 0) {
+//     let digit = num % 10;
+//     reversed = reversed * 10 + digit;
+//     num = Math.floor(num / 10);
+//   }
+
+//   return original === reversed ? "Palindrome Number" : "Not a Palindrome";
+// }
+
+// console.log(isPalindrome(121));
+// console.log(isPalindrome(123));

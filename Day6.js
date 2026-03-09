@@ -200,3 +200,25 @@
 // }
 
 // printPrimesUpToN(20);
+
+// *********************************************************************************************
+
+// 2. Sum of All Prime Numbers till N
+function sumPrimesUpToN(N) {
+  let sum = 0;
+  for (let num = 2; num <= N; num++) {
+    let isPrime = true;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (num % i === 0) {
+        isPrime = false;
+        break;
+      }
+    }
+    if (isPrime) {
+      sum += num;
+    }
+  }
+  return sum;
+}
+
+console.log(sumPrimesUpToN(20));

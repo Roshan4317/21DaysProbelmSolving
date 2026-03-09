@@ -178,3 +178,25 @@
 
 // console.log(isPalindrome(121));
 // console.log(isPalindrome(123));
+
+// *********************************************************************************************
+
+// HomeWork
+
+// 1. Print All Prime Numbers up to N
+// function printPrimesUpToN(N) {
+//   for (let num = 2; num <= N; num++) {
+//     let isPrime = true;
+//     for (let i = 2; i <= Math.sqrt(num); i++) {
+//       if (num % i === 0) {
+//         isPrime = false;
+//         break;
+//       }
+//     }
+//     if (isPrime) {
+//       console.log(num);
+//     }
+//   }
+// }
+
+// printPrimesUpToN(20);

@@ -204,21 +204,44 @@
 // *********************************************************************************************
 
 // 2. Sum of All Prime Numbers till N
-function sumPrimesUpToN(N) {
-  let sum = 0;
-  for (let num = 2; num <= N; num++) {
-    let isPrime = true;
-    for (let i = 2; i <= Math.sqrt(num); i++) {
-      if (num % i === 0) {
-        isPrime = false;
-        break;
-      }
-    }
-    if (isPrime) {
-      sum += num;
-    }
+// function sumPrimesUpToN(N) {
+//   let sum = 0;
+//   for (let num = 2; num <= N; num++) {
+//     let isPrime = true;
+//     for (let i = 2; i <= Math.sqrt(num); i++) {
+//       if (num % i === 0) {
+//         isPrime = false;
+//         break;
+//       }
+//     }
+//     if (isPrime) {
+//       sum += num;
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(sumPrimesUpToN(20));
+
+// *********************************************************************************************
+
+//3. Check if Two Numbers are Twin Primes
+function isPrime(num) {
+  if (num < 2) return false;
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) return false;
   }
-  return sum;
+  return true;
 }
 
-console.log(sumPrimesUpToN(20));
+function areTwinPrimes(a, b) {
+  if (isPrime(a) && isPrime(b) && Math.abs(a - b) === 2) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(areTwinPrimes(11, 13));
+console.log(areTwinPrimes(17, 19));
+console.log(areTwinPrimes(14, 16));

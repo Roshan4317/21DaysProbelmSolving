@@ -394,3 +394,23 @@
 // }
 
 // console.log(fibonacciWithInRange(10, 100));
+
+// *********************************************************************************************
+
+// 6. Find the Sum of Even Fibonacci Numbers up to N Terms
+
+function sumOfEvenFibonacci(num) {
+  const fibonacci = [0, 1];
+  let sum = 0;
+
+  for (let i = 2; i < num; i++) {
+    const next = fibonacci[i - 1] + fibonacci[i - 2];
+    if (next % 2 === 0) {
+      sum += next;
+    }
+    fibonacci.push(next);
+  }
+
+  return sum;
+}
+console.log(sumOfEvenFibonacci(10));

@@ -371,3 +371,26 @@
 // }
 
 // console.log(fibonacciUptoLimit(100));
+
+// *********************************************************************************************
+
+// 5. Generate Fibonacci Numbers Within a Range
+
+// function fibonacciWithInRange(start, end) {
+//   const fibonacci = [0, 1];
+//   const newFibonacci = [];
+
+//   while (true) {
+//     const next =
+//       fibonacci[fibonacci.length - 1] + fibonacci[fibonacci.length - 2];
+//     if (next > end) break;
+//     fibonacci.push(next);
+//     if (next > start) {
+//       newFibonacci.push(next);
+//     }
+//   }
+
+//   return newFibonacci;
+// }
+
+// console.log(fibonacciWithInRange(10, 100));

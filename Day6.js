@@ -159,21 +159,53 @@
 
 // console.log(isFibonacciSeries(21));
 
+// function isFibonacciSeries(num) {
+//   let fibonacci = [0, 1];
+
+//   for (let i = 2; true; i++) {
+//     const next = fibonacci[i - 1] + fibonacci[i - 2];
+
+//     if (next > num) {
+//       break;
+//     }
+//     fibonacci.push(next);
+//   }
+
+//   return num === fibonacci[fibonacci.length - 1] ? "Yes" : "No";
+// }
+
+// console.log(isFibonacciSeries(13));
+
+// function isFibonacciSeries(num) {
+//   const fibonacci = [0, 1];
+
+//   for (let i = 2; true; i++) {
+//     const next = fibonacci[i - 1] + fibonacci[i - 2];
+//     if (num === next || num === 0) {
+//       return "Yes";
+//     }
+//     if (next > num) break;
+//     fibonacci.push(next);
+//   }
+//   return "No";
+// }
+
+// console.log(isFibonacciSeries(5));
 // *********************************************************************************************
 
 // 6. Check if a number is a Palindrome
 
 // function isPalindrome(num) {
-//   let original = num;
-//   let reversed = 0;
+//   const originalNum = num;
+//   const digits = [];
 
-//   while (num > 0) {
-//     let digit = num % 10;
-//     reversed = reversed * 10 + digit;
+//   while (num >= 1) {
+//     digits.push(num % 10);
 //     num = Math.floor(num / 10);
 //   }
 
-//   return original === reversed ? "Palindrome Number" : "Not a Palindrome";
+//   const reversedNum = Number(digits.join(""));
+//   return reversedNum === originalNum ? "Yes Palindrome" : "Not a Palindrome";
 // }
 
 // console.log(isPalindrome(121));
@@ -184,22 +216,46 @@
 // HomeWork
 
 // 1. Print All Prime Numbers up to N
-// function printPrimesUpToN(N) {
-//   for (let num = 2; num <= N; num++) {
+// function printPrimesUpToN(num) {
+//   for (let i = 2; i <= num; i++) {
 //     let isPrime = true;
-//     for (let i = 2; i <= Math.sqrt(num); i++) {
-//       if (num % i === 0) {
+
+//     for (let j = 1; j <= Math.sqrt(j); j++) {
+//       if (i % j === 0) {
 //         isPrime = false;
 //         break;
 //       }
 //     }
-//     if (isPrime) {
-//       console.log(num);
-//     }
+
+//     if (isPrime) console.log(i);
 //   }
 // }
 
 // printPrimesUpToN(20);
+
+// printPrimesUpToN(20);
+
+// function printPrimesUpToN(num) {
+//   const Prime = [];
+
+//   for (let i = 2; i <= num; i++) {
+//     let isPrime = true;
+
+//     for (let j = 2; j <= Math.sqrt(i); j++) {
+//       if (i % j === 0) {
+//         isPrime = false;
+//       }
+//     }
+
+//     if (isPrime) {
+//       Prime.push(i);
+//     }
+//   }
+
+//   return Prime;
+// }
+
+// console.log(printPrimesUpToN(20));
 
 // *********************************************************************************************
 
@@ -223,25 +279,95 @@
 
 // console.log(sumPrimesUpToN(20));
 
+// function sumPrimesUpToN(num) {
+//   let PrimeNumbers = [];
+
+//   for (let i = 2; i <= num; i++) {
+//     let prime = true;
+
+//     for (let j = 2; j <= Math.sqrt(i); j++) {
+//       if (i % j === 0) {
+//         prime = false;
+//         break;
+//       }
+//     }
+
+//     if (prime) {
+//       PrimeNumbers.push(i);
+//     }
+//   }
+
+//   const totalSum = PrimeNumbers.reduce((acc, curr) => {
+//     return (acc += curr);
+//   }, 0);
+
+//   return totalSum;
+// }
+
+// console.log(sumPrimesUpToN(10));
+
 // *********************************************************************************************
 
 //3. Check if Two Numbers are Twin Primes
-function isPrime(num) {
-  if (num < 2) return false;
-  for (let i = 2; i <= Math.sqrt(num); i++) {
-    if (num % i === 0) return false;
-  }
-  return true;
-}
+// function isPrime(num) {
+//   if (num < 2) return false;
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) return false;
+//   }
+//   return true;
+// }
 
-function areTwinPrimes(a, b) {
-  if (isPrime(a) && isPrime(b) && Math.abs(a - b) === 2) {
-    return true;
-  } else {
-    return false;
-  }
-}
+// function areTwinPrimes(a, b) {
+//   if (isPrime(a) && isPrime(b) && Math.abs(a - b) === 2) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
 
-console.log(areTwinPrimes(11, 13));
-console.log(areTwinPrimes(17, 19));
-console.log(areTwinPrimes(14, 16));
+// console.log(areTwinPrimes(11, 13));
+// console.log(areTwinPrimes(17, 19));
+// console.log(areTwinPrimes(14, 16));
+
+// function isPrime(num) {
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// function areTwinPrimes(num1, num2) {
+//   const firstNumber = isPrime(num1);
+//   const secondNumber = isPrime(num2);
+
+//   if (firstNumber && secondNumber) {
+//     if (Math.abs(num1 - num2) === 2) {
+//       return "Twin Prime";
+//     }
+//   }
+
+//   return "Not a Twin Prime";
+// }
+
+// console.log(areTwinPrimes(11, 13));
+
+// *********************************************************************************************
+
+// 4. Print All Fibonacci Numbers up to a Given Limit
+
+// function fibonacciUptoLimit(limit) {
+//   const fibonacci = [0, 1];
+
+//   for (let i = 2; true; i++) {
+//     const next = fibonacci[i - 1] + fibonacci[i - 2];
+//     if (next > limit) break;
+//     fibonacci.push(next);
+//   }
+
+//   return fibonacci;
+// }
+
+// console.log(fibonacciUptoLimit(100));

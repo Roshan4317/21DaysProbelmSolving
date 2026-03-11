@@ -399,18 +399,83 @@
 
 // 6. Find the Sum of Even Fibonacci Numbers up to N Terms
 
-function sumOfEvenFibonacci(num) {
-  const fibonacci = [0, 1];
-  let sum = 0;
+// function sumOfEvenFibonacci(num) {
+//   const fibonacci = [0, 1];
+//   let sum = 0;
 
-  for (let i = 2; i < num; i++) {
-    const next = fibonacci[i - 1] + fibonacci[i - 2];
-    if (next % 2 === 0) {
-      sum += next;
-    }
-    fibonacci.push(next);
-  }
+//   for (let i = 2; i < num; i++) {
+//     const next = fibonacci[i - 1] + fibonacci[i - 2];
+//     if (next % 2 === 0) {
+//       sum += next;
+//     }
+//     fibonacci.push(next);
+//   }
 
-  return sum;
-}
-console.log(sumOfEvenFibonacci(10));
+//   return sum;
+// }
+// console.log(sumOfEvenFibonacci(10));
+
+// *********************************************************************************************
+
+// 7. Check if the Sum of Two Consecutive Fibonacci Numbers is Prime
+
+// function isConsecutivePrime(limit) {
+//   let fibonacci = [0, 1];
+
+//   while (true) {
+//     const next =
+//       fibonacci[fibonacci.length - 1] + fibonacci[fibonacci.length - 2];
+//     if (next > limit) break;
+//     let factors = [];
+//     for (let i = 1; i <= Math.sqrt(next); i++) {
+//       if (next % i === 0) {
+//         factors.push(i);
+//         const nextFactor = next / i;
+//         if (i !== nextFactor) factors.push(nextFactor);
+//       }
+//     }
+
+//     factors.length === 2 ? console.log(`${next} is Prime`) : "";
+//     fibonacci.push(next);
+//   }
+
+//   return fibonacci;
+// }
+
+// console.log(isConsecutivePrime(100));
+
+// *********************************************************************************************
+
+// 8. Print First N Prime Fibonacci Numbers
+
+// function isPrime(num) {
+//   if (num < 2) return false;
+
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// function NPrimeFibonacciNumbers(term) {
+//   const primeNumbers = [];
+//   const fibonacci = [0, 1];
+
+//   while (primeNumbers.length < term) {
+//     const next =
+//       fibonacci[fibonacci.length - 1] + fibonacci[fibonacci.length - 2];
+
+//     fibonacci.push(next);
+
+//     if (isPrime(next)) {
+//       primeNumbers.push(next);
+//     }
+//   }
+
+//   return primeNumbers;
+// }
+
+// console.log(NPrimeFibonacciNumbers(5));

@@ -119,8 +119,35 @@
 // *********************************************************************************************
 
 // 3. Distinct Prime Factor Count
+// function primeFactorizationInExponentForm(num) {
+//   const primeFactors = {};
+//   while (num % 2 === 0) {
+//     primeFactors[2] = (primeFactors[2] || 0) + 1;
+//     num = num / 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors[factor] = (primeFactors[factor] || 0) + 1;
+//       num = num / factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
+
+//   return Object.keys(primeFactors).length;
+// }
+
+// console.log(primeFactorizationInExponentForm(30));
+
+// *********************************************************************************************
+
+// 4. Check if a Number Is a Powerful Number
+
+const primeFactors = {};
 function primeFactorizationInExponentForm(num) {
-  const primeFactors = {};
   while (num % 2 === 0) {
     primeFactors[2] = (primeFactors[2] || 0) + 1;
     num = num / 2;
@@ -137,7 +164,7 @@ function primeFactorizationInExponentForm(num) {
 
   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
 
-  return Object.keys(primeFactors).length;
+  return Math.min(...Object.values(primeFactors)) >= 2;
 }
 
-console.log(primeFactorizationInExponentForm(30));
+console.log(primeFactorizationInExponentForm(35));

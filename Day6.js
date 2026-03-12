@@ -449,7 +449,9 @@
 // 8. Print First N Prime Fibonacci Numbers
 
 // function isPrime(num) {
-//   if (num < 2) return false;
+//   if (num <= 1) {
+//     return false;
+//   }
 
 //   for (let i = 2; i <= Math.sqrt(num); i++) {
 //     if (num % i === 0) {
@@ -460,22 +462,20 @@
 //   return true;
 // }
 
-// function NPrimeFibonacciNumbers(term) {
-//   const primeNumbers = [];
-//   const fibonacci = [0, 1];
+// function firstNPrimeFibonacci(num) {
+//   let fibonacci = [0, 1];
+//   const primeArray = [];
 
-//   while (primeNumbers.length < term) {
+//   while (primeArray.length < num) {
 //     const next =
 //       fibonacci[fibonacci.length - 1] + fibonacci[fibonacci.length - 2];
-
 //     fibonacci.push(next);
-
-//     if (isPrime(next)) {
-//       primeNumbers.push(next);
+//     const prime = isPrime(next);
+//     if (prime) {
+//       primeArray.push(next);
 //     }
 //   }
-
-//   return primeNumbers;
+//   return primeArray;
 // }
 
-// console.log(NPrimeFibonacciNumbers(5));
+// console.log(firstNPrimeFibonacci(5));

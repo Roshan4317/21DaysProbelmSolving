@@ -1,6 +1,64 @@
 // ClassWork
 
 // 1. Find the Prime Factorization (Return as an Array)
+// function isPrime(num) {
+//   if (num <= 1) {
+//     return false;
+//   }
+
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) return false;
+//   }
+
+//   return true;
+// }
+
+// function primeFactorization(num) {
+//   let primeFactorization = [];
+//   let dividend = num;
+
+//   if (isPrime(num)) {
+//     primeFactorization.push(num);
+//     return primeFactorization;
+//   }
+
+//   while (dividend > 1) {
+//     for (let j = 2; j <= dividend; j++) {
+//       if (dividend % j === 0) {
+//         if (isPrime(j)) {
+//           primeFactorization.push(j);
+//         }
+//         dividend = dividend / j;
+//         break;
+//       }
+//     }
+//   }
+
+//   return primeFactorization;
+// }
+
+// console.log(primeFactorization(45));
+
+// function primeFactorization(num) {
+//   const primeFactors = [];
+//   let factor = 2;
+
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num = num / factor;
+//     }
+//     factor++;
+//   }
+
+//   if (num > 2) {
+//     primeFactors.push(num);
+//   }
+
+//   return primeFactors;
+// }
+
+// console.log(primeFactorization(33));
 
 // function primeFactorization(num) {
 //   const primeFactors = [];
@@ -19,15 +77,48 @@
 //     factor += 2;
 //   }
 
-//   if (num > 2) primeFactors.push(num);
+//   if (num > 2) {
+//     primeFactors.push(num);
+//   }
 //   return primeFactors;
 // }
 
-// console.log(primeFactorization(120));
+// console.log(primeFactorization(84));
 
 // *********************************************************************************************
 
 // 2. Factorization in Exponent Form
+// function primeFactorizationInExponentForm(num) {
+//   const primeFactors = {};
+//   while (num % 2 === 0) {
+//     primeFactors[2] = (primeFactors[2] || 0) + 1;
+//     num = num / 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors[factor] = (primeFactors[factor] || 0) + 1;
+//       num = num / factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
+//   let output = "";
+//   Object.keys(primeFactors).forEach((key, i) => {
+//     output +=
+//       `${key}^${primeFactors[key]}` +
+//       (i !== Object.keys(primeFactors).length - 1 ? " x " : "");
+//   });
+//   return output;
+// }
+
+// console.log(primeFactorizationInExponentForm(160));
+
+// *********************************************************************************************
+
+// 3. Distinct Prime Factor Count
 function primeFactorizationInExponentForm(num) {
   const primeFactors = {};
   while (num % 2 === 0) {
@@ -45,13 +136,8 @@ function primeFactorizationInExponentForm(num) {
   }
 
   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
-  let output = "";
-  Object.keys(primeFactors).forEach((key, i) => {
-    output +=
-      `${key}^${primeFactors[key]}` +
-      (i !== Object.keys(primeFactors).length - 1 ? " x " : "");
-  });
-  return output;
+
+  return Object.keys(primeFactors).length;
 }
 
-console.log(primeFactorizationInExponentForm(160));
+console.log(primeFactorizationInExponentForm(30));

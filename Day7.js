@@ -200,19 +200,59 @@
 
 // 1. Check if a Number Is a Square-Free Number
 
-function isSquareFree(num) {
-  for (let i = 2; i * i <= num; i++) {
-    if (num % (i * i) === 0) {
-      return false;
+// function isSquareFree(num) {
+//   for (let i = 2; i * i <= num; i++) {
+//     if (num % (i * i) === 0) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// let n = 30;
+
+// if (isSquareFree(n)) {
+//   console.log("Square-Free Number");
+// } else {
+//   console.log("Not a Square-Free Number");
+// }
+
+// *********************************************************************************************
+
+// 2. Check if a Number Is a Smith Number
+
+function sumDigits(num) {
+  let sum = 0;
+  while (num > 0) {
+    sum += num % 10;
+    num = Math.floor(num / 10);
+  }
+  return sum;
+}
+
+function isSmithNumber(n) {
+  let temp = n;
+  let sumPrimeFactors = 0;
+
+  for (let i = 2; i <= temp; i++) {
+    while (temp % i === 0) {
+      sumPrimeFactors += sumDigits(i);
+      temp = temp / i;
     }
   }
-  return true;
+
+  if (sumDigits(n) === sumPrimeFactors) {
+    return true;
+  }
+  return false;
 }
 
-let n = 30;
+let n = 666;
 
-if (isSquareFree(n)) {
-  console.log("Square-Free Number");
+if (isSmithNumber(n)) {
+  console.log("Smith Number");
 } else {
-  console.log("Not a Square-Free Number");
+  console.log("Not a Smith Number");
 }
+
+// *********************************************************************************************

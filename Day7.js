@@ -171,25 +171,48 @@
 
 // *********************************************************************************************
 
-// 6.  Find the Product of All Distinct Prime Factors
+// 5.  Find the Product of All Distinct Prime Factors
 
-function productOfDistinctPrimes(num) {
-  const primeFactors = [];
-  while (num % 2 === 0) {
-    primeFactors.push(2);
-    num = num / 2;
-  }
-  let factor = 3;
-  while (factor <= Math.sqrt(num)) {
-    while (num % factor === 0) {
-      primeFactors.push(factor);
-      num = num / factor;
+// function productOfDistinctPrimes(num) {
+//   const primeFactors = [];
+//   while (num % 2 === 0) {
+//     primeFactors.push(2);
+//     num = num / 2;
+//   }
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num = num / factor;
+//     }
+//     factor += 2;
+//   }
+//   if (num > 2) primeFactors.push(num);
+//   const distinctPrimes = [...new Set(primeFactors)];
+//   return distinctPrimes.reduce((acc, val) => acc * val, 1);
+// }
+
+// console.log(productOfDistinctPrimes(84));
+
+// *********************************************************************************************
+
+// HomeWork
+
+// 1. Check if a Number Is a Square-Free Number
+
+function isSquareFree(num) {
+  for (let i = 2; i * i <= num; i++) {
+    if (num % (i * i) === 0) {
+      return false;
     }
-    factor += 2;
   }
-  if (num > 2) primeFactors.push(num);
-  const distinctPrimes = [...new Set(primeFactors)];
-  return distinctPrimes.reduce((acc, val) => acc * val, 1);
+  return true;
 }
 
-console.log(productOfDistinctPrimes(84));
+let n = 30;
+
+if (isSquareFree(n)) {
+  console.log("Square-Free Number");
+} else {
+  console.log("Not a Square-Free Number");
+}

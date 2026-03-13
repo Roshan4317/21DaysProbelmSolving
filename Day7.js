@@ -221,38 +221,62 @@
 
 // 2. Check if a Number Is a Smith Number
 
-function sumDigits(num) {
-  let sum = 0;
-  while (num > 0) {
-    sum += num % 10;
-    num = Math.floor(num / 10);
-  }
-  return sum;
-}
+// function sumDigits(num) {
+//   let sum = 0;
+//   while (num > 0) {
+//     sum += num % 10;
+//     num = Math.floor(num / 10);
+//   }
+//   return sum;
+// }
 
-function isSmithNumber(n) {
-  let temp = n;
-  let sumPrimeFactors = 0;
+// function isSmithNumber(n) {
+//   let temp = n;
+//   let sumPrimeFactors = 0;
 
-  for (let i = 2; i <= temp; i++) {
-    while (temp % i === 0) {
-      sumPrimeFactors += sumDigits(i);
-      temp = temp / i;
+//   for (let i = 2; i <= temp; i++) {
+//     while (temp % i === 0) {
+//       sumPrimeFactors += sumDigits(i);
+//       temp = temp / i;
+//     }
+//   }
+
+//   if (sumDigits(n) === sumPrimeFactors) {
+//     return true;
+//   }
+//   return false;
+// }
+
+// let n = 666;
+
+// if (isSmithNumber(n)) {
+//   console.log("Smith Number");
+// } else {
+//   console.log("Not a Smith Number");
+// }
+
+// *********************************************************************************************
+
+// 3. Check if a Number Is an Ugly Number
+
+function isUgly(n) {
+  if (n <= 0) return false;
+
+  let factors = [2, 3, 5];
+
+  for (let f of factors) {
+    while (n % f === 0) {
+      n = n / f;
     }
   }
 
-  if (sumDigits(n) === sumPrimeFactors) {
-    return true;
-  }
-  return false;
+  return n === 1;
 }
 
-let n = 666;
+let n = 18;
 
-if (isSmithNumber(n)) {
-  console.log("Smith Number");
+if (isUgly(5)) {
+  console.log("Ugly Number");
 } else {
-  console.log("Not a Smith Number");
+  console.log("Not Ugly");
 }
-
-// *********************************************************************************************

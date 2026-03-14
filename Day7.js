@@ -307,24 +307,37 @@
 
 // 5. Check if a Number Is a Happy Number
 
-function isHappyNumber(n) {
-  let seen = new Set();
+// function isHappyNumber(n) {
+//   let seen = new Set();
 
-  while (n !== 1 && !seen.has(n)) {
-    seen.add(n);
-    let sum = 0;
+//   while (n !== 1 && !seen.has(n)) {
+//     seen.add(n);
+//     let sum = 0;
 
-    while (n > 0) {
-      let digit = n % 10;
-      sum += digit * digit;
-      n = Math.floor(n / 10);
-    }
+//     while (n > 0) {
+//       let digit = n % 10;
+//       sum += digit * digit;
+//       n = Math.floor(n / 10);
+//     }
 
-    n = sum;
-  }
+//     n = sum;
+//   }
 
-  return n === 1 ? "Happy Number" : "Not a Happy Number";
+//   return n === 1 ? "Happy Number" : "Not a Happy Number";
+// }
+
+// console.log(isHappyNumber(19));
+// console.log(isHappyNumber(20));
+
+// *********************************************************************************************
+
+// 6.  Number Base Conversion (Any Base to Any Base)
+
+function convertBase(num, fromBase, toBase) {
+  let decimal = parseInt(num, fromBase);
+  return decimal.toString(toBase);
 }
 
-console.log(isHappyNumber(19));
-console.log(isHappyNumber(20));
+console.log(convertBase("1010", 2, 10));
+console.log(convertBase("255", 10, 16));
+console.log(convertBase("77", 8, 2));

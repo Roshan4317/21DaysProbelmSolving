@@ -259,24 +259,46 @@
 
 // 3. Check if a Number Is an Ugly Number
 
-function isUgly(n) {
-  if (n <= 0) return false;
+// function isUgly(n) {
+//   if (n <= 0) return false;
 
-  let factors = [2, 3, 5];
+//   let factors = [2, 3, 5];
 
-  for (let f of factors) {
-    while (n % f === 0) {
-      n = n / f;
+//   for (let f of factors) {
+//     while (n % f === 0) {
+//       n = n / f;
+//     }
+//   }
+
+//   return n === 1;
+// }
+
+// let n = 18;
+
+// if (isUgly(5)) {
+//   console.log("Ugly Number");
+// } else {
+//   console.log("Not Ugly");
+// }
+
+// *********************************************************************************************
+
+// 4. Check if a Number Is a Kaprekar Number
+function isKaprekar(n) {
+  let square = n * n;
+  let str = square.toString();
+
+  for (let i = 1; i < str.length; i++) {
+    let left = parseInt(str.substring(0, i));
+    let right = parseInt(str.substring(i));
+
+    if (right !== 0 && left + right === n) {
+      return "Kaprekar Number";
     }
   }
 
-  return n === 1;
+  return "Not a Kaprekar Number";
 }
 
-let n = 18;
-
-if (isUgly(5)) {
-  console.log("Ugly Number");
-} else {
-  console.log("Not Ugly");
-}
+console.log(isKaprekar(45));
+console.log(isKaprekar(10));

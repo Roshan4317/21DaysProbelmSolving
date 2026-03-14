@@ -284,21 +284,47 @@
 // *********************************************************************************************
 
 // 4. Check if a Number Is a Kaprekar Number
-function isKaprekar(n) {
-  let square = n * n;
-  let str = square.toString();
+// function isKaprekar(n) {
+//   let square = n * n;
+//   let str = square.toString();
 
-  for (let i = 1; i < str.length; i++) {
-    let left = parseInt(str.substring(0, i));
-    let right = parseInt(str.substring(i));
+//   for (let i = 1; i < str.length; i++) {
+//     let left = parseInt(str.substring(0, i));
+//     let right = parseInt(str.substring(i));
 
-    if (right !== 0 && left + right === n) {
-      return "Kaprekar Number";
+//     if (right !== 0 && left + right === n) {
+//       return "Kaprekar Number";
+//     }
+//   }
+
+//   return "Not a Kaprekar Number";
+// }
+
+// console.log(isKaprekar(45));
+// console.log(isKaprekar(10));
+
+// *********************************************************************************************
+
+// 5. Check if a Number Is a Happy Number
+
+function isHappyNumber(n) {
+  let seen = new Set();
+
+  while (n !== 1 && !seen.has(n)) {
+    seen.add(n);
+    let sum = 0;
+
+    while (n > 0) {
+      let digit = n % 10;
+      sum += digit * digit;
+      n = Math.floor(n / 10);
     }
+
+    n = sum;
   }
 
-  return "Not a Kaprekar Number";
+  return n === 1 ? "Happy Number" : "Not a Happy Number";
 }
 
-console.log(isKaprekar(45));
-console.log(isKaprekar(10));
+console.log(isHappyNumber(19));
+console.log(isHappyNumber(20));

@@ -85,6 +85,81 @@
 
 // console.log(primeFactorization(84));
 
+// function isPrime(num) {
+//   if (num <= 1) {
+//     return false;
+//   }
+
+//   for (let i = 2; i <= Math.sqrt(num); i++) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// function primeFactorization(num) {
+//   const primeFactors = [];
+
+//   for (let i = 2; i <= Math.sqrt(num) + 1; i++) {
+//     for (let j = 2; j <= i; j++) {
+//       if (num % j === 0) {
+//         const checkIfPrime = isPrime(j);
+//         if (checkIfPrime) {
+//           primeFactors.push(j);
+//           num = num / j;
+//           if (isPrime(num)) primeFactors.push(num);
+//           break;
+//         }
+//       }
+//     }
+//   }
+
+//   return primeFactors;
+// }
+
+// console.log(primeFactorization(84));
+
+// function primeFactorization(num) {
+//   const primeFactors = [];
+//   let factor = 2;
+
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num = num / factor;
+//     }
+//     factor++;
+//   }
+
+//   if (num > 2) primeFactors.push(num);
+//   return primeFactors;
+// }
+
+// console.log(primeFactorization(84));
+
+// function primeFactorization(num) {
+//   const primeFactors = [];
+
+//   while (num % 2 === 0) {
+//     primeFactors.push(2);
+//     num = num / 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num = num / factor;
+//     }
+//     factor += 2;
+//   }
+//   if (num > 2) primeFactors.push(num);
+//   return primeFactors;
+// }
+// console.log(primeFactorization(360));
+
 // *********************************************************************************************
 
 // 2. Factorization in Exponent Form
@@ -115,6 +190,42 @@
 // }
 
 // console.log(primeFactorizationInExponentForm(160));
+
+// function primeFactorizationInExponentForm(num) {
+//   const primeFactors = [];
+
+//   while (num % 2 === 0) {
+//     primeFactors.push(2);
+//     num /= 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 1) primeFactors.push(num);
+
+//   let count = {};
+//   primeFactors.forEach((value) => {
+//     count[value] = (count[value] || 0) + 1;
+//   });
+
+//   let output = [];
+
+//   for (let number in count) {
+//     const repeat = count[number];
+//     output.push(`${number}^${repeat} `);
+//   }
+
+//   return output.join("x ");
+// }
+
+// console.log(primeFactorizationInExponentForm(360));
 
 // *********************************************************************************************
 
@@ -333,11 +444,36 @@
 
 // 6.  Number Base Conversion (Any Base to Any Base)
 
-function convertBase(num, fromBase, toBase) {
-  let decimal = parseInt(num, fromBase);
-  return decimal.toString(toBase);
+// function convertBase(num, fromBase, toBase) {
+//   let decimal = parseInt(num, fromBase);
+//   return decimal.toString(toBase);
+// }
+
+// console.log(convertBase("1010", 2, 10));
+// console.log(convertBase("255", 10, 16));
+// console.log(convertBase("77", 8, 2));
+
+// 7. Return Prime Factors Without Repetition
+function distinctPrimeFactors(num) {
+  const result = [];
+
+  while (num % 2 === 0) {
+    if (!result.includes(2)) result.push(2);
+    num /= 2;
+  }
+
+  let factor = 3;
+  while (factor <= Math.sqrt(num)) {
+    while (num % factor === 0) {
+      if (!result.includes(factor)) result.push(factor);
+      num /= factor;
+    }
+    factor += 2;
+  }
+
+  if (num > 1) result.push(num);
+
+  return result;
 }
 
-console.log(convertBase("1010", 2, 10));
-console.log(convertBase("255", 10, 16));
-console.log(convertBase("77", 8, 2));
+console.log(distinctPrimeFactors(84));

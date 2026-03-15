@@ -454,26 +454,54 @@
 // console.log(convertBase("77", 8, 2));
 
 // 7. Return Prime Factors Without Repetition
-function distinctPrimeFactors(num) {
-  const result = [];
+// function distinctPrimeFactors(num) {
+//   const result = [];
+
+//   while (num % 2 === 0) {
+//     if (!result.includes(2)) result.push(2);
+//     num /= 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       if (!result.includes(factor)) result.push(factor);
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 1) result.push(num);
+
+//   return result;
+// }
+
+// console.log(distinctPrimeFactors(84));
+
+// *********************************************************************************************
+
+// 8. Count Total Prime Factors
+
+function totalPrimeFactors(num) {
+  let count = 0;
 
   while (num % 2 === 0) {
-    if (!result.includes(2)) result.push(2);
+    count++;
     num /= 2;
   }
 
   let factor = 3;
   while (factor <= Math.sqrt(num)) {
     while (num % factor === 0) {
-      if (!result.includes(factor)) result.push(factor);
+      count++;
       num /= factor;
     }
     factor += 2;
   }
 
-  if (num > 1) result.push(num);
+  if (num > 1) count++;
 
-  return result;
+  return count;
 }
 
-console.log(distinctPrimeFactors(84));
+console.log(totalPrimeFactors(360));

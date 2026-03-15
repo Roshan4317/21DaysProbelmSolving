@@ -482,26 +482,53 @@
 
 // 8. Count Total Prime Factors
 
-function totalPrimeFactors(num) {
-  let count = 0;
+// function totalPrimeFactors(num) {
+//   let count = 0;
+
+//   while (num % 2 === 0) {
+//     count++;
+//     num /= 2;
+//   }
+
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       count++;
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 1) count++;
+
+//   return count;
+// }
+
+// console.log(totalPrimeFactors(360));
+
+// *********************************************************************************************
+
+// 9. Check if Number Has Exactly Two Distinct Prime Factors
+function twoDistinctPrimeFactors(num) {
+  const set = new Set();
 
   while (num % 2 === 0) {
-    count++;
+    set.add(2);
     num /= 2;
   }
 
   let factor = 3;
   while (factor <= Math.sqrt(num)) {
     while (num % factor === 0) {
-      count++;
+      set.add(factor);
       num /= factor;
     }
     factor += 2;
   }
 
-  if (num > 1) count++;
+  if (num > 1) set.add(num);
 
-  return count;
+  return set.size === 2;
 }
 
-console.log(totalPrimeFactors(360));
+console.log(twoDistinctPrimeFactors(12));

@@ -509,26 +509,27 @@
 // *********************************************************************************************
 
 // 9. Check if Number Has Exactly Two Distinct Prime Factors
-function twoDistinctPrimeFactors(num) {
-  const set = new Set();
 
-  while (num % 2 === 0) {
-    set.add(2);
-    num /= 2;
-  }
+// function twoDistinctPrimeFactors(num) {
+//   const set = new Set();
 
-  let factor = 3;
-  while (factor <= Math.sqrt(num)) {
-    while (num % factor === 0) {
-      set.add(factor);
-      num /= factor;
-    }
-    factor += 2;
-  }
+//   while (num % 2 === 0) {
+//     set.add(2);
+//     num /= 2;
+//   }
 
-  if (num > 1) set.add(num);
+//   let factor = 3;
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       set.add(factor);
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
 
-  return set.size === 2;
-}
+//   if (num > 1) set.add(num);
 
-console.log(twoDistinctPrimeFactors(12));
+//   return set.size === 2;
+// }
+
+// console.log(twoDistinctPrimeFactors(12));

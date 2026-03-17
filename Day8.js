@@ -50,22 +50,44 @@
 
 // 4. Find the Most Frequent Character in a String
 
-function maxFrequencyChar(str) {
+// function maxFrequencyChar(str) {
+//   const frequency = {};
+//   let maxChar = "";
+//   let maxCharCount = 0;
+
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
+//     frequency[char] = (frequency[char] || 0) + 1;
+
+//     if (maxCharCount < frequency[char]) {
+//       maxCharCount = frequency[char];
+//       maxChar = char;
+//     }
+//   }
+
+//   return maxChar;
+// }
+
+// console.log(maxFrequencyChar("bannnnaaaaaaanna"));
+
+// *********************************************************************************************
+
+// 5. Check if Two Strings Are Anagrams (Without Sorting)
+function areAnagrams(str1, str2) {
+  if (str1.length !== str2.length) return false;
   const frequency = {};
-  let maxChar = "";
-  let maxCharCount = 0;
 
-  for (let i = 0; i < str.length; i++) {
-    const char = str[i];
-    frequency[char] = (frequency[char] || 0) + 1;
-
-    if (maxCharCount < frequency[char]) {
-      maxCharCount = frequency[char];
-      maxChar = char;
-    }
+  for (let i = 0; i < str1.length; i++) {
+    frequency[str1[i]] = (frequency[str1[i]] || 0) + 1;
   }
 
-  return maxChar;
+  for (let i = 0; i < str2.length; i++) {
+    const char = str2[i];
+    if (!frequency[char]) return false;
+    frequency[char]--;
+  }
+
+  return true;
 }
 
-console.log(maxFrequencyChar("bannnnaaaaaaanna"));
+console.log(areAnagrams("silent", "listen"));

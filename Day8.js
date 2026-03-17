@@ -73,21 +73,42 @@
 // *********************************************************************************************
 
 // 5. Check if Two Strings Are Anagrams (Without Sorting)
-function areAnagrams(str1, str2) {
-  if (str1.length !== str2.length) return false;
-  const frequency = {};
 
-  for (let i = 0; i < str1.length; i++) {
-    frequency[str1[i]] = (frequency[str1[i]] || 0) + 1;
-  }
+// function areAnagrams(str1, str2) {
+//   if (str1.length !== str2.length) return false;
+//   const frequency = {};
 
-  for (let i = 0; i < str2.length; i++) {
-    const char = str2[i];
-    if (!frequency[char]) return false;
-    frequency[char]--;
-  }
+//   for (let i = 0; i < str1.length; i++) {
+//     frequency[str1[i]] = (frequency[str1[i]] || 0) + 1;
+//   }
 
-  return true;
-}
+//   for (let i = 0; i < str2.length; i++) {
+//     const char = str2[i];
+//     if (!frequency[char]) return false;
+//     frequency[char]--;
+//   }
 
-console.log(areAnagrams("silent", "listen"));
+//   return true;
+// }
+
+// console.log(areAnagrams("silent", "listen"));
+
+// *********************************************************************************************
+
+// 6. Find the First Non-Repeating Character
+
+// function findFirstNonRepeatingChar(str) {
+//   const frequency = {};
+
+//   for (let i = 0; i < str.length; i++) {
+//     frequency[str[i]] = (frequency[str[i]] || 0) + 1;
+//   }
+
+//   for (let i = 0; i < str.length; i++) {
+//     if (frequency[str[i]] === 1) return str[i];
+//   }
+
+//   return null;
+// }
+
+// console.log(findFirstNonRepeatingChar("bajnainaj"));

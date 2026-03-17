@@ -34,14 +34,38 @@
 
 // 3.  Count Frequency of Each Character
 
-function countFrequency(str) {
+// function countFrequency(str) {
+//   const frequency = {};
+
+//   for (let i = 0; i < str.length; i++) {
+//     frequency[str[i]] = (frequency[str[i]] || 0) + 1;
+//   }
+
+//   return frequency;
+// }
+
+// console.log(countFrequency("banana"));
+
+// *********************************************************************************************
+
+// 4. Find the Most Frequent Character in a String
+
+function maxFrequencyChar(str) {
   const frequency = {};
+  let maxChar = "";
+  let maxCharCount = 0;
 
   for (let i = 0; i < str.length; i++) {
-    frequency[str[i]] = (frequency[str[i]] || 0) + 1;
+    const char = str[i];
+    frequency[char] = (frequency[char] || 0) + 1;
+
+    if (maxCharCount < frequency[char]) {
+      maxCharCount = frequency[char];
+      maxChar = char;
+    }
   }
 
-  return frequency;
+  return maxChar;
 }
 
-console.log(countFrequency("banana"));
+console.log(maxFrequencyChar("bannnnaaaaaaanna"));

@@ -139,17 +139,27 @@
 
 // 2. Check if a String Contains Only Alphabets (No Regex)
 
-function isOnlyAlphabets(str) {
-  for (let ch of str) {
-    const code = ch.charCodeAt(0);
+// function isOnlyAlphabets(str) {
+//   for (let ch of str) {
+//     const code = ch.charCodeAt(0);
 
-    if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122)) {
-      return false;
-    }
-  }
+//     if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122)) {
+//       return false;
+//     }
+//   }
 
-  return true;
+//   return true;
+// }
+
+// console.log(isOnlyAlphabets("HelloWorld123"));
+// console.log(isOnlyAlphabets("HelloWorld"));
+
+// *********************************************************************************************
+
+// 3. Reverse Only the Words in a Sentence
+
+function reverseWords(str) {
+  return str.split(" ").reverse().join(" ");
 }
 
-console.log(isOnlyAlphabets("HelloWorld123"));
-console.log(isOnlyAlphabets("HelloWorld"));
+console.log(reverseWords("I love coding"));

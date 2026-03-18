@@ -230,141 +230,187 @@
 // *********************************************************************************************
 
 // 3. Distinct Prime Factor Count
-// function primeFactorizationInExponentForm(num) {
-//   const primeFactors = {};
+
+// function distinctPrimeFactors(num) {
+//   const factors = {};
+
 //   while (num % 2 === 0) {
-//     primeFactors[2] = (primeFactors[2] || 0) + 1;
-//     num = num / 2;
+//     factors[2] = (factors[2] || 0) + 1;
+//     num /= 2;
 //   }
 
-//   let factor = 3;
-//   while (factor <= Math.sqrt(num)) {
-//     while (num % factor === 0) {
-//       primeFactors[factor] = (primeFactors[factor] || 0) + 1;
-//       num = num / factor;
+//   let primeFactor = 3;
+
+//   while (primeFactor <= Math.sqrt(num)) {
+//     while (num % primeFactor === 0) {
+//       factors[primeFactor] = (factors[primeFactor] || 0) + 1;
+//       num /= primeFactor;
 //     }
-//     factor += 2;
+
+//     primeFactor += 2;
 //   }
+//   if (num > 2) factors[num] = (factors[num] || 0) + 1;
 
-//   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
+//   const distinctPrimes = Object.keys(factors).length;
 
-//   return Object.keys(primeFactors).length;
+//   return `Distinct Prime Factors = ${distinctPrimes}`;
 // }
 
-// console.log(primeFactorizationInExponentForm(30));
+// console.log(distinctPrimeFactors(30));
 
 // *********************************************************************************************
 
 // 4. Check if a Number Is a Powerful Number
 
-// const primeFactors = {};
-// function primeFactorizationInExponentForm(num) {
+// function isPowerfulNumber(num) {
+//   let originalNum = num;
+//   const primeFactor = {};
+
+//   while (num % 2 === 0) {
+//     primeFactor[2] = (primeFactor[2] || 0) + 1;
+//     num /= 2;
+//   }
+
+//   let factor = 3;
+
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactor[factor] = (primeFactor[factor] || 0) + 1;
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 2) primeFactor[num] = (primeFactor[num] || 0) + 1;
+
+//   if (Object.values(primeFactor).some((el) => el === 1)) {
+//     return `No ${originalNum} is not a Powerful Number`;
+//   }
+
+//   return `Yes ${originalNum} is a Powerful Number`;
+// }
+
+// console.log(isPowerfulNumber(16));
+
+// *********************************************************************************************
+
+// 5.  Find the Product of All Distinct Prime Factors
+
+// function productOfAllDistinctPrimeFactors(num) {
+//   let primeFactors = {};
 //   while (num % 2 === 0) {
 //     primeFactors[2] = (primeFactors[2] || 0) + 1;
-//     num = num / 2;
+//     num /= 2;
 //   }
 
 //   let factor = 3;
 //   while (factor <= Math.sqrt(num)) {
 //     while (num % factor === 0) {
 //       primeFactors[factor] = (primeFactors[factor] || 0) + 1;
-//       num = num / factor;
+//       num /= factor;
 //     }
-//     factor += 2;
+
+//     factor++;
 //   }
 
 //   if (num > 2) primeFactors[num] = (primeFactors[num] || 0) + 1;
 
-//   return Math.min(...Object.values(primeFactors)) >= 2;
+//   const result = Object.keys(primeFactors).reduce(
+//     (acc, curr) => (acc *= Number(curr)),
+//     1,
+//   );
+
+//   return result;
 // }
 
-// console.log(primeFactorizationInExponentForm(35));
-
-// *********************************************************************************************
-
-// 5.  Find the Product of All Distinct Prime Factors
-
-// function productOfDistinctPrimes(num) {
-//   const primeFactors = [];
-//   while (num % 2 === 0) {
-//     primeFactors.push(2);
-//     num = num / 2;
-//   }
-//   let factor = 3;
-//   while (factor <= Math.sqrt(num)) {
-//     while (num % factor === 0) {
-//       primeFactors.push(factor);
-//       num = num / factor;
-//     }
-//     factor += 2;
-//   }
-//   if (num > 2) primeFactors.push(num);
-//   const distinctPrimes = [...new Set(primeFactors)];
-//   return distinctPrimes.reduce((acc, val) => acc * val, 1);
-// }
-
-// console.log(productOfDistinctPrimes(84));
+// console.log(productOfAllDistinctPrimeFactors(150));
 
 // *********************************************************************************************
 
 // HomeWork
 
 // 1. Check if a Number Is a Square-Free Number
+// function isSquareFreeNumber(num) {
+//   const primeFactors = [];
 
-// function isSquareFree(num) {
-//   for (let i = 2; i * i <= num; i++) {
-//     if (num % (i * i) === 0) {
-//       return false;
-//     }
+//   while (num % 2 === 0) {
+//     primeFactors.push(2);
+//     num /= 2;
 //   }
-//   return true;
+
+//   let factor = 3;
+
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactors.push(factor);
+//       num /= factor;
+//     }
+
+//     factor += 2;
+//   }
+
+//   if (num > 2) primeFactors.push(num);
+
+//   if (new Set(primeFactors).size !== primeFactors.length) {
+//     return `Given number is not a square Free`;
+//   }
+
+//   return "Given number is a square Free";
 // }
 
-// let n = 30;
-
-// if (isSquareFree(n)) {
-//   console.log("Square-Free Number");
-// } else {
-//   console.log("Not a Square-Free Number");
-// }
+// console.log(isSquareFreeNumber(80));
 
 // *********************************************************************************************
 
 // 2. Check if a Number Is a Smith Number
+// For smith number, it should be composite
 
-// function sumDigits(num) {
-//   let sum = 0;
-//   while (num > 0) {
-//     sum += num % 10;
-//     num = Math.floor(num / 10);
-//   }
-//   return sum;
-// }
+function isPrime(num) {
+  if (num <= 1) return false;
 
-// function isSmithNumber(n) {
-//   let temp = n;
-//   let sumPrimeFactors = 0;
+  if (num === 2) return true;
 
-//   for (let i = 2; i <= temp; i++) {
-//     while (temp % i === 0) {
-//       sumPrimeFactors += sumDigits(i);
-//       temp = temp / i;
-//     }
-//   }
+  if (num % 2 === 0) {
+    return false;
+  }
 
-//   if (sumDigits(n) === sumPrimeFactors) {
-//     return true;
-//   }
-//   return false;
-// }
+  for (let i = 3; i <= Math.sqrt(num); i += 2) {
+    if (num % i === 0) {
+      return false;
+    }
+  }
 
-// let n = 666;
+  return true;
+}
 
-// if (isSmithNumber(n)) {
-//   console.log("Smith Number");
-// } else {
-//   console.log("Not a Smith Number");
-// }
+function isASmithNumber(num) {
+  if (isPrime(num)) {
+    return `Given Num is Not a Smith Number`;
+  }
+
+  const primeFactor = [];
+
+  while (num % 2 === 0) {
+    primeFactor.push(2);
+    num /= 2;
+  }
+
+  let factor = 3;
+
+  while (factor <= Math.sqrt(num)) {
+    while (num % factor === 0) {
+      primeFactor.push(factor);
+      num /= factor;
+    }
+    factor += 2;
+  }
+
+  if (num > 2) primeFactor.push(num);
+
+  return primeFactor;
+}
+
+console.log(isASmithNumber(666));
 
 // *********************************************************************************************
 

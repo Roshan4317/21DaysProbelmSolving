@@ -112,3 +112,25 @@
 // }
 
 // console.log(findFirstNonRepeatingChar("bajnainaj"));
+
+// *********************************************************************************************
+
+// HomeWork
+
+// 1. Remove All Duplicate Characters (Keep First Occurrence)
+
+function removeDuplicates(str) {
+  const visited = new Set();
+  let result = "";
+
+  for (let ch of str) {
+    if (!visited.has(ch)) {
+      visited.add(ch);
+      result += ch;
+    }
+  }
+
+  return result;
+}
+
+console.log(removeDuplicates("programming"));

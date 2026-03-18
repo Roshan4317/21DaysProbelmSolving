@@ -119,18 +119,37 @@
 
 // 1. Remove All Duplicate Characters (Keep First Occurrence)
 
-function removeDuplicates(str) {
-  const visited = new Set();
-  let result = "";
+// function removeDuplicates(str) {
+//   const visited = new Set();
+//   let result = "";
 
+//   for (let ch of str) {
+//     if (!visited.has(ch)) {
+//       visited.add(ch);
+//       result += ch;
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(removeDuplicates("programming"));
+
+// *********************************************************************************************
+
+// 2. Check if a String Contains Only Alphabets (No Regex)
+
+function isOnlyAlphabets(str) {
   for (let ch of str) {
-    if (!visited.has(ch)) {
-      visited.add(ch);
-      result += ch;
+    const code = ch.charCodeAt(0);
+
+    if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122)) {
+      return false;
     }
   }
 
-  return result;
+  return true;
 }
 
-console.log(removeDuplicates("programming"));
+console.log(isOnlyAlphabets("HelloWorld123"));
+console.log(isOnlyAlphabets("HelloWorld"));

@@ -55,7 +55,7 @@
 //   return frequency;
 // }
 
-// console.log(countFrequency("banana"));
+// console.log(countFrequency("bananaa"));
 
 // *********************************************************************************************
 

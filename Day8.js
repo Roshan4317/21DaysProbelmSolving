@@ -158,8 +158,8 @@
 
 // 3. Reverse Only the Words in a Sentence
 
-function reverseWords(str) {
-  return str.split(" ").reverse().join(" ");
-}
+// function reverseWords(str) {
+//   return str.split(" ").reverse().join(" ");
+// }
 
-console.log(reverseWords("I love coding"));
+// console.log(reverseWords("I love coding"));

@@ -365,161 +365,294 @@
 // 2. Check if a Number Is a Smith Number
 // For smith number, it should be composite
 
-function isPrime(num) {
-  if (num <= 1) return false;
+// function isPrime(num) {
+//   if (num <= 1) return false;
 
-  if (num === 2) return true;
+//   if (num === 2) return true;
 
-  if (num % 2 === 0) {
-    return false;
-  }
+//   if (num % 2 === 0) {
+//     return false;
+//   }
 
-  for (let i = 3; i <= Math.sqrt(num); i += 2) {
-    if (num % i === 0) {
-      return false;
-    }
-  }
+//   for (let i = 3; i <= Math.sqrt(num); i += 2) {
+//     if (num % i === 0) {
+//       return false;
+//     }
+//   }
 
-  return true;
-}
+//   return true;
+// }
 
-function isASmithNumber(num) {
-  if (isPrime(num)) {
-    return `Given Num is Not a Smith Number`;
-  }
+// function sumOfDigits(num) {
+//   let digits = [];
 
-  const primeFactor = [];
+//   while (num >= 1) {
+//     digits.push(num % 10);
+//     num = Math.floor(num / 10);
+//   }
 
-  while (num % 2 === 0) {
-    primeFactor.push(2);
-    num /= 2;
-  }
+//   const sum = digits.reduce((acc, curr) => (acc += curr), 0);
 
-  let factor = 3;
+//   return sum;
+// }
 
-  while (factor <= Math.sqrt(num)) {
-    while (num % factor === 0) {
-      primeFactor.push(factor);
-      num /= factor;
-    }
-    factor += 2;
-  }
+// function isASmithNumber(num) {
+//   if (isPrime(num)) {
+//     return `Given Num is Not a Smith Number`;
+//   }
 
-  if (num > 2) primeFactor.push(num);
+//   const sumOfOriginalNum = sumOfDigits(num);
 
-  return primeFactor;
-}
+//   const primeFactor = [];
 
-console.log(isASmithNumber(666));
+//   while (num % 2 === 0) {
+//     primeFactor.push(2);
+//     num /= 2;
+//   }
+
+//   let factor = 3;
+
+//   while (factor <= Math.sqrt(num)) {
+//     while (num % factor === 0) {
+//       primeFactor.push(factor);
+//       num /= factor;
+//     }
+//     factor += 2;
+//   }
+
+//   if (num > 2) primeFactor.push(num);
+
+//   const primeDigit = Number(primeFactor.join(""));
+
+//   const sumOfPrimeDigit = sumOfDigits(primeDigit);
+
+//   return sumOfOriginalNum === sumOfPrimeDigit
+//     ? "Given Num is Smith Number"
+//     : "Given Num is Not Smith Number";
+// }
+
+// console.log(isASmithNumber(131));
 
 // *********************************************************************************************
 
 // 3. Check if a Number Is an Ugly Number
 
-// function isUgly(n) {
-//   if (n <= 0) return false;
+// function isUglyNumber(num) {
+//   if (num === 1) return "Ugly Number";
 
-//   let factors = [2, 3, 5];
+//   const primeFactors = [];
 
-//   for (let f of factors) {
-//     while (n % f === 0) {
-//       n = n / f;
-//     }
+//   while (num % 2 === 0) {
+//     primeFactors.push(2);
+//     num /= 2;
 //   }
 
-//   return n === 1;
+//   let factors = 3;
+
+//   while (factors <= Math.sqrt(num)) {
+//     while (num % factors === 0) {
+//       primeFactors.push(factors);
+//       num /= factors;
+//     }
+//     factors += 2;
+//   }
+
+//   if (num > 2) primeFactors.push(num);
+//   return Math.max(...primeFactors) >= 7 ? "Not a Ugly Number" : "Ugly Number";
 // }
 
-// let n = 18;
+// console.log(isUglyNumber(18));
 
-// if (isUgly(5)) {
-//   console.log("Ugly Number");
-// } else {
-//   console.log("Not Ugly");
+// function isUglyNumber(num) {
+//   while (num % 2 == 0) {
+//     num /= 2;
+//   }
+//   while (num % 3 === 0) {
+//     num /= 3;
+//   }
+//   while (num % 5 === 0) {
+//     num /= 5;
+//   }
+
+//   return num === 1 ? "Ugly Number" : "Not a Ugly Number";
 // }
+
+// console.log(isUglyNumber(20));
 
 // *********************************************************************************************
 
 // 4. Check if a Number Is a Kaprekar Number
 // function isKaprekar(n) {
-//   let square = n * n;
-//   let str = square.toString();
+//   let squareOfNumber = n ** 2;
 
-//   for (let i = 1; i < str.length; i++) {
-//     let left = parseInt(str.substring(0, i));
-//     let right = parseInt(str.substring(i));
+//   const digits = [];
+//   while (squareOfNumber >= 1) {
+//     digits.unshift(squareOfNumber % 10);
+//     squareOfNumber = Math.floor(squareOfNumber / 10);
+//   }
 
-//     if (right !== 0 && left + right === n) {
-//       return "Kaprekar Number";
+//   for (let i = 1; i < digits.length; i++) {
+//     const left = Number(digits.slice(0, i).join(""));
+//     const right = Number(digits.slice(i).join(""));
+//     if (n === left + right) {
+//       return "Karprekar Number";
 //     }
 //   }
 
-//   return "Not a Kaprekar Number";
+//   return "Not a Karprekar Number";
 // }
 
 // console.log(isKaprekar(45));
-// console.log(isKaprekar(10));
+// console.log(isKaprekar(48));
+// console.log(isKaprekar(9));
+
+// function isKaprekar(num) {
+//   if (num === 1) return "Given num is Kaprekar Number";
+
+//   const squareOfNumber = num ** 2;
+//   const str = String(squareOfNumber).split("");
+
+//   for (let i = 1; i < str.length; i++) {
+//     let left = Number(str.slice(0, i).join(""));
+//     let right = Number(str.slice(i).join(""));
+//     if (left + right === num) return "Given num is Kaprekar Number";
+//   }
+
+//   return "Given num is  not Kaprekar Number";
+// }
+
+// console.log(isKaprekar(45));
+// console.log(isKaprekar(48));
+// console.log(isKaprekar(9));
 
 // *********************************************************************************************
 
 // 5. Check if a Number Is a Happy Number
 
-// function isHappyNumber(n) {
-//   let seen = new Set();
+// function isHappyNumber(num) {
+//   if (num === 1) return "Given Number is Happy Number";
 
-//   while (n !== 1 && !seen.has(n)) {
-//     seen.add(n);
-//     let sum = 0;
+//   const seen = new Set();
 
-//     while (n > 0) {
-//       let digit = n % 10;
-//       sum += digit * digit;
-//       n = Math.floor(n / 10);
+//   while (num !== 1 && !seen.has(num)) {
+//     seen.add(num);
+//     let digit = [];
+
+//     while (num > 0) {
+//       digit.unshift(num % 10);
+//       num = Math.floor(num / 10);
 //     }
 
-//     n = sum;
+//     const result = digit.reduce((acc, curr) => (acc += curr ** 2), 0);
+//     num = result;
+//     if (num === 1) return "Given Number is Happy Number";
 //   }
 
-//   return n === 1 ? "Happy Number" : "Not a Happy Number";
+//   return "Given Number is not Happy Number";
 // }
 
+// console.log(isHappyNumber(14));
 // console.log(isHappyNumber(19));
-// console.log(isHappyNumber(20));
+// console.log(isHappyNumber(13));
+
+// function isHappyNumber(num) {
+//   const seen = new Set();
+
+//   while (num !== 1 && !seen.has(num)) {
+//     seen.add(num);
+//     let digit = 0;
+//     while (num > 0) {
+//       const addingNum = num % 10;
+//       digit += addingNum * addingNum;
+//       num = Math.floor(num / 10);
+//     }
+
+//     num = digit;
+//   }
+
+//   return num === 1
+//     ? "Given Number is Happy Number"
+//     : "Given Number is not Happy Number";
+// }
+
+// console.log(isHappyNumber(14));
+// console.log(isHappyNumber(19));
+// console.log(isHappyNumber(13));
 
 // *********************************************************************************************
 
 // 6.  Number Base Conversion (Any Base to Any Base)
 
 // function convertBase(num, fromBase, toBase) {
-//   let decimal = parseInt(num, fromBase);
-//   return decimal.toString(toBase);
+//   let number = Number(num);
+//   let digit = [];
+
+//   while (number > 0) {
+//     digit.unshift(number % 10);
+//     number = Math.floor(number / 10);
+//   }
+
+//   let result = 0;
+
+//   digit.forEach((num, i) => {
+//     result += num * fromBase ** (digit.length - i - 1);
+//   });
+
+//   return result;
 // }
 
 // console.log(convertBase("1010", 2, 10));
-// console.log(convertBase("255", 10, 16));
-// console.log(convertBase("77", 8, 2));
+
+// *********************************************************************************************
 
 // 7. Return Prime Factors Without Repetition
+
 // function distinctPrimeFactors(num) {
-//   const result = [];
+//   const result = new Set();
 
 //   while (num % 2 === 0) {
-//     if (!result.includes(2)) result.push(2);
+//     result.add(2);
 //     num /= 2;
 //   }
 
 //   let factor = 3;
+
 //   while (factor <= Math.sqrt(num)) {
 //     while (num % factor === 0) {
-//       if (!result.includes(factor)) result.push(factor);
+//       result.add(factor);
 //       num /= factor;
 //     }
-//     factor += 2;
+//     factor++;
 //   }
 
-//   if (num > 1) result.push(num);
+//   if (num > 1) result.add(num);
 
 //   return result;
+// }
+
+// console.log(distinctPrimeFactors(84));
+
+// function distinctPrimeFactors(num) {
+//   let factor = [];
+
+//   while (num % 2 === 0) {
+//     if (!factor.includes(2)) factor.push(2);
+//     num /= 2;
+//   }
+
+//   let singleFactor = 3;
+
+//   while (singleFactor <= Math.sqrt(num)) {
+//     while (num % singleFactor === 0) {
+//       if (!factor.includes(singleFactor)) factor.push(singleFactor);
+//       num /= singleFactor;
+//     }
+
+//     singleFactor += 2;
+//   }
+
+//   if (num > 1 && !factor.includes(num)) factor.push(num);
+//   return factor;
 // }
 
 // console.log(distinctPrimeFactors(84));
@@ -579,3 +712,15 @@ console.log(isASmithNumber(666));
 // }
 
 // console.log(twoDistinctPrimeFactors(12));
+
+// *********************************************************************************************
+
+// 10. Swap Variable without using third variable
+
+// function swap(num1, num2) {
+//   const [a, b] = [num2, num1];
+
+//   return { a, b };
+// }
+
+// console.log(swap(5, 6));

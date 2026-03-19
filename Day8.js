@@ -1,34 +1,45 @@
-// 1. Reverse a String (Manual Method Only)
-// function reverseString(str) {
-//   let reversedString = "";
+// ClassWork
 
-//   for (let i = str.length - 1; i >= 0; i--) {
-//     reversedString += str[i];
+// 1. Reverse a String (Manual Method Only)
+
+// function reverseString(str) {
+//   let reversed = "";
+
+//   for (let i = 1; i <= str.length; i++) {
+//     reversed += str[str.length - i];
 //   }
 
-//   return reversedString;
+//   return reversed;
 // }
 
-// console.log(reverseString("abcd"));
+// console.log(reverseString("javascript"));
+
+// function reverseString(str) {
+//   let reversed = "";
+
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     reversed += str[i];
+//   }
+
+//   return reversed;
+// }
+
+// console.log(reverseString("javascript"));
 
 // *********************************************************************************************
 
 // 2. Check if a String is a Palindrome
 
 // function isPalindrome(str) {
-//   let leftIndex = 0;
-//   let rightIndex = str.length - 1;
-
-//   while (leftIndex < rightIndex) {
-//     if (str[leftIndex] !== str[rightIndex]) return false;
-//     leftIndex++;
-//     rightIndex--;
+//   let reversed = "";
+//   for (let i = str.length - 1; i >= 0; i--) {
+//     reversed += str[i];
 //   }
 
-//   return true;
+//   return str === reversed ? "Yes Palindrome" : "Not a Palindrome";
 // }
 
-// console.log(isPalindrome("racecar"));
+// console.log(isPalindrome("madam"));
 
 // *********************************************************************************************
 

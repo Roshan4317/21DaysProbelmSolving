@@ -326,3 +326,30 @@
 // }
 
 // console.log(reverseWords("I love coding"));
+
+// *********************************************************************************************
+
+// 4. Find the Longest Word in a Sentence
+function longestWord(sentence) {
+  let currentWord = "";
+  let longest = "";
+
+  for (let i = 0; i < sentence.length; i++) {
+    if (sentence[i] !== " ") {
+      currentWord += sentence[i];
+    } else {
+      if (currentWord.length > longest.length) {
+        longest = currentWord;
+      }
+      currentWord = "";
+    }
+  }
+
+  if (currentWord.length > longest.length) {
+    longest = currentWord;
+  }
+
+  return longest;
+}
+
+console.log(longestWord("coding is beautiful"));

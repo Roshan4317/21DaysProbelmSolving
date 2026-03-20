@@ -330,26 +330,45 @@
 // *********************************************************************************************
 
 // 4. Find the Longest Word in a Sentence
-function longestWord(sentence) {
-  let currentWord = "";
-  let longest = "";
 
-  for (let i = 0; i < sentence.length; i++) {
-    if (sentence[i] !== " ") {
-      currentWord += sentence[i];
-    } else {
-      if (currentWord.length > longest.length) {
-        longest = currentWord;
-      }
-      currentWord = "";
+// function longestWord(sentence) {
+//   let currentWord = "";
+//   let longest = "";
+
+//   for (let i = 0; i < sentence.length; i++) {
+//     if (sentence[i] !== " ") {
+//       currentWord += sentence[i];
+//     } else {
+//       if (currentWord.length > longest.length) {
+//         longest = currentWord;
+//       }
+//       currentWord = "";
+//     }
+//   }
+
+//   if (currentWord.length > longest.length) {
+//     longest = currentWord;
+//   }
+
+//   return longest;
+// }
+
+// console.log(longestWord("coding is beautiful"));
+
+// *********************************************************************************************
+
+// 5. Count the Number of Words (Manually Without split)
+
+function countWords(str) {
+  let count = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] !== " " && (i === 0 || str[i - 1] === " ")) {
+      count++;
     }
   }
 
-  if (currentWord.length > longest.length) {
-    longest = currentWord;
-  }
-
-  return longest;
+  return count;
 }
 
-console.log(longestWord("coding is beautiful"));
+console.log(countWords("  hi   there  world "));

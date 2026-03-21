@@ -283,14 +283,33 @@
 // 1. Remove All Duplicate Characters (Keep First Occurrence)
 
 // function removeDuplicates(str) {
-//   const visited = new Set();
+//   const frequencyCount = {};
+//   let newString = "";
+
+//   for (let i = 0; i < str.length; i++) {
+//     const char = str[i];
+//     if (frequencyCount[char] !== 1) {
+//       frequencyCount[char] = (frequencyCount[char] || 0) + 1;
+//       newString += char;
+//     }
+//   }
+
+//   return newString;
+// }
+
+// console.log(removeDuplicates("programming"));
+
+// function removeDuplicates(str) {
+//   const newString = new Set();
 //   let result = "";
 
-//   for (let ch of str) {
-//     if (!visited.has(ch)) {
-//       visited.add(ch);
-//       result += ch;
-//     }
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
+//     newString.add(char);
+//   }
+
+//   for (key of newString) {
+//     result += key;
 //   }
 
 //   return result;
@@ -298,15 +317,46 @@
 
 // console.log(removeDuplicates("programming"));
 
+// function removeDuplicates(str) {
+//   const seen = new Set();
+//   let result = "";
+
+//   for (let char of str) {
+//     if (!seen.has(char)) {
+//       seen.add(char);
+//       result += char;
+//     }
+//   }
+
+//   return result;
+// }
+
+// console.log(removeDuplicates("programming"));
 // *********************************************************************************************
 
 // 2. Check if a String Contains Only Alphabets (No Regex)
 
 // function isOnlyAlphabets(str) {
-//   for (let ch of str) {
-//     const code = ch.charCodeAt(0);
+//   for (let i = 0; i < str.length; i++) {
+//     let charCode = str[i].charCodeAt();
+//     if (charCode < 65 || (charCode > 90 && charCode <= 96) || charCode > 122) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
 
-//     if (!(code >= 65 && code <= 90) && !(code >= 97 && code <= 122)) {
+// console.log(isOnlyAlphabets("HelloWorld123"));
+// console.log(isOnlyAlphabets("HelloWorld"));
+
+// function isOnlyAlphabets(str) {
+//   for (let char of str) {
+//     let charCode = char.charCodeAt();
+
+//     if (
+//       !(charCode >= 65 && charCode <= 90) &&
+//       !(charCode >= 97 && charCode <= 122)
+//     ) {
 //       return false;
 //     }
 //   }
@@ -327,27 +377,51 @@
 
 // console.log(reverseWords("I love coding"));
 
+// function reverseWords(str) {
+//   const splitted = str.split(" ");
+//   let splittedResult = "";
+
+//   for (let i = splitted.length - 1; i >= 0; i--) {
+//     splittedResult += splitted[i] + `${i > 0 ? " " : ""}`;
+//   }
+
+//   return splittedResult;
+// }
+
+// console.log(reverseWords("I love coding"));
 // *********************************************************************************************
 
 // 4. Find the Longest Word in a Sentence
 
 // function longestWord(sentence) {
-//   let currentWord = "";
-//   let longest = "";
+//   let longestWord = "";
+//   const splitted = sentence.split(" ");
 
-//   for (let i = 0; i < sentence.length; i++) {
-//     if (sentence[i] !== " ") {
-//       currentWord += sentence[i];
-//     } else {
-//       if (currentWord.length > longest.length) {
-//         longest = currentWord;
-//       }
-//       currentWord = "";
+//   for (let word of splitted) {
+//     if (word.length > longestWord.length) {
+//       longestWord = word;
 //     }
 //   }
 
-//   if (currentWord.length > longest.length) {
-//     longest = currentWord;
+//   return longestWord;
+// }
+
+// console.log(longestWord("coding is beautiful"));
+
+// function longestWord(sentence) {
+//   let longest = "";
+//   let checkWord = "";
+//   let count = 0;
+
+//   for (let i = 0; i < sentence.length; i++) {
+//     if (sentence[i] !== " ") {
+//       count++;
+//       checkWord += sentence[i];
+//       if (longest.length < count) longest = checkWord;
+//     } else {
+//       checkWord = "";
+//       count = 0;
+//     }
 //   }
 
 //   return longest;
@@ -355,20 +429,98 @@
 
 // console.log(longestWord("coding is beautiful"));
 
+// function longestWord(sentence) {
+//   let longWord = "";
+//   let word = "";
+//   for (let i = 0; i < sentence.length; i++) {
+//     if (sentence[i] !== " ") {
+//       word += sentence[i];
+//       if (word.length > longWord.length) longWord = word;
+//     } else {
+//       word = "";
+//     }
+//   }
+
+//   return longWord;
+// }
+
+// console.log(longestWord("Coding is Very much Beautiful Congratulations."));
+
 // *********************************************************************************************
 
 // 5. Count the Number of Words (Manually Without split)
 
-function countWords(str) {
-  let count = 0;
+// function countWords(str) {
+//   let count = 0;
+//   let word = "";
 
-  for (let i = 0; i < str.length; i++) {
-    if (str[i] !== " " && (i === 0 || str[i - 1] === " ")) {
-      count++;
-    }
-  }
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] !== " ") {
+//       word += str[i];
+//     } else {
+//       if (word.length > 0) count++;
+//       word = "";
+//     }
+//   }
+//   if (word.length > 0) count++;
+//   return count;
+// }
 
-  return count;
-}
+// console.log(countWords("hi  there  world how are you"));
 
-console.log(countWords("  hi   there  world "));
+// function countWords(sentence) {
+//   let count = 0;
+
+//   for (let i = 0; i < sentence.length; i++) {
+//     if (sentence[i] !== " " && (i === 0 || sentence[i - 1] === " ")) {
+//       count++;
+//     }
+//   }
+
+//   return count;
+// }
+
+// console.log(countWords(" Hello How    are   you Today?"));
+
+// *********************************************************************************************
+
+// 6. Find All Substrings of a String (No Built-ins)
+
+// function allSubStrings(str) {
+//   const allSub = [];
+
+//   for (let i = 0; i < str.length; i++) {
+//     let temp = "";
+//     for (let j = i; j < str.length; j++) {
+//       temp += str[j];
+//       allSub.push(temp);
+//     }
+//   }
+
+//   return allSub;
+// }
+
+// console.log(allSubStrings("abc"));
+
+// *********************************************************************************************
+
+// 7. Compress a String (Basic Run-Length Encoding)
+
+// function compressString(str) {
+//   let count = 1;
+//   let finalString = "";
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i];
+
+//     if (char === str[i + 1]) {
+//       count++;
+//     } else {
+//       finalString += char + count;
+//       count = 1;
+//     }
+//   }
+
+//   return finalString;
+// }
+
+// console.log(compressString("aaabbccccda"));

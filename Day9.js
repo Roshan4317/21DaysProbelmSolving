@@ -63,24 +63,23 @@
 
 // 2.  Manual Substring Search (Without Using indexOf)
 
-// function findSubstring(text, pattern) {
-//   for (let i = 0; i <= text.length - pattern.length; i++) {
-//     let match = true;
+function findSubstring(text, pattern) {
+  for (let i = 0; i < text.length; i++) {
+    let match = true;
 
-//     for (let j = 0; j < pattern.length; j++) {
-//       if (text[i + j] !== pattern[j]) {
-//         match = false;
-//         break;
-//       }
-//     }
+    for (let j = 0; j < pattern.length; j++) {
+      if (text[i + j] !== pattern[j]) {
+        match = false;
+        break;
+      }
+    }
+    if (match) return `Found at index ${i}`;
+  }
 
-//     if (match) return i;
-//   }
+  return `Not Found`;
+}
 
-//   return -1;
-// }
-
-// console.log(findSubstring("hello world", "wor"));
+console.log(findSubstring("hello world", "ld"));
 
 // *********************************************************************************************
 

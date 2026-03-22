@@ -63,30 +63,8 @@
 
 // 2.  Manual Substring Search (Without Using indexOf)
 
-function findSubstring(text, pattern) {
-  for (let i = 0; i < text.length; i++) {
-    let match = true;
-
-    for (let j = 0; j < pattern.length; j++) {
-      if (text[i + j] !== pattern[j]) {
-        match = false;
-        break;
-      }
-    }
-    if (match) return `Found at index ${i}`;
-  }
-
-  return `Not Found`;
-}
-
-console.log(findSubstring("hello world", "ld"));
-
-// *********************************************************************************************
-
-// 3 . Check if One String is Rotation of Another
-
-// function isSubstring(text, pattern) {
-//   for (let i = 0; i <= text.length - pattern.length; i++) {
+// function findSubstring(text, pattern) {
+//   for (let i = 0; i < text.length; i++) {
 //     let match = true;
 
 //     for (let j = 0; j < pattern.length; j++) {
@@ -95,17 +73,39 @@ console.log(findSubstring("hello world", "ld"));
 //         break;
 //       }
 //     }
-
-//     if (match) return true;
+//     if (match) return `Found at index ${i}`;
 //   }
-//   return false;
+
+//   return `Not Found`;
 // }
 
-// function isRotation(s1, s2) {
-//   if (s1.length !== s2.length) return false;
+// console.log(findSubstring("hello world", "ld"));
 
-//   const combined = s1 + s1;
-//   return isSubstring(combined, s2);
-// }
+// *********************************************************************************************
 
-// console.log(isRotation("abcde", "cdeab"));
+// 3 . Check if One String is Rotation of Another
+
+function isSubstring(text, pattern) {
+  for (let i = 0; i <= text.length - pattern.length; i++) {
+    let match = true;
+
+    for (let j = 0; j < pattern.length; j++) {
+      if (text[i + j] !== pattern[j]) {
+        match = false;
+        break;
+      }
+    }
+
+    if (match) return true;
+  }
+  return false;
+}
+
+function isRotation(s1, s2) {
+  if (s1.length !== s2.length) return false;
+
+  const combined = s1 + s1;
+  return isSubstring(combined, s2);
+}
+
+console.log(isRotation("abcddde", "cdeab"));

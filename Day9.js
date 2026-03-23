@@ -105,4 +105,4 @@ function isRotation(a, b) {
   return false;
 }
 
-console.log(isRotation("abcde", "cdeab"));
+console.log(isRotation("abcde", "deab"));

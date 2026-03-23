@@ -63,49 +63,26 @@
 
 // 2.  Manual Substring Search (Without Using indexOf)
 
-// function findSubstring(text, pattern) {
-//   for (let i = 0; i < text.length; i++) {
-//     let match = true;
-
-//     for (let j = 0; j < pattern.length; j++) {
-//       if (text[i + j] !== pattern[j]) {
-//         match = false;
-//         break;
-//       }
-//     }
-//     if (match) return `Found at index ${i}`;
-//   }
-
-//   return `Not Found`;
-// }
-
-// console.log(findSubstring("hello world", "ld"));
-
-// *********************************************************************************************
-
-// 3 . Check if One String is Rotation of Another
-
-function isSubstring(text, pattern) {
-  for (let i = 0; i <= text.length - pattern.length; i++) {
+function SubstringSearch(mainString, testString) {
+  for (let i = 0; i <= mainString.length - testString.length; i++) {
+    let count = i;
     let match = true;
-
-    for (let j = 0; j < pattern.length; j++) {
-      if (text[i + j] !== pattern[j]) {
+    for (let j = 0; j < testString.length; j++) {
+      if (mainString[i + j] !== testString[j]) {
         match = false;
         break;
       }
     }
-
-    if (match) return true;
+    if (match) {
+      count = i;
+      return `Found at index ${count}`;
+    }
   }
-  return false;
+  return "Did not find the testString";
 }
 
-function isRotation(s1, s2) {
-  if (s1.length !== s2.length) return false;
+console.log(SubstringSearch("hellotheredde", "there"));
 
-  const combined = s1 + s1;
-  return isSubstring(combined, s2);
-}
+// *********************************************************************************************
 
-console.log(isRotation("abcddde", "cdeab"));
+// 3 . Check if One String is Rotation of Another

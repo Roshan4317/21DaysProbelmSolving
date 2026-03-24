@@ -111,7 +111,7 @@
 
 // HomeWork
 
-//Count Frequency of Each Word in a Sentence
+// 1. Count Frequency of Each Word in a Sentence
 
 // function wordFrequency(sentence) {
 //   let words = sentence.toLowerCase().split(" ");
@@ -135,3 +135,42 @@
 // console.log(wordFrequency("This is a test this is fun"));
 
 // **********************************************************************************************************
+
+// 2.  Check If a String Is a Pangram
+
+// function isPangram(str) {
+//   let set = new Set();
+
+//   for (let char of str.toLowerCase()) {
+//     if (char >= 'a' && char <= 'z') {
+//       set.add(char);
+//     }
+//   }
+
+//   return set.size === 26;
+// }
+
+// console.log(isPangram("The quick brown fox jumps over the lazy dog"));
+
+// **********************************************************************************************************
+
+// 3. Remove All Duplicate Words From a Sentence
+
+function removeDuplicateWords(sentence) {
+  let words = sentence.split(" ");
+  let seen = new Set();
+  let result = [];
+
+  for (let word of words) {
+    let lowerWord = word.toLowerCase();
+
+    if (!seen.has(lowerWord)) {
+      seen.add(lowerWord);
+      result.push(word);
+    }
+  }
+
+  return result.join(" ");
+}
+
+console.log(removeDuplicateWords("This is is a test Test string"));

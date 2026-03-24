@@ -112,3 +112,26 @@
 // HomeWork
 
 //Count Frequency of Each Word in a Sentence
+
+// function wordFrequency(sentence) {
+//   let words = sentence.toLowerCase().split(" ");
+//   let frequency = {};
+
+//   for (let i = 0; i < words.length; i++) {
+//     let word = words[i];
+
+//     if (word === "") continue;
+
+//     if (frequency[word]) {
+//       frequency[word]++;
+//     } else {
+//       frequency[word] = 1;
+//     }
+//   }
+
+//   return frequency;
+// }
+
+// console.log(wordFrequency("This is a test this is fun"));
+
+// **********************************************************************************************************

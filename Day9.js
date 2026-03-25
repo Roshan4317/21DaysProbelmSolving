@@ -115,40 +115,57 @@
 // 1. Count Frequency of Each Word in a Sentence
 
 // function wordFrequency(sentence) {
-//   let words = sentence.toLowerCase().split(" ");
-//   let frequency = {};
+//   const splittedSentence = sentence.split(" ");
+//   const obj = {};
 
-//   for (let i = 0; i < words.length; i++) {
-//     let word = words[i];
+//   splittedSentence.forEach((el) => {
+//     obj[el] = (obj[el] || 0) + 1;
+//   });
 
-//     if (word === "") continue;
+//   return obj;
+// }
 
-//     if (frequency[word]) {
-//       frequency[word]++;
+// console.log(wordFrequency("i love coding and i love javascript"));
+
+// function wordFrequency(sentence) {
+//   let word = "";
+//   const frequency = {};
+
+//   for (let i = 0; i < sentence.length; i++) {
+//     let char = sentence[i];
+//     if (char !== " ") {
+//       word += char;
 //     } else {
-//       frequency[word] = 1;
+//       if (word.length > 0) {
+//         frequency[word] = (frequency[word] || 0) + 1;
+//         word = "";
+//       }
 //     }
 //   }
 
+//   frequency[word] = (frequency[word] || 0) + 1;
+//   word = "";
+
 //   return frequency;
 // }
-
-// console.log(wordFrequency("This is a test this is fun"));
+// console.log(wordFrequency("i love   coding and i love javascript"));
 
 // **********************************************************************************************************
 
 // 2.  Check If a String Is a Pangram
 
 // function isPangram(str) {
-//   let set = new Set();
+//   const letters = new Set();
 
-//   for (let char of str.toLowerCase()) {
-//     if (char >= 'a' && char <= 'z') {
-//       set.add(char);
+//   for (let i = 0; i < str.length; i++) {
+//     let char = str[i].toLowerCase();
+
+//     if (char >= "a" && char <= "z") {
+//       letters.add(char);
 //     }
 //   }
 
-//   return set.size === 26;
+//   return letters.size === 26 ? true : false;
 // }
 
 // console.log(isPangram("The quick brown fox jumps over the lazy dog"));
@@ -158,87 +175,102 @@
 // 3. Remove All Duplicate Words From a Sentence
 
 // function removeDuplicateWords(sentence) {
-//   let words = sentence.split(" ");
-//   let seen = new Set();
-//   let result = [];
+//   const seen = new Set();
+//   let word = "";
+//   const splittedSentence = sentence.split(" ");
 
-//   for (let word of words) {
-//     let lowerWord = word.toLowerCase();
-
-//     if (!seen.has(lowerWord)) {
-//       seen.add(lowerWord);
-//       result.push(word);
+//   for (let i = 0; i < splittedSentence.length; i++) {
+//     if (!seen.has(splittedSentence[i])) {
+//       seen.add(splittedSentence[i]);
+//       word += splittedSentence[i] + " ";
 //     }
 //   }
 
-//   return result.join(" ");
+//   return word;
 // }
 
-// console.log(removeDuplicateWords("This is is a test Test string"));
+// console.log(removeDuplicateWords("This is is a test test string"));
 
+// function removeDuplicateWords(sentence) {
+//   let word = "";
+//   let frequency = {};
+
+//   for (let i = 0; i < sentence.length; i++) {
+//     let char = sentence[i];
+
+//     if (char !== " ") {
+//       word += char;
+//     } else {
+//       if (word.length > 0 && frequency[word] === undefined) {
+//         frequency[word] = (frequency[word] || 0) + 1;
+//       }
+//       word = "";
+//     }
+//   }
+
+//   frequency[word] === undefined
+//     ? (frequency[word] = (frequency[word] || 0) + 1)
+//     : "";
+//   word = "";
+//   let finalString = "";
+//   Object.keys(frequency).forEach((el) => (finalString += el + " "));
+
+//   return finalString;
+// }
+
+// console.log(removeDuplicateWords("This is is a test test string"));
 // **********************************************************************************************************
 
 // 4. Find the Longest Palindromic Substring
 
-// function longestPalindrome(s) {
-//   if (s.length < 2) return s;
+// function longestPalindrome(string) {
+//   for (let i = 0; i < string.length / 2; i++) {
+//     let left = 0;
+//     let right = string.length - 1;
+//     let longestWord = "h";
 
-//   let start = 0;
-//   let maxLength = 1;
-
-//   function expand(left, right) {
-//     while (left >= 0 && right < s.length && s[left] === s[right]) {
-//       let length = right - left + 1;
-
-//       if (length > maxLength) {
-//         start = left;
-//         maxLength = length;
+//     while (left < right) {
+//       if (string[left] !== string[right]) {
+//         return false;
 //       }
-
-//       left--;
-//       right++;
+//       left++;
+//       right--;
 //     }
 //   }
-
-//   for (let i = 0; i < s.length; i++) {
-//     expand(i, i);
-//     expand(i, i + 1);
-//   }
-
-//   return s.substring(start, start + maxLength);
+//   return true;
 // }
 
-// console.log(longestPalindrome("babad"));
+// console.log(longestPalindrome("banana"));
 
 // **********************************************************************************************************
 
 // 5.  Find All Anagram Pairs in an Array of Strings
 
-function findAnagramPairs(arr) {
-  const map = new Map();
-  const result = [];
+// function findAnagramPairs(arr) {
+//   const map = new Map();
+//   const result = [];
 
-  for (let word of arr) {
-    let key = word.split("").sort().join("");
+//   for (let word of arr) {
+//     let key = word.split("").sort().join("");
 
-    if (!map.has(key)) {
-      map.set(key, []);
-    }
+//     if (!map.has(key)) {
+//       map.set(key, []);
+//     }
 
-    map.get(key).push(word);
-  }
+//     map.get(key).push(word);
+//   }
 
-  for (let group of map.values()) {
-    if (group.length > 1) {
-      for (let i = 0; i < group.length; i++) {
-        for (let j = i + 1; j < group.length; j++) {
-          result.push([group[i], group[j]]);
-        }
-      }
-    }
-  }
+//   for (let group of map.values()) {
+//     if (group.length > 1) {
+//       for (let i = 0; i < group.length; i++) {
+//         for (let j = i + 1; j < group.length; j++) {
+//           result.push([group[i], group[j]]);
+//         }
+//       }
+//     }
+//   }
 
-  return result;
-}
+//   return result;
+// }
 
-console.log(findAnagramPairs(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// console.log(findAnagramPairs(["eat", "tea", "tan", "ate", "nat", "bat"]));

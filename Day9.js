@@ -175,3 +175,70 @@
 // }
 
 // console.log(removeDuplicateWords("This is is a test Test string"));
+
+// **********************************************************************************************************
+
+// 4. Find the Longest Palindromic Substring
+
+// function longestPalindrome(s) {
+//   if (s.length < 2) return s;
+
+//   let start = 0;
+//   let maxLength = 1;
+
+//   function expand(left, right) {
+//     while (left >= 0 && right < s.length && s[left] === s[right]) {
+//       let length = right - left + 1;
+
+//       if (length > maxLength) {
+//         start = left;
+//         maxLength = length;
+//       }
+
+//       left--;
+//       right++;
+//     }
+//   }
+
+//   for (let i = 0; i < s.length; i++) {
+//     expand(i, i);
+//     expand(i, i + 1);
+//   }
+
+//   return s.substring(start, start + maxLength);
+// }
+
+// console.log(longestPalindrome("babad"));
+
+// **********************************************************************************************************
+
+// 5.  Find All Anagram Pairs in an Array of Strings
+
+function findAnagramPairs(arr) {
+  const map = new Map();
+  const result = [];
+
+  for (let word of arr) {
+    let key = word.split("").sort().join("");
+
+    if (!map.has(key)) {
+      map.set(key, []);
+    }
+
+    map.get(key).push(word);
+  }
+
+  for (let group of map.values()) {
+    if (group.length > 1) {
+      for (let i = 0; i < group.length; i++) {
+        for (let j = i + 1; j < group.length; j++) {
+          result.push([group[i], group[j]]);
+        }
+      }
+    }
+  }
+
+  return result;
+}
+
+console.log(findAnagramPairs(["eat", "tea", "tan", "ate", "nat", "bat"]));

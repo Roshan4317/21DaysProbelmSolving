@@ -86,27 +86,27 @@
 // *********************************************************************************************
 
 // 3 . Check if One String is Rotation of Another
-function isRotation(a, b) {
-  if (a.length !== b.length) return false;
+// function isRotation(a, b) {
+//   if (a.length !== b.length) return false;
 
-  let newString = a + a;
-  ("abcdeabcde");
+//   let newString = a + a;
+//   ("abcdeabcde");
 
-  for (let i = 0; i <= newString.length - b.length; i++) {
-    let match = true;
-    for (let j = 0; j < b.length; j++) {
-      if (newString[i + j] !== b[j]) {
-        match = false;
-        break;
-      }
-    }
-    if (match) return true;
-  }
+//   for (let i = 0; i <= newString.length - b.length; i++) {
+//     let match = true;
+//     for (let j = 0; j < b.length; j++) {
+//       if (newString[i + j] !== b[j]) {
+//         match = false;
+//         break;
+//       }
+//     }
+//     if (match) return true;
+//   }
 
-  return false;
-}
+//   return false;
+// }
 
-console.log(isRotation("abcde", "cdeab"));
+// console.log(isRotation("abcde", "cdeab"));
 
 // **********************************************************************************************************
 

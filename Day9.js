@@ -86,26 +86,27 @@
 // *********************************************************************************************
 
 // 3 . Check if One String is Rotation of Another
-// function isRotation(a, b) {
-//   if (a.length !== b.length) return false;
-//   a = a + a;
+function isRotation(a, b) {
+  if (a.length !== b.length) return false;
 
-//   for (let i = 0; i <= a.length - b.length; i++) {
-//     let match = true;
+  let newString = a + a;
+  ("abcdeabcde");
 
-//     for (let j = 0; j < b.length; j++) {
-//       if (a[i + j] !== b[j]) {
-//         match = false;
-//         break;
-//       }
-//     }
-//     if (match) return true;
-//   }
+  for (let i = 0; i <= newString.length - b.length; i++) {
+    let match = true;
+    for (let j = 0; j < b.length; j++) {
+      if (newString[i + j] !== b[j]) {
+        match = false;
+        break;
+      }
+    }
+    if (match) return true;
+  }
 
-//   return false;
-// }
+  return false;
+}
 
-// console.log(isRotation("abcde", "deab"));
+console.log(isRotation("abcde", "cdeab"));
 
 // **********************************************************************************************************
 
@@ -156,21 +157,21 @@
 
 // 3. Remove All Duplicate Words From a Sentence
 
-function removeDuplicateWords(sentence) {
-  let words = sentence.split(" ");
-  let seen = new Set();
-  let result = [];
+// function removeDuplicateWords(sentence) {
+//   let words = sentence.split(" ");
+//   let seen = new Set();
+//   let result = [];
 
-  for (let word of words) {
-    let lowerWord = word.toLowerCase();
+//   for (let word of words) {
+//     let lowerWord = word.toLowerCase();
 
-    if (!seen.has(lowerWord)) {
-      seen.add(lowerWord);
-      result.push(word);
-    }
-  }
+//     if (!seen.has(lowerWord)) {
+//       seen.add(lowerWord);
+//       result.push(word);
+//     }
+//   }
 
-  return result.join(" ");
-}
+//   return result.join(" ");
+// }
 
-console.log(removeDuplicateWords("This is is a test Test string"));
+// console.log(removeDuplicateWords("This is is a test Test string"));

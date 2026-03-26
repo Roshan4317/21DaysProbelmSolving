@@ -219,28 +219,48 @@
 // }
 
 // console.log(removeDuplicateWords("This is is a test test string"));
+
 // **********************************************************************************************************
 
 // 4. Find the Longest Palindromic Substring
 
-// function longestPalindrome(string) {
-//   for (let i = 0; i < string.length / 2; i++) {
-//     let left = 0;
-//     let right = string.length - 1;
-//     let longestWord = "h";
+// function isPalindrome(string) {
+//   let left = 0;
+//   let right = string.length - 1;
 
-//     while (left < right) {
-//       if (string[left] !== string[right]) {
-//         return false;
-//       }
-//       left++;
-//       right--;
+//   while (left < right) {
+//     if (string[left] !== string[right]) {
+//       return false;
 //     }
+//     left++;
+//     right--;
 //   }
+
 //   return true;
 // }
 
-// console.log(longestPalindrome("banana"));
+// function longestPalindrome(string) {
+//   let longestWord = "";
+
+//   for (let i = 0; i < string.length; i++) {
+//     let newlyFormedWord = "";
+//     for (let j = i; j < string.length; j++) {
+//       newlyFormedWord += string[j];
+
+//       const checkForPalindrome = isPalindrome(newlyFormedWord);
+
+//       if (checkForPalindrome) {
+//         if (newlyFormedWord.length > longestWord.length) {
+//           longestWord = newlyFormedWord;
+//         }
+//       }
+//     }
+//   }
+
+//   return longestWord;
+// }
+
+// console.log(longestPalindrome("babad"));
 
 // **********************************************************************************************************
 

@@ -91,12 +91,32 @@
 
 // console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
 
-function removeDuplicates(array) {
-  const result = array.filter((element, index, arr) => {
-    return arr.indexOf(element) === index;
-  });
+// function removeDuplicates(array) {
+//   const result = array.filter((element, index, arr) => {
+//     return arr.indexOf(element) === index;
+//   });
+
+//   return result;
+// }
+
+// console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+
+// **********************************************************************************************************
+
+// 5.  Merge Two Arrays Without Using concat or spread
+
+function mergeArrays(arr1, arr2) {
+  const result = [];
+
+  for (let i = 0; i < arr1.length; i++) {
+    result.push(arr1[i]);
+  }
+
+  for (let i = 0; i < arr2.length; i++) {
+    result.push(arr2[i]);
+  }
 
   return result;
 }
 
-console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+console.log(mergeArrays([1, 2, 3], [4, 5]));

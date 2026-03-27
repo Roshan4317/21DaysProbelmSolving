@@ -27,7 +27,6 @@
 // function reverseAnArray(arr) {
 //   let left = 0;
 //   let right = arr.length - 1;
-//   (1, 3);
 
 //   while (left < right) {
 //     let arrayLeft = arr[left];
@@ -63,14 +62,41 @@
 
 // console.log(checkIfSorted([1, 2, 3, 4, 5]));
 
-function checkIfSorted(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > arr[i + 1]) {
-      return false;
-    }
-  }
+// function checkIfSorted(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     if (arr[i] > arr[i + 1]) {
+//       return false;
+//     }
+//   }
 
-  return true;
+//   return true;
+// }
+
+// console.log(checkIfSorted([1, 2, 3, 4, 5]));
+
+// **********************************************************************************************************
+
+// 4. Remove All Duplicates From an Array (Use filter method)
+
+// function removeDuplicates(array) {
+//   const finalArray = [];
+//   array.forEach((el) => {
+//     if (!finalArray.includes(el)) {
+//       finalArray.push(el);
+//     }
+//   });
+
+//   return finalArray;
+// }
+
+// console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
+
+function removeDuplicates(array) {
+  const result = array.filter((element, index, arr) => {
+    return arr.indexOf(element) === index;
+  });
+
+  return result;
 }
 
-console.log(checkIfSorted([1, 2, 3, 4, 5]));
+console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));

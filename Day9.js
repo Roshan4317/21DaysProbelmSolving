@@ -224,14 +224,15 @@
 
 // 4. Find the Longest Palindromic Substring
 
-// function isPalindrome(string) {
+// function isPalindrome(str) {
 //   let left = 0;
-//   let right = string.length - 1;
+//   let right = str.length - 1;
 
 //   while (left < right) {
-//     if (string[left] !== string[right]) {
+//     if (str[left] !== str[right]) {
 //       return false;
 //     }
+
 //     left++;
 //     right--;
 //   }
@@ -239,52 +240,71 @@
 //   return true;
 // }
 
-// function longestPalindrome(string) {
-//   let longestWord = "";
+// function longestPalindromicSubstring(str) {
+//   let longestSubstring = "";
 
-//   for (let i = 0; i < string.length; i++) {
-//     let newlyFormedWord = "";
-//     for (let j = i; j < string.length; j++) {
-//       newlyFormedWord += string[j];
-
-//       const checkForPalindrome = isPalindrome(newlyFormedWord);
-
-//       if (checkForPalindrome) {
-//         if (newlyFormedWord.length > longestWord.length) {
-//           longestWord = newlyFormedWord;
+//   for (let i = 0; i < str.length; i++) {
+//     let word = "";
+//     for (let j = i; j < str.length; j++) {
+//       word += str[j];
+//       if (isPalindrome(word)) {
+//         if (word.length > longestSubstring.length) {
+//           longestSubstring = word;
 //         }
 //       }
 //     }
 //   }
 
-//   return longestWord;
+//   return longestSubstring.length > 1
+//     ? longestSubstring
+//     : "No longest Substring Found";
 // }
 
-// console.log(longestPalindrome("babad"));
+// console.log(longestPalindromicSubstring("masda"));
 
 // **********************************************************************************************************
 
 // 5.  Find All Anagram Pairs in an Array of Strings
 
-// function findAnagramPairs(arr) {
-//   const map = new Map();
-//   const result = [];
-
-//   for (let word of arr) {
-//     let key = word.split("").sort().join("");
-
-//     if (!map.has(key)) {
-//       map.set(key, []);
-//     }
-
-//     map.get(key).push(word);
+// function isAnagram(str1, str2) {
+//   if (str1.length !== str2.length) {
+//     return false;
 //   }
 
-//   for (let group of map.values()) {
-//     if (group.length > 1) {
-//       for (let i = 0; i < group.length; i++) {
-//         for (let j = i + 1; j < group.length; j++) {
-//           result.push([group[i], group[j]]);
+//   let seen1 = {};
+
+//   for (let i = 0; i < str1.length; i++) {
+//     let char = str1[i];
+
+//     seen1[char] = (seen1[char] || 0) + 1;
+//   }
+
+//   for (let j = 0; j < str2.length; j++) {
+//     let char = str2[j];
+//     if (seen1[char]) {
+//       seen1[char]--;
+//     } else {
+//       return false;
+//     }
+//   }
+
+//   return true;
+// }
+
+// function findAnagramPairs(arr) {
+//   const result = [];
+
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i; j < arr.length - 1; j++) {
+//       if (arr[i].length === arr[j + 1].length) {
+//         if (isAnagram(arr[i], arr[j + 1])) {
+//           if (!result.includes(arr[i])) {
+//             result.push(arr[i]);
+//           }
+
+//           if (!result.includes(arr[j + 1])) {
+//             result.push(arr[j + 1]);
+//           }
 //         }
 //       }
 //     }
@@ -293,4 +313,68 @@
 //   return result;
 // }
 
-// console.log(findAnagramPairs(["eat", "tea", "tan", "ate", "nat", "bat"]));
+// console.log(findAnagramPairs(["cat", "tac", "act", "dog"]));
+
+// function isAnagram(str1, str2) {
+//   let seen = {};
+//   for (let char of str1) {
+//     seen[char] = (seen[char] || 0) + 1;
+//   }
+
+//   for (let char of str2) {
+//     if (!seen[char]) return false;
+//     seen[char]--;
+//   }
+
+//   return true;
+// }
+
+// function findAnagramPairs(array) {
+//   let result = [];
+
+//   for (let i = 0; i < array.length; i++) {
+//     for (let j = i + 1; j < array.length; j++) {
+//       if (array[i].length !== array[j].length) continue;
+//       if (isAnagram(array[i], array[j])) {
+//         if (!result.includes(array[i])) {
+//           result.push(array[i]);
+//         }
+//         if (!result.includes(array[j])) {
+//           result.push(array[j]);
+//         }
+//       }
+//     }
+//   }
+//   return result;
+// }
+
+// console.log(findAnagramPairs(["cat", "tac", "act", "dog"]));
+
+// **********************************************************************************************************
+
+// 6. Find the Longest Substring Without Repeating Characters (Sliding Window)
+
+// function longestSubstring(string) {
+//   let longestWord = "";
+
+//   for (let i = 0; i < string.length; i++) {
+//     let word = "";
+//     let set = new Set();
+//     for (let j = i; j < string.length; j++) {
+//       if (!set.has(string[j])) {
+//         set.add(string[j]);
+//         word += string[j];
+//       } else {
+//         break;
+//       }
+//     }
+
+//     if (longestWord.length < word.length) {
+//       longestWord = word;
+//     }
+//   }
+
+//   return longestWord;
+// }
+
+// console.log(longestSubstring("abcabghcbb"));

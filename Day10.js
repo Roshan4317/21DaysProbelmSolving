@@ -105,18 +105,39 @@
 
 // 5.  Merge Two Arrays Without Using concat or spread
 
-function mergeArrays(arr1, arr2) {
-  const result = [];
+// function mergeArrays(arr1, arr2) {
+//   const result = [];
 
-  for (let i = 0; i < arr1.length; i++) {
-    result.push(arr1[i]);
+//   for (let i = 0; i < arr1.length; i++) {
+//     result.push(arr1[i]);
+//   }
+
+//   for (let i = 0; i < arr2.length; i++) {
+//     result.push(arr2[i]);
+//   }
+
+//   return result;
+// }
+
+// console.log(mergeArrays([1, 2, 3], [4, 5]));
+
+// **********************************************************************************************************
+
+// 6. Rotate an Array by k Positions (Manual Method)
+
+function reverseArray(arr) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left < right) {
+    let temp = arr[left];
+    arr[left] = arr[right];
+    arr[right] = temp;
+    left++;
+    right--;
   }
 
-  for (let i = 0; i < arr2.length; i++) {
-    result.push(arr2[i]);
-  }
-
-  return result;
+  return arr;
 }
 
-console.log(mergeArrays([1, 2, 3], [4, 5]));
+console.log(reverseArray([1, 2, 3, 4, 5]));

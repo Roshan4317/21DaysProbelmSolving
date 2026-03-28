@@ -325,23 +325,36 @@
 
 // 4.  Find All Unique Pairs Whose Sum Equals a Target
 
-function findPairs(arr, target) {
-  const seen = new Set();
-  const output = new Set();
+// function findPairs(arr, target) {
+//   const seen = new Set();
+//   const output = new Set();
 
-  for (let num of arr) {
-    const complement = target - num;
-    if (seen.has(complement)) {
-      const pair = [Math.min(num, complement), Math.max(num, complement)];
-      output.add(pair.toString());
-    }
-    seen.add(num);
-  }
+//   for (let num of arr) {
+//     const complement = target - num;
+//     if (seen.has(complement)) {
+//       const pair = [Math.min(num, complement), Math.max(num, complement)];
+//       output.add(pair.toString());
+//     }
+//     seen.add(num);
+//   }
 
-  return Array.from(output).map((pair) => pair.split(",").map(Number));
+//   return Array.from(output).map((pair) => pair.split(",").map(Number));
+// }
+
+// const arr = [1, 5, 7, -1, 5];
+// const target = 6;
+
+// console.log(findPairs(arr, target));
+
+// **********************************************************************************************************
+
+// 5. Left Shift an Array by One Position
+function leftShiftByOne(arr) {
+  if (arr.length === 0) return arr;
+  const first = arr.shift();
+  arr.push(first);
+  return arr;
 }
 
-const arr = [1, 5, 7, -1, 5];
-const target = 6;
-
-console.log(findPairs(arr, target));
+const arr = [1, 2, 3, 4, 5];
+console.log(leftShiftByOne(arr));

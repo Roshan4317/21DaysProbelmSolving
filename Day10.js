@@ -148,29 +148,52 @@
 
 // 1. Find the Second Largest Element
 
-function findSecondLargest(arr) {
-  if (arr.length < 2) {
-    return "Array must have at least 2 elements";
+// function findSecondLargest(arr) {
+//   if (arr.length < 2) {
+//     return "Array must have at least 2 elements";
+//   }
+
+//   let largest = -Infinity;
+//   let secondLargest = -Infinity;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] > largest) {
+//       secondLargest = largest;
+//       largest = arr[i];
+//     } else if (arr[i] > secondLargest && arr[i] !== largest) {
+//       secondLargest = arr[i];
+//     }
+//   }
+
+//   if (secondLargest === -Infinity) {
+//     return "No second largest element";
+//   }
+
+//   return secondLargest;
+// }
+
+// let numbers = [10, 25, 3, 18];
+// console.log(findSecondLargest(numbers));
+
+// **********************************************************************************************************
+
+// 2. Check if Two Arrays Are Equal (Same Order)
+
+function areArraysEqual(arr1, arr2) {
+  if (arr1.length !== arr2.length) {
+    return "Not Equal";
   }
 
-  let largest = -Infinity;
-  let secondLargest = -Infinity;
-
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] > largest) {
-      secondLargest = largest;
-      largest = arr[i];
-    } else if (arr[i] > secondLargest && arr[i] !== largest) {
-      secondLargest = arr[i];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr1[i] !== arr2[i]) {
+      return "Not Equal";
     }
   }
 
-  if (secondLargest === -Infinity) {
-    return "No second largest element";
-  }
-
-  return secondLargest;
+  return "Equal";
 }
 
-let numbers = [10, 25, 3, 18];
-console.log(findSecondLargest(numbers));
+let array1 = [1, 2, 3];
+let array2 = [1, 2, 3];
+
+console.log(areArraysEqual(array1, array2));

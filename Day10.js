@@ -125,19 +125,52 @@
 
 // 6. Rotate an Array by k Positions (Manual Method)
 
-function reverseArray(arr) {
-  let left = 0;
-  let right = arr.length - 1;
+// function reverseArray(arr) {
+//   let left = 0;
+//   let right = arr.length - 1;
 
-  while (left < right) {
-    let temp = arr[left];
-    arr[left] = arr[right];
-    arr[right] = temp;
-    left++;
-    right--;
+//   while (left < right) {
+//     let temp = arr[left];
+//     arr[left] = arr[right];
+//     arr[right] = temp;
+//     left++;
+//     right--;
+//   }
+
+//   return arr;
+// }
+
+// console.log(reverseArray([1, 2, 3, 4, 5]));
+
+// **********************************************************************************************************
+
+// ClassWork
+
+// 1. Find the Second Largest Element
+
+function findSecondLargest(arr) {
+  if (arr.length < 2) {
+    return "Array must have at least 2 elements";
   }
 
-  return arr;
+  let largest = -Infinity;
+  let secondLargest = -Infinity;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > largest) {
+      secondLargest = largest;
+      largest = arr[i];
+    } else if (arr[i] > secondLargest && arr[i] !== largest) {
+      secondLargest = arr[i];
+    }
+  }
+
+  if (secondLargest === -Infinity) {
+    return "No second largest element";
+  }
+
+  return secondLargest;
 }
 
-console.log(reverseArray([1, 2, 3, 4, 5]));
+let numbers = [10, 25, 3, 18];
+console.log(findSecondLargest(numbers));

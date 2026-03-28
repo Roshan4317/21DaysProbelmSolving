@@ -42,6 +42,26 @@
 
 // console.log(reverseAnArray([1, 2, 3, 4, 5]));
 
+// function reverseString(str) {
+//   const splittedString = str.split("");
+
+//   let leftIndex = 0;
+//   let rightIndex = splittedString.length - 1;
+
+//   while (leftIndex < rightIndex) {
+//     let temp = splittedString[leftIndex];
+//     splittedString[leftIndex] = splittedString[rightIndex];
+//     splittedString[rightIndex] = temp;
+
+//     leftIndex++;
+//     rightIndex--;
+//   }
+
+//   return splittedString.join("");
+// }
+
+// console.log(reverseString("Procoder"));
+
 // **********************************************************************************************************
 
 // 3. Check if an Array is Sorted (Ascending)
@@ -74,6 +94,31 @@
 
 // console.log(checkIfSorted([1, 2, 3, 4, 5]));
 
+// function checkIfSorted(array) {
+//   let ascending = true;
+//   let descending = true;
+
+//   for (let i = 1; i < array.length; i++) {
+//     if (array[i] < array[i - 1]) {
+//       ascending = false;
+//     } else if (array[i] > array[i - 1]) {
+//       descending = false;
+//     }
+
+//     if (!ascending && !descending) {
+//       return "UnSorted";
+//     }
+//   }
+
+//   if (ascending) {
+//     return "Ascending";
+//   } else {
+//     return "Descending";
+//   }
+// }
+
+// console.log(checkIfSorted([1, 12, 14, 1]));
+
 // **********************************************************************************************************
 
 // 4. Remove All Duplicates From an Array (Use filter method)
@@ -100,80 +145,136 @@
 // }
 
 // console.log(removeDuplicates([1, 2, 2, 3, 3, 4]));
-
 // **********************************************************************************************************
 
 // 5.  Merge Two Arrays Without Using concat or spread
 
 // function mergeArrays(arr1, arr2) {
-//   const result = [];
+//   let newArray = [];
 
 //   for (let i = 0; i < arr1.length; i++) {
-//     result.push(arr1[i]);
+//     newArray.push(arr1[i]);
 //   }
 
 //   for (let i = 0; i < arr2.length; i++) {
-//     result.push(arr2[i]);
+//
+//       newArray.push(arr2[i]);
 //   }
 
-//   return result;
+//   return newArray;
 // }
 
-// console.log(mergeArrays([1, 2, 3], [4, 5]));
+// console.log(mergeArrays([1, 1, 2, 3], [4, 2, 5]));
 
 // **********************************************************************************************************
 
 // 6. Rotate an Array by k Positions (Manual Method)
 
-// function reverseArray(arr) {
+// function rotateAnArray(arr, position) {
+//   const newArray = [];
+
+//   for (let i = arr.length - 1; i >= arr.length - position; i--) {
+//     newArray.unshift(arr[i]);
+//   }
+
+//   for (let i = 0; i < arr.length - position; i++) {
+//     newArray.push(arr[i]);
+//   }
+
+//   return newArray;
+// }
+
+// console.log(rotateAnArray([1, 2, 3, 4, 5], 2));
+
+// function rotateAnArray(array, position) {
+//   position = position % array.length;
+
 //   let left = 0;
-//   let right = arr.length - 1;
+//   let right = array.length - 1;
 
 //   while (left < right) {
-//     let temp = arr[left];
-//     arr[left] = arr[right];
-//     arr[right] = temp;
+//     let temp = array[left];
+//     array[left] = array[right];
+//     array[right] = temp;
+
 //     left++;
 //     right--;
 //   }
 
-//   return arr;
+//   let leftElement = 0;
+//   let rightElement = position - 1;
+
+//   while (leftElement < rightElement) {
+//     let temp = array[leftElement];
+//     array[leftElement] = array[rightElement];
+//     array[rightElement] = temp;
+
+//     leftElement++;
+//     rightElement--;
+//   }
+
+//   let lastLeft = position;
+//   let lastRight = array.length - 1;
+
+//   while (lastLeft < lastRight) {
+//     let temp = array[lastLeft];
+//     array[lastLeft] = array[lastRight];
+//     array[lastRight] = temp;
+
+//     lastLeft++;
+//     lastRight--;
+//   }
+
+//   return array;
 // }
 
-// console.log(reverseArray([1, 2, 3, 4, 5]));
+// console.log(rotateAnArray([1, 2, 3, 4, 5], 8));
+
+// function rotateAnArray(array, position) {
+//   position = position % array.length;
+
+//   function rotate(array, start, end) {
+//     while (start < end) {
+//       let temp = array[start];
+//       array[start] = array[end];
+//       array[end] = temp;
+//       start++;
+//       end--;
+//     }
+//   }
+
+//   rotate(array, 0, array.length - 1);
+//   rotate(array, 0, position - 1);
+//   rotate(array, position, array.length - 1);
+
+//   return array;
+// }
+
+// console.log(rotateAnArray([1, 2, 3, 4, 5], 2));
 
 // **********************************************************************************************************
 
-// ClassWork
+// HomeWork
 
 // 1. Find the Second Largest Element
 
 // function findSecondLargest(arr) {
-//   if (arr.length < 2) {
-//     return "Array must have at least 2 elements";
-//   }
-
-//   let largest = -Infinity;
+//   let firstLargest = -Infinity;
 //   let secondLargest = -Infinity;
 
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] > largest) {
-//       secondLargest = largest;
-//       largest = arr[i];
-//     } else if (arr[i] > secondLargest && arr[i] !== largest) {
-//       secondLargest = arr[i];
+//   for (let el of arr) {
+//     if (el > firstLargest) {
+//       secondLargest = firstLargest;
+//       firstLargest = el;
+//     } else if ((el > secondLargest) & (el !== firstLargest)) {
+//       secondLargest = el;
 //     }
-//   }
-
-//   if (secondLargest === -Infinity) {
-//     return "No second largest element";
 //   }
 
 //   return secondLargest;
 // }
 
-// let numbers = [10, 25, 3, 18];
-// console.log(findSecondLargest(numbers));
+// console.log(findSecondLargest([10, 20, 4, 45, 99, 56]));
 
 // **********************************************************************************************************
 
@@ -202,20 +303,45 @@
 
 // 3. Count Even and Odd Numbers in an Array
 
-function countEvenOdd(arr) {
-  let evenCount = 0;
-  let oddCount = 0;
+// function countEvenOdd(arr) {
+//   let evenCount = 0;
+//   let oddCount = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      evenCount++;
-    } else {
-      oddCount++;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] % 2 === 0) {
+//       evenCount++;
+//     } else {
+//       oddCount++;
+//     }
+//   }
+
+//   return `Even: ${evenCount}, Odd: ${oddCount}`;
+// }
+
+// let numbers = [1, 2, 3, 4, 5, 6];
+// console.log(countEvenOdd(numbers));
+
+// **********************************************************************************************************
+
+// 4.  Find All Unique Pairs Whose Sum Equals a Target
+
+function findPairs(arr, target) {
+  const seen = new Set();
+  const output = new Set();
+
+  for (let num of arr) {
+    const complement = target - num;
+    if (seen.has(complement)) {
+      const pair = [Math.min(num, complement), Math.max(num, complement)];
+      output.add(pair.toString());
     }
+    seen.add(num);
   }
 
-  return `Even: ${evenCount}, Odd: ${oddCount}`;
+  return Array.from(output).map((pair) => pair.split(",").map(Number));
 }
 
-let numbers = [1, 2, 3, 4, 5, 6];
-console.log(countEvenOdd(numbers));
+const arr = [1, 5, 7, -1, 5];
+const target = 6;
+
+console.log(findPairs(arr, target));

@@ -179,21 +179,43 @@
 
 // 2. Check if Two Arrays Are Equal (Same Order)
 
-function areArraysEqual(arr1, arr2) {
-  if (arr1.length !== arr2.length) {
-    return "Not Equal";
-  }
+// function areArraysEqual(arr1, arr2) {
+//   if (arr1.length !== arr2.length) {
+//     return "Not Equal";
+//   }
 
-  for (let i = 0; i < arr1.length; i++) {
-    if (arr1[i] !== arr2[i]) {
-      return "Not Equal";
+//   for (let i = 0; i < arr1.length; i++) {
+//     if (arr1[i] !== arr2[i]) {
+//       return "Not Equal";
+//     }
+//   }
+
+//   return "Equal";
+// }
+
+// let array1 = [1, 2, 3];
+// let array2 = [1, 2, 3];
+
+// console.log(areArraysEqual(array1, array2));
+
+// **********************************************************************************************************
+
+// 3. Count Even and Odd Numbers in an Array
+
+function countEvenOdd(arr) {
+  let evenCount = 0;
+  let oddCount = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      evenCount++;
+    } else {
+      oddCount++;
     }
   }
 
-  return "Equal";
+  return `Even: ${evenCount}, Odd: ${oddCount}`;
 }
 
-let array1 = [1, 2, 3];
-let array2 = [1, 2, 3];
-
-console.log(areArraysEqual(array1, array2));
+let numbers = [1, 2, 3, 4, 5, 6];
+console.log(countEvenOdd(numbers));

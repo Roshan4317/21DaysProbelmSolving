@@ -349,12 +349,29 @@
 // **********************************************************************************************************
 
 // 5. Left Shift an Array by One Position
-function leftShiftByOne(arr) {
-  if (arr.length === 0) return arr;
-  const first = arr.shift();
-  arr.push(first);
-  return arr;
+
+// function leftShiftByOne(arr) {
+//   if (arr.length === 0) return arr;
+//   const first = arr.shift();
+//   arr.push(first);
+//   return arr;
+// }
+
+// const arr = [1, 2, 3, 4, 5];
+// console.log(leftShiftByOne(arr));
+
+// **********************************************************************************************************
+
+// 6. Count How Many Times an Element Appears in an Array
+
+function countOccurrences(arr, element) {
+  let count = 0;
+  for (let el of arr) {
+    if (el === element) count++;
+  }
+  return count;
 }
 
-const arr = [1, 2, 3, 4, 5];
-console.log(leftShiftByOne(arr));
+const arr = [1, 2, 3, 2, 4, 2, 5];
+const element = 2;
+console.log(countOccurrences(arr, element));

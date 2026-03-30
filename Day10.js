@@ -282,96 +282,100 @@
 
 // function areArraysEqual(arr1, arr2) {
 //   if (arr1.length !== arr2.length) {
-//     return "Not Equal";
+//     return "Length of an array is Equal";
 //   }
 
 //   for (let i = 0; i < arr1.length; i++) {
 //     if (arr1[i] !== arr2[i]) {
-//       return "Not Equal";
+//       return "Order is Not Same";
 //     }
 //   }
 
-//   return "Equal";
+//   return " Equal";
 // }
 
-// let array1 = [1, 2, 3];
-// let array2 = [1, 2, 3];
-
-// console.log(areArraysEqual(array1, array2));
+// console.log(areArraysEqual([1, 3, 3], [1, 2, 3]));
 
 // **********************************************************************************************************
 
 // 3. Count Even and Odd Numbers in an Array
 
 // function countEvenOdd(arr) {
-//   let evenCount = 0;
-//   let oddCount = 0;
+//   let odd = 0;
+//   let even = 0;
 
-//   for (let i = 0; i < arr.length; i++) {
-//     if (arr[i] % 2 === 0) {
-//       evenCount++;
-//     } else {
-//       oddCount++;
+//   for (let el of arr) {
+//     if (el > 0 && el % 2 == 0) {
+//       even++;
+//     } else if (el > 0 && el % 2 !== 0) {
+//       odd++;
 //     }
 //   }
 
-//   return `Even: ${evenCount}, Odd: ${oddCount}`;
+//   return { odd, even };
 // }
 
-// let numbers = [1, 2, 3, 4, 5, 6];
-// console.log(countEvenOdd(numbers));
+// console.log(countEvenOdd([2, 5, 7, 8, 10]));
 
 // **********************************************************************************************************
 
 // 4.  Find All Unique Pairs Whose Sum Equals a Target
 
 // function findPairs(arr, target) {
-//   const seen = new Set();
-//   const output = new Set();
+//   let result = [];
 
-//   for (let num of arr) {
-//     const complement = target - num;
-//     if (seen.has(complement)) {
-//       const pair = [Math.min(num, complement), Math.max(num, complement)];
-//       output.add(pair.toString());
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] + arr[j] === target) {
+//         result.push(`(${arr[i]}, ${arr[j]})`);
+//       }
 //     }
-//     seen.add(num);
 //   }
 
-//   return Array.from(output).map((pair) => pair.split(",").map(Number));
+//   return result.join(", ");
 // }
 
-// const arr = [1, 5, 7, -1, 5];
-// const target = 6;
-
-// console.log(findPairs(arr, target));
+// console.log(findPairs([1, 2, 3, 4, 5], 6));
 
 // **********************************************************************************************************
 
-// 5. Left Shift an Array by One Position
+// 5. Left Shift an Array by  Position
 
-// function leftShiftByOne(arr) {
-//   if (arr.length === 0) return arr;
-//   const first = arr.shift();
-//   arr.push(first);
+// function leftShift(arr, position) {
+//   position = position % arr.length;
+
+//   function reverse(start, end) {
+//     while (start < end) {
+//       let temp = arr[start];
+//       arr[start] = arr[end];
+//       arr[end] = temp;
+//       start++;
+//       end--;
+//     }
+//   }
+
+//   reverse(0, arr.length - 1);
+//   reverse(0, arr.length - position - 1);
+//   reverse(arr.length - position, arr.length - 1);
+
 //   return arr;
 // }
 
-// const arr = [1, 2, 3, 4, 5];
-// console.log(leftShiftByOne(arr));
+// console.log(leftShift([1, 2, 3, 4, 5], 1));
 
 // **********************************************************************************************************
 
 // 6. Count How Many Times an Element Appears in an Array
 
-function countOccurrences(arr, element) {
-  let count = 0;
-  for (let el of arr) {
-    if (el === element) count++;
-  }
-  return count;
-}
+// function countOccurrences(arr, element) {
+//   let count = 0;
+//   for (let el of arr) {
+//     if (el === element) {
+//       count++;
+//     }
+//   }
 
-const arr = [1, 2, 3, 2, 4, 2, 5];
-const element = 2;
-console.log(countOccurrences(arr, element));
+//   return { count };
+// }
+
+// console.log(countOccurrences([1, 4, 4, 4, 2], 2));

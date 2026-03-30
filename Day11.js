@@ -59,21 +59,56 @@
 
 // console.log(moveAllZeros([0, 1, 0, 3, 12, 0, 3, 5]));
 
-function moveAllZeros(arr) {
-  let position = 0;
+// function moveAllZeros(arr) {
+//   let position = 0;
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] !== 0) {
-      arr[position] = arr[i];
-      position++;
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] !== 0) {
+//       arr[position] = arr[i];
+//       position++;
+//     }
+//   }
+
+//   for (let i = position; i < arr.length; i++) {
+//     arr[i] = 0;
+//   }
+
+//   return arr;
+// }
+
+// console.log(moveAllZeros([0, 1, 0, 3, 12, 0, 5]));
+
+// **********************************************************************************************************
+
+// 3. Find the First Repeating Element in an Array
+
+// function firstRepeatingElement(arr) {
+//   let seen = new Set();
+
+//   for (let i = 0; i < arr.length; i++) {
+//     if (!seen.has(arr[i])) {
+//       seen.add(arr[i]);
+//     } else {
+//       return `First Repeating is  ${arr[i]}`;
+//     }
+//   }
+
+//   return "No repeating Element";
+// }
+
+// console.log(firstRepeatingElement([10, 5, 3, 5, 3, 5, 6]));
+
+function firstRepeatingElement(arr) {
+  let seen = {};
+
+  for (let el of arr) {
+    if (!seen[el]) {
+      seen[el] = 1;
+    } else {
+      return `First Repeating is  ${el}`;
     }
   }
-
-  for (let i = position; i < arr.length; i++) {
-    arr[i] = 0;
-  }
-
-  return arr;
+  return "No repeating Element";
 }
 
-console.log(moveAllZeros([0, 1, 0, 3, 12, 0, 5]));
+console.log(firstRepeatingElement([10, 5, 3, 5, 3, 5, 6]));

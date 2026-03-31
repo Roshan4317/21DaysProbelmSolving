@@ -98,17 +98,54 @@
 
 // console.log(firstRepeatingElement([10, 5, 3, 5, 3, 5, 6]));
 
-function firstRepeatingElement(arr) {
-  let seen = {};
+// function firstRepeatingElement(arr) {
+//   let seen = {};
 
-  for (let el of arr) {
-    if (!seen[el]) {
-      seen[el] = 1;
-    } else {
-      return `First Repeating is  ${el}`;
+//   for (let el of arr) {
+//     if (!seen[el]) {
+//       seen[el] = 1;
+//     } else {
+//       return `First Repeating is  ${el}`;
+//     }
+//   }
+//   return "No repeating Element";
+// }
+
+// console.log(firstRepeatingElement([10, 5, 3, 5, 3, 5, 6]));
+
+// **********************************************************************************************************
+
+// 4.  Maximum Subarray Sum (Kadane’s Algorithm – O(n))
+
+function subArray(arr) {
+  const newSubArray = [];
+  let maximumSubArraySum = -Infinity;
+
+  function totalSum(arr) {
+    const result = arr.reduce((acc, el, curr) => {
+      return (acc += el);
+    }, 0);
+
+    return result;
+  }
+
+  for (let i = 0; i < arr.length; i++) {
+    const singleSubArray = [];
+    for (let j = i; j < arr.length; j++) {
+      singleSubArray.push(arr[j]);
+      newSubArray.push([...singleSubArray]);
     }
   }
-  return "No repeating Element";
+
+  for (let k = 0; k < newSubArray.length; k++) {
+    let check = totalSum(newSubArray[k]);
+
+    if (check > maximumSubArraySum) {
+      maximumSubArraySum = check;
+    }
+  }
+
+  return maximumSubArraySum;
 }
 
-console.log(firstRepeatingElement([10, 5, 3, 5, 3, 5, 6]));
+console.log(subArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));

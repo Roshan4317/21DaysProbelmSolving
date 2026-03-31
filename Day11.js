@@ -156,38 +156,62 @@
 
 // 1.  Find the Longest Subarray with Sum = K (Optimized)
 
-function longestSubarraySumK(arr, K) {
-  const map = new Map();
-  let sum = 0;
-  let maxLength = 0;
-  let start = -1;
-  let end = -1;
+// function longestSubarraySumK(arr, K) {
+//   const map = new Map();
+//   let sum = 0;
+//   let maxLength = 0;
+//   let start = -1;
+//   let end = -1;
 
-  for (let i = 0; i < arr.length; i++) {
-    sum += arr[i];
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
 
-    if (sum === K) {
-      maxLength = i + 1;
-      start = 0;
-      end = i;
+//     if (sum === K) {
+//       maxLength = i + 1;
+//       start = 0;
+//       end = i;
+//     }
+
+//     if (!map.has(sum)) map.set(sum, i);
+
+//     if (map.has(sum - K)) {
+//       const prevIndex = map.get(sum - K);
+//       if (i - prevIndex > maxLength) {
+//         maxLength = i - prevIndex;
+//         start = prevIndex + 1;
+//         end = i;
+//       }
+//     }
+//   }
+
+//   if (start === -1) return [];
+//   return arr.slice(start, end + 1);
+// }
+
+// const arr = [1, 2, 3, 4, 5];
+// const K = 9;
+// console.log(longestSubarraySumK(arr, K));
+
+// **********************************************************************************************************
+
+// 2.  Find the Length of the Longest Subarray with No Repeating Elements
+
+function lengthOfLongestUniqueSubarray(arr) {
+  let set = new Set();
+  let left = 0,
+    maxLength = 0;
+
+  for (let right = 0; right < arr.length; right++) {
+    while (set.has(arr[right])) {
+      set.delete(arr[left]);
+      left++;
     }
-
-    if (!map.has(sum)) map.set(sum, i);
-
-    if (map.has(sum - K)) {
-      const prevIndex = map.get(sum - K);
-      if (i - prevIndex > maxLength) {
-        maxLength = i - prevIndex;
-        start = prevIndex + 1;
-        end = i;
-      }
-    }
+    set.add(arr[right]);
+    maxLength = Math.max(maxLength, right - left + 1);
   }
 
-  if (start === -1) return [];
-  return arr.slice(start, end + 1);
+  return maxLength;
 }
 
-const arr = [1, 2, 3, 4, 5];
-const K = 9;
-console.log(longestSubarraySumK(arr, K));
+const arr = [1, 2, 3, 1, 2, 3, 4];
+console.log(lengthOfLongestUniqueSubarray(arr)); // Output: 4

@@ -117,35 +117,77 @@
 
 // 4.  Maximum Subarray Sum (Kadane’s Algorithm – O(n))
 
-function subArray(arr) {
-  const newSubArray = [];
-  let maximumSubArraySum = -Infinity;
+// function subArray(arr) {
+//   const newSubArray = [];
+//   let maximumSubArraySum = -Infinity;
 
-  function totalSum(arr) {
-    const result = arr.reduce((acc, el, curr) => {
-      return (acc += el);
-    }, 0);
+//   function totalSum(arr) {
+//     const result = arr.reduce((acc, el, curr) => {
+//       return (acc += el);
+//     }, 0);
 
-    return result;
-  }
+//     return result;
+//   }
+
+//   for (let i = 0; i < arr.length; i++) {
+//     const singleSubArray = [];
+//     for (let j = i; j < arr.length; j++) {
+//       singleSubArray.push(arr[j]);
+//       newSubArray.push([...singleSubArray]);
+//     }
+//   }
+
+//   for (let k = 0; k < newSubArray.length; k++) {
+//     let check = totalSum(newSubArray[k]);
+
+//     if (check > maximumSubArraySum) {
+//       maximumSubArraySum = check;
+//     }
+//   }
+
+//   return maximumSubArraySum;
+// }
+
+// console.log(subArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+// **********************************************************************************************************
+
+// ClassWork
+
+// 1.  Find the Longest Subarray with Sum = K (Optimized)
+
+function longestSubarraySumK(arr, K) {
+  const map = new Map();
+  let sum = 0;
+  let maxLength = 0;
+  let start = -1;
+  let end = -1;
 
   for (let i = 0; i < arr.length; i++) {
-    const singleSubArray = [];
-    for (let j = i; j < arr.length; j++) {
-      singleSubArray.push(arr[j]);
-      newSubArray.push([...singleSubArray]);
+    sum += arr[i];
+
+    if (sum === K) {
+      maxLength = i + 1;
+      start = 0;
+      end = i;
+    }
+
+    if (!map.has(sum)) map.set(sum, i);
+
+    if (map.has(sum - K)) {
+      const prevIndex = map.get(sum - K);
+      if (i - prevIndex > maxLength) {
+        maxLength = i - prevIndex;
+        start = prevIndex + 1;
+        end = i;
+      }
     }
   }
 
-  for (let k = 0; k < newSubArray.length; k++) {
-    let check = totalSum(newSubArray[k]);
-
-    if (check > maximumSubArraySum) {
-      maximumSubArraySum = check;
-    }
-  }
-
-  return maximumSubArraySum;
+  if (start === -1) return [];
+  return arr.slice(start, end + 1);
 }
 
-console.log(subArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+const arr = [1, 2, 3, 4, 5];
+const K = 9;
+console.log(longestSubarraySumK(arr, K));

@@ -192,26 +192,26 @@
 
 // 1.  Find the Longest Subarray with Sum = K (Optimized)
 
-function longestSubArrayWithSum(arr, sum) {
-  let currentSum = 0;
-  let maxSum = -Infinity;
+// function longestSubArrayWithSum(arr, sum) {
+//   let currentSum = 0;
+//   let maxSum = -Infinity;
 
-  for (let i = 0; i < arr.length; i++) {
-    currentSum += arr[i];
+//   for (let i = 0; i < arr.length; i++) {
+//     currentSum += arr[i];
 
-    if (currentSum > maxSum) {
-      maxSum = currentSum;
-    }
+//     if (currentSum > maxSum) {
+//       maxSum = currentSum;
+//     }
 
-    if (currentSum < 0) {
-      currentSum = 0;
-    }
-  }
+//     if (currentSum < 0) {
+//       currentSum = 0;
+//     }
+//   }
 
-  return maxSum;
-}
+//   return maxSum;
+// }
 
-console.log(longestSubArrayWithSum([2 - 3 - 4, 8, 0, 10], 9));
+// console.log(longestSubArrayWithSum([2 - 3 - 4, 8, 0, 10], 9));
 
 // function longestSubArrayWithSum(arr, sum) {
 //   const totalSubArray = [];
@@ -236,6 +236,7 @@ console.log(longestSubArrayWithSum([2 - 3 - 4, 8, 0, 10], 9));
 // }
 
 // console.log(longestSubArrayWithSum([1, 2, 3, 4, 5], 3));
+
 // **********************************************************************************************************
 
 // 2.  Find the Length of the Longest Subarray with No Repeating Elements
@@ -259,3 +260,35 @@ console.log(longestSubArrayWithSum([2 - 3 - 4, 8, 0, 10], 9));
 
 // const arr = [1, 2, 3, 1, 2, 3, 4];
 // console.log(lengthOfLongestUniqueSubarray(arr)); // Output: 4
+
+// **********************************************************************************************************
+
+// 3.  Maximum Subarray (Kadane’s Algorithm – O(n))
+
+function maxSubArray(nums) {
+  let maxSum = nums[0];
+  let currentSum = nums[0];
+
+  let start = 0;
+  let end = 0;
+  let tempStart = 0;
+
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] > currentSum + nums[i]) {
+      currentSum = nums[i];
+      tempStart = i;
+    } else {
+      currentSum += nums[i];
+    }
+
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+      start = tempStart;
+      end = i;
+    }
+  }
+
+  return nums.slice(start, end + 1);
+}
+
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));

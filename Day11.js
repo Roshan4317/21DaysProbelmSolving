@@ -265,30 +265,61 @@
 
 // 3.  Maximum Subarray (Kadane’s Algorithm – O(n))
 
-function maxSubArray(nums) {
-  let maxSum = nums[0];
-  let currentSum = nums[0];
+// function maxSubArray(nums) {
+//   let maxSum = nums[0];
+//   let currentSum = nums[0];
+
+//   let start = 0;
+//   let end = 0;
+//   let tempStart = 0;
+
+//   for (let i = 1; i < nums.length; i++) {
+//     if (nums[i] > currentSum + nums[i]) {
+//       currentSum = nums[i];
+//       tempStart = i;
+//     } else {
+//       currentSum += nums[i];
+//     }
+
+//     if (currentSum > maxSum) {
+//       maxSum = currentSum;
+//       start = tempStart;
+//       end = i;
+//     }
+//   }
+
+//   return nums.slice(start, end + 1);
+// }
+
+// console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
+
+// **********************************************************************************************************
+
+// 4. Find the Longest Increasing Subarray (Continuous)
+
+function longestIncreasingSubarray(nums) {
+  let maxLen = 1;
+  let currLen = 1;
 
   let start = 0;
-  let end = 0;
-  let tempStart = 0;
+  let bestStart = 0;
 
   for (let i = 1; i < nums.length; i++) {
-    if (nums[i] > currentSum + nums[i]) {
-      currentSum = nums[i];
-      tempStart = i;
+    if (nums[i] > nums[i - 1]) {
+      currLen++;
     } else {
-      currentSum += nums[i];
+      currLen = 1;
+      start = i;
     }
 
-    if (currentSum > maxSum) {
-      maxSum = currentSum;
-      start = tempStart;
-      end = i;
+    if (currLen > maxLen) {
+      maxLen = currLen;
+      bestStart = start;
     }
   }
 
-  return nums.slice(start, end + 1);
+  return {
+    length: maxLen,
+    subarray: nums.slice(bestStart, bestStart + maxLen),
+  };
 }
-
-console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));

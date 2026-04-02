@@ -237,6 +237,24 @@
 
 // console.log(longestSubArrayWithSum([1, 2, 3, 4, 5], 3));
 
+// function prefixSum(arr, sum) {
+//   const prefix = [];
+//   prefix[0] = arr[0];
+
+//   for (let i = 1; i < arr.length; i++) {
+//     prefix[i] = prefix[i - 1] + arr[i];
+//   }
+
+//   const result = prefix[prefix.length - 1] - sum;
+
+//   const index = prefix.indexOf(result);
+
+//   arr.splice(0, index + 1);
+
+//   return arr;
+// }
+
+// console.log(prefixSum([1, 2, 3, 4, 5], 7));
 // **********************************************************************************************************
 
 // 2.  Find the Length of the Longest Subarray with No Repeating Elements

@@ -21,24 +21,47 @@
 
 // console.log(ascendingArray([5, 4, 13, 2, 1]));
 
-function ascendingArray(arr) {
+// function ascendingArray(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let swap = false;
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         swap = true;
+//       }
+//     }
+
+//     if (!swap) {
+//       break;
+//     }
+//   }
+
+//   return arr;
+// }
+
+// console.log(ascendingArray([5, 4, 13, 2, 1]));
+
+// ***********************************************************************************************************
+
+// 2. Sort an Array in Descending Order Using Bubble Sort
+
+function descendingArray(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
-    let swap = false;
+    let swapped = false;
     for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
+      if (arr[j] < arr[j + 1]) {
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        swap = true;
+        swapped = true;
       }
     }
-
-    if (!swap) {
-      break;
-    }
+    if (!swapped) break;
   }
 
   return arr;
 }
 
-console.log(ascendingArray([5, 4, 13, 2, 1]));
+console.log(descendingArray([7, 1, 5, 3, 2, 12]));

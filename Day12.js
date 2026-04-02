@@ -47,21 +47,49 @@
 
 // 2. Sort an Array in Descending Order Using Bubble Sort
 
-function descendingArray(arr) {
+// function descendingArray(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let swapped = false;
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j] < arr[j + 1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         swapped = true;
+//       }
+//     }
+//     if (!swapped) break;
+//   }
+
+//   return arr;
+// }
+
+// console.log(descendingArray([7, 1, 5, 3, 2, 12]));
+
+// ***********************************************************************************************************
+
+// 3. Sort a String Alphabetically Using Bubble Sort Logic
+
+function ascendingArray(str) {
+  const arr = str.split("");
+
   for (let i = 0; i < arr.length - 1; i++) {
-    let swapped = false;
+    let swap = false;
     for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] < arr[j + 1]) {
+      if (arr[j] > arr[j + 1]) {
         let temp = arr[j];
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
-        swapped = true;
+        swap = true;
       }
     }
-    if (!swapped) break;
+
+    if (!swap) {
+      break;
+    }
   }
 
-  return arr;
+  return arr.join("");
 }
 
-console.log(descendingArray([7, 1, 5, 3, 2, 12]));
+console.log(ascendingArray("javascript"));

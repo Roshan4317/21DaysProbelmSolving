@@ -70,26 +70,45 @@
 
 // 3. Sort a String Alphabetically Using Bubble Sort Logic
 
-function ascendingArray(str) {
-  const arr = str.split("");
+// function ascendingArray(str) {
+//   const arr = str.split("");
 
-  for (let i = 0; i < arr.length - 1; i++) {
-    let swap = false;
-    for (let j = 0; j < arr.length - 1 - i; j++) {
-      if (arr[j] > arr[j + 1]) {
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-        swap = true;
-      }
-    }
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let swap = false;
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         swap = true;
+//       }
+//     }
 
-    if (!swap) {
-      break;
+//     if (!swap) {
+//       break;
+//     }
+//   }
+
+//   return arr.join("");
+// }
+
+// console.log(ascendingArray("javascript"));
+
+// ***********************************************************************************************************
+
+// 4. Sort an Array and Count the Number of Swaps Performed
+
+let arr = [4, 3, 2, 1];
+let swaps = 0;
+
+for (let i = 0; i < arr.length - 1; i++) {
+  for (let j = 0; j < arr.length - i - 1; j++) {
+    if (arr[j] > arr[j + 1]) {
+      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      swaps++;
     }
   }
-
-  return arr.join("");
 }
 
-console.log(ascendingArray("javascript"));
+console.log("Sorted:", arr);
+console.log("Swaps:", swaps);

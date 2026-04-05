@@ -98,17 +98,30 @@
 
 // 4. Sort an Array and Count the Number of Swaps Performed
 
-let arr = [4, 3, 2, 1];
-let swaps = 0;
+// let arr = [4, 3, 2, 1];
+// let swaps = 0;
 
-for (let i = 0; i < arr.length - 1; i++) {
-  for (let j = 0; j < arr.length - i - 1; j++) {
-    if (arr[j] > arr[j + 1]) {
-      [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
-      swaps++;
-    }
-  }
-}
+// for (let i = 0; i < arr.length - 1; i++) {
+//   for (let j = 0; j < arr.length - i - 1; j++) {
+//     if (arr[j] > arr[j + 1]) {
+//       [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//       swaps++;
+//     }
+//   }
+// }
 
-console.log("Sorted:", arr);
-console.log("Swaps:", swaps);
+// console.log("Sorted:", arr);
+// console.log("Swaps:", swaps);
+
+// ***********************************************************************************************************
+
+// 5. Sort an Array of Objects by Age (Ascending)
+let people = [
+  { name: "A", age: 25 },
+  { name: "B", age: 20 },
+  { name: "C", age: 30 },
+];
+
+people.sort((a, b) => a.age - b.age);
+
+console.log(people);

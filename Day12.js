@@ -116,12 +116,25 @@
 // ***********************************************************************************************************
 
 // 5. Sort an Array of Objects by Age (Ascending)
-let people = [
-  { name: "A", age: 25 },
-  { name: "B", age: 20 },
-  { name: "C", age: 30 },
-];
 
-people.sort((a, b) => a.age - b.age);
+// let people = [
+//   { name: "A", age: 25 },
+//   { name: "B", age: 20 },
+//   { name: "C", age: 30 },
+// ];
 
-console.log(people);
+// people.sort((a, b) => a.age - b.age);
+
+// console.log(people);
+
+// ***********************************************************************************************************
+
+// 6.  Sort an Array but Keep Zeros at the End (Zeros Fixed)
+
+let arr = [3, 0, 5, 0, 2, 1];
+
+let nonZero = arr.filter((num) => num !== 0).sort((a, b) => a - b);
+let zeros = arr.filter((num) => num === 0);
+let result = [...nonZero, ...zeros];
+
+console.log(result);

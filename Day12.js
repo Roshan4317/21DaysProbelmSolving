@@ -145,25 +145,36 @@
 
 // 1.  Sort an Array and Track How Many Comparisons Were Made
 
-function sortAndCountComparisons(arr) {
-  let comparisons = 0;
-  let n = arr.length;
-  let a = [...arr];
+// function sortAndCountComparisons(arr) {
+//   let comparisons = 0;
+//   let n = arr.length;
+//   let a = [...arr];
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - i - 1; j++) {
-      comparisons++;
-      if (a[j] > a[j + 1]) {
-        let temp = a[j];
-        a[j] = a[j + 1];
-        a[j + 1] = temp;
-      }
-    }
-  }
+//   for (let i = 0; i < n - 1; i++) {
+//     for (let j = 0; j < n - i - 1; j++) {
+//       comparisons++;
+//       if (a[j] > a[j + 1]) {
+//         let temp = a[j];
+//         a[j] = a[j + 1];
+//         a[j + 1] = temp;
+//       }
+//     }
+//   }
 
-  return { sortedArray: a, comparisons };
+//   return { sortedArray: a, comparisons };
+// }
+
+// const result = sortAndCountComparisons([5, 1, 4, 2, 8]);
+// console.log(result.sortedArray);
+// console.log(result.comparisons);
+
+// ***********************************************************************************************************
+
+// 2. Sort an Array of Characters Case-Insensitive
+
+function sortCharsCaseInsensitive(arr) {
+  return arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
 }
 
-const result = sortAndCountComparisons([5, 1, 4, 2, 8]);
-console.log(result.sortedArray);
-console.log(result.comparisons);
+const result = sortCharsCaseInsensitive(["b", "A", "d", "C"]);
+console.log(result);

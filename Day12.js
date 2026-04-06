@@ -131,10 +131,39 @@
 
 // 6.  Sort an Array but Keep Zeros at the End (Zeros Fixed)
 
-let arr = [3, 0, 5, 0, 2, 1];
+// let arr = [3, 0, 5, 0, 2, 1];
 
-let nonZero = arr.filter((num) => num !== 0).sort((a, b) => a - b);
-let zeros = arr.filter((num) => num === 0);
-let result = [...nonZero, ...zeros];
+// let nonZero = arr.filter((num) => num !== 0).sort((a, b) => a - b);
+// let zeros = arr.filter((num) => num === 0);
+// let result = [...nonZero, ...zeros];
 
-console.log(result);
+// console.log(result);
+
+// ***********************************************************************************************************
+
+// HomeWork
+
+// 1.  Sort an Array and Track How Many Comparisons Were Made
+
+function sortAndCountComparisons(arr) {
+  let comparisons = 0;
+  let n = arr.length;
+  let a = [...arr];
+
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      comparisons++;
+      if (a[j] > a[j + 1]) {
+        let temp = a[j];
+        a[j] = a[j + 1];
+        a[j + 1] = temp;
+      }
+    }
+  }
+
+  return { sortedArray: a, comparisons };
+}
+
+const result = sortAndCountComparisons([5, 1, 4, 2, 8]);
+console.log(result.sortedArray);
+console.log(result.comparisons);

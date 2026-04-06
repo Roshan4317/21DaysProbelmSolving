@@ -172,9 +172,24 @@
 
 // 2. Sort an Array of Characters Case-Insensitive
 
-function sortCharsCaseInsensitive(arr) {
-  return arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+// function sortCharsCaseInsensitive(arr) {
+//   return arr.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+// }
+
+// const result = sortCharsCaseInsensitive(["b", "A", "d", "C"]);
+// console.log(result);
+
+// ***********************************************************************************************************
+
+// 3.  Sort a 2D Array by the First Element of Each Subarray
+
+function sort2DArray(arr) {
+  return arr.sort((a, b) => a[0] - b[0]);
 }
 
-const result = sortCharsCaseInsensitive(["b", "A", "d", "C"]);
+const result = sort2DArray([
+  [3, "c"],
+  [1, "a"],
+  [2, "b"],
+]);
 console.log(result);

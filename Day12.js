@@ -183,13 +183,31 @@
 
 // 3.  Sort a 2D Array by the First Element of Each Subarray
 
-function sort2DArray(arr) {
-  return arr.sort((a, b) => a[0] - b[0]);
+// function sort2DArray(arr) {
+//   return arr.sort((a, b) => a[0] - b[0]);
+// }
+
+// const result = sort2DArray([
+//   [3, "c"],
+//   [1, "a"],
+//   [2, "b"],
+// ]);
+// console.log(result);
+
+// ***********************************************************************************************************
+
+// 4. Sort an Array in Ascending Order but Stop After K Passes
+
+function bubbleKPass(arr, k) {
+  let n = arr.length;
+  for (let i = 0; i < k; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
+    }
+  }
+  return arr;
 }
 
-const result = sort2DArray([
-  [3, "c"],
-  [1, "a"],
-  [2, "b"],
-]);
-console.log(result);
+console.log(bubbleKPass([5, 4, 3, 2, 1], 2));

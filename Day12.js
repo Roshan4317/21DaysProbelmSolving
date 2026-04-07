@@ -198,16 +198,35 @@
 
 // 4. Sort an Array in Ascending Order but Stop After K Passes
 
-function bubbleKPass(arr, k) {
-  let n = arr.length;
-  for (let i = 0; i < k; i++) {
-    for (let j = 0; j < n - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+// function bubbleKPass(arr, k) {
+//   let n = arr.length;
+//   for (let i = 0; i < k; i++) {
+//     for (let j = 0; j < n - i - 1; j++) {
+//       if (arr[j] > arr[j + 1]) {
+//         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//       }
+//     }
+//   }
+//   return arr;
+// }
+
+// console.log(bubbleKPass([5, 4, 3, 2, 1], 2));
+
+// ***********************************************************************************************************
+
+// 5. Sort Only the Even Numbers in an Array (Odd Numbers Stay in Place)
+
+function sortEvenOnly(arr) {
+  let evens = arr.filter((x) => x % 2 === 0);
+  for (let i = 0; i < evens.length; i++) {
+    for (let j = 0; j < evens.length - i - 1; j++) {
+      if (evens[j] > evens[j + 1]) {
+        [evens[j], evens[j + 1]] = [evens[j + 1], evens[j]];
       }
     }
   }
-  return arr;
+  let k = 0;
+  return arr.map((x) => (x % 2 === 0 ? evens[k++] : x));
 }
 
-console.log(bubbleKPass([5, 4, 3, 2, 1], 2));
+console.log(sortEvenOnly([9, 4, 2, 7, 6, 5]));

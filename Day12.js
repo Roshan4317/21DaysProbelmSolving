@@ -216,17 +216,34 @@
 
 // 5. Sort Only the Even Numbers in an Array (Odd Numbers Stay in Place)
 
-function sortEvenOnly(arr) {
-  let evens = arr.filter((x) => x % 2 === 0);
-  for (let i = 0; i < evens.length; i++) {
-    for (let j = 0; j < evens.length - i - 1; j++) {
-      if (evens[j] > evens[j + 1]) {
-        [evens[j], evens[j + 1]] = [evens[j + 1], evens[j]];
+// function sortEvenOnly(arr) {
+//   let evens = arr.filter((x) => x % 2 === 0);
+//   for (let i = 0; i < evens.length; i++) {
+//     for (let j = 0; j < evens.length - i - 1; j++) {
+//       if (evens[j] > evens[j + 1]) {
+//         [evens[j], evens[j + 1]] = [evens[j + 1], evens[j]];
+//       }
+//     }
+//   }
+//   let k = 0;
+//   return arr.map((x) => (x % 2 === 0 ? evens[k++] : x));
+// }
+
+// console.log(sortEvenOnly([9, 4, 2, 7, 6, 5]));
+
+// ***********************************************************************************************************
+
+// 6.  Sort an Array of Strings by Length (Shortest to Longest)
+
+function sortByLength(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < arr.length - i - 1; j++) {
+      if (arr[j].length > arr[j + 1].length) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
       }
     }
   }
-  let k = 0;
-  return arr.map((x) => (x % 2 === 0 ? evens[k++] : x));
+  return arr;
 }
 
-console.log(sortEvenOnly([9, 4, 2, 7, 6, 5]));
+console.log(sortByLength(["hi", "javascript", "is", "fun"]));

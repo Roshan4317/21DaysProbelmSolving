@@ -27,12 +27,38 @@
 // ***********************************************************************************************************
 
 // 2.  Sort an Array in Descending Order
-function selectionSortDesc(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
+// function selectionSortDesc(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let maxIndex = i;
+
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] > arr[maxIndex]) {
+//         maxIndex = j;
+//       }
+//     }
+
+//     if (maxIndex !== i) {
+//       const temp = arr[i];
+//       arr[i] = arr[maxIndex];
+//       arr[maxIndex] = temp;
+//     }
+//   }
+
+//   return arr;
+// }
+
+// console.log(selectionSortDesc([7, 2, 9, 4, 1]));
+// console.log(selectionSortDesc([17, 20, 99, 4, 31]));
+
+// ***********************************************************************************************************
+
+// 3. Find the Kth Smallest Element Using Selection Logic
+function findKthSmallest(arr, k) {
+  for (let i = 0; i < k; i++) {
     let maxIndex = i;
 
     for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] > arr[maxIndex]) {
+      if (arr[j] < arr[maxIndex]) {
         maxIndex = j;
       }
     }
@@ -44,8 +70,8 @@ function selectionSortDesc(arr) {
     }
   }
 
-  return arr;
+  return arr[k - 1];
 }
 
-console.log(selectionSortDesc([7, 2, 9, 4, 1]));
-console.log(selectionSortDesc([17, 20, 99, 4, 31]));
+console.log(findKthSmallest([7, 2, 9, 4, 1], 3));
+console.log(findKthSmallest([17, 20, 99, 4, 31], 4));

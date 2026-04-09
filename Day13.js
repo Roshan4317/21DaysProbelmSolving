@@ -102,8 +102,34 @@
 
 // 5. Sort an Array of Objects by Name
 
-const arr = [{ name: "Charlie" }, { name: "Alice" }, { name: "Bob" }];
+// const arr = [{ name: "Charlie" }, { name: "Alice" }, { name: "Bob" }];
 
-arr.sort((a, b) => a.name.localeCompare(b.name));
+// arr.sort((a, b) => a.name.localeCompare(b.name));
 
-console.log(arr);
+// console.log(arr);
+
+// ***********************************************************************************************************
+
+// 6. Find the K Largest Elements Without Full Sorting
+
+function kLargestElements(arr, k) {
+  let n = arr.length;
+
+  for (let i = 0; i < k; i++) {
+    let maxIndex = i;
+
+    for (let j = i + 1; j < n; j++) {
+      if (arr[j] > arr[maxIndex]) {
+        maxIndex = j;
+      }
+    }
+
+    let temp = arr[i];
+    arr[i] = arr[maxIndex];
+    arr[maxIndex] = temp;
+  }
+
+  return arr.slice(0, k);
+}
+
+console.log(kLargestElements([5, 1, 9, 3, 7], 2));

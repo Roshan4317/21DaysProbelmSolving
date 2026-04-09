@@ -291,7 +291,7 @@
 // console.log(sortAndCountComparisons([5, 1, 4, 2, 8]));
 // ***********************************************************************************************************
 
-// 2. Sort an Array of Characters Case-Insensitive
+//2. Sort an Array of Characters Case-Insensitive
 
 // function sortCharsCaseInsensitive(arr) {
 //   for (let i = 0; i < arr.length - 1; i++) {
@@ -317,66 +317,109 @@
 // 3.  Sort a 2D Array by the First Element of Each Subarray
 
 // function sort2DArray(arr) {
-//   return arr.sort((a, b) => a[0] - b[0]);
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let swap = false;
+
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j][0] > arr[j + 1][0]) {
+//         swap = true;
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         arr;
+//       }
+//     }
+
+//     if (!swap) break;
+//   }
+
+//   return arr;
 // }
 
-// const result = sort2DArray([
-//   [3, "c"],
-//   [1, "a"],
-//   [2, "b"],
-// ]);
-// console.log(result);
+// console.log(
+//   sort2DArray([
+//     [3, "c"],
+//     [1, "a"],
+//     [2, "b"],
+//     [0, "e"],
+//   ]),
+// );
+
+// function sort2DArray(arr) {
+//   arr.sort((a, b) => a[0] - b[0]);
+//   return arr;
+// }
+
+// console.log(
+//   sort2DArray([
+//     [3, "c"],
+//     [1, "a"],
+//     [2, "b"],
+//     [0, "e"],
+//   ]),
+// );
 
 // ***********************************************************************************************************
 
 // 4. Sort an Array in Ascending Order but Stop After K Passes
 
-// function bubbleKPass(arr, k) {
-//   let n = arr.length;
+// function stopAfterKPasses(arr, k) {
 //   for (let i = 0; i < k; i++) {
-//     for (let j = 0; j < n - i - 1; j++) {
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
 //       if (arr[j] > arr[j + 1]) {
-//         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
 //       }
 //     }
 //   }
+
 //   return arr;
 // }
 
-// console.log(bubbleKPass([5, 4, 3, 2, 1], 2));
+// console.log(stopAfterKPasses([34, 1, 7, 0, 5, 2], 2));
 
 // ***********************************************************************************************************
 
 // 5. Sort Only the Even Numbers in an Array (Odd Numbers Stay in Place)
 
 // function sortEvenOnly(arr) {
-//   let evens = arr.filter((x) => x % 2 === 0);
-//   for (let i = 0; i < evens.length; i++) {
-//     for (let j = 0; j < evens.length - i - 1; j++) {
-//       if (evens[j] > evens[j + 1]) {
-//         [evens[j], evens[j + 1]] = [evens[j + 1], evens[j]];
-//       }
-//     }
-//   }
-//   let k = 0;
-//   return arr.map((x) => (x % 2 === 0 ? evens[k++] : x));
-// }
-
-// console.log(sortEvenOnly([9, 4, 2, 7, 6, 5]));
-
-// ***********************************************************************************************************
-
-// 6.  Sort an Array of Strings by Length (Shortest to Longest)
-
-// function sortByLength(arr) {
-//   for (let i = 0; i < arr.length; i++) {
-//     for (let j = 0; j < arr.length - i - 1; j++) {
-//       if (arr[j].length > arr[j + 1].length) {
-//         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j] % 2 == 0 && arr[j + 1] % 2 == 0 && arr[j] > arr[j + 1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//         console.log("hi");
 //       }
 //     }
 //   }
 //   return arr;
 // }
 
-// console.log(sortByLength(["hi", "javascript", "is", "fun"]));
+// console.log(sortEvenOnly([9, 4, 2, 7, 6, 5, 18, 10]));
+
+// ***********************************************************************************************************
+
+// 6.  Sort an Array of Strings by Length (Shortest to Longest)
+
+// function sortByLength(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let swap = false;
+//     for (let j = 0; j < arr.length - 1 - i; j++) {
+//       if (arr[j].length > arr[j + 1].length) {
+//         swap = true;
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//       }
+//     }
+//     if (!swap) break;
+//   }
+
+//   return arr;
+// }
+
+// console.log(
+//   sortByLength(["hi", "javascript", "is", "fun", "learn", "code", "practice"]),
+// );

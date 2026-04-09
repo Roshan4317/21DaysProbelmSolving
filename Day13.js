@@ -78,22 +78,32 @@
 
 // 4. Selection Sort but Track Index of Minimum for Each Pass
 
-function selectionSortTrackMinIndex(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let minIndex = i;
+// function selectionSortTrackMinIndex(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let minIndex = i;
 
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[minIndex]) {
-        minIndex = j;
-      }
-    }
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[minIndex]) {
+//         minIndex = j;
+//       }
+//     }
 
-    console.log(`Pass ${i + 1} → min index = ${minIndex}`);
+//     console.log(`Pass ${i + 1} → min index = ${minIndex}`);
 
-    let temp = arr[i];
-    arr[i] = arr[minIndex];
-    arr[minIndex] = temp;
-  }
-}
+//     let temp = arr[i];
+//     arr[i] = arr[minIndex];
+//     arr[minIndex] = temp;
+//   }
+// }
 
-selectionSortTrackMinIndex([4, 2, 5, 3, 1]);
+// selectionSortTrackMinIndex([4, 2, 5, 3, 1]);
+
+// ***********************************************************************************************************
+
+// 5. Sort an Array of Objects by Name
+
+const arr = [{ name: "Charlie" }, { name: "Alice" }, { name: "Bob" }];
+
+arr.sort((a, b) => a.name.localeCompare(b.name));
+
+console.log(arr);

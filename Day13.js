@@ -22,57 +22,72 @@
 
 // console.log(selectionSortAscending([7, 2, 9, 4, 1, 0, -2, -7]));
 
-// ***********************************************************************************************************
-
-// 2.  Sort an Array in Descending Order
-// function selectionSortDesc(arr) {
+// function selectionSortAscending(arr) {
 //   for (let i = 0; i < arr.length - 1; i++) {
-//     let maxIndex = i;
-
+//     let minValue = arr[i];
+//     let index = i;
 //     for (let j = i + 1; j < arr.length; j++) {
-//       if (arr[j] > arr[maxIndex]) {
-//         maxIndex = j;
+//       if (arr[j] < minValue) {
+//         minValue = arr[j];
+//         index = j;
 //       }
 //     }
 
-//     if (maxIndex !== i) {
-//       const temp = arr[i];
-//       arr[i] = arr[maxIndex];
-//       arr[maxIndex] = temp;
+//     if (index > i) {
+//       arr[index] = arr[i];
+//       arr[i] = minValue;
 //     }
 //   }
 
 //   return arr;
 // }
-
-// console.log(selectionSortDesc([7, 2, 9, 4, 1]));
-// console.log(selectionSortDesc([17, 20, 99, 4, 31]));
+// console.log(selectionSortAscending([7, 2, 9, 4, 1, 0, -2, -7]));
 
 // ***********************************************************************************************************
 
-// 3. Find the Kth Smallest Element Using Selection Logic
-// function findKthSmallest(arr, k) {
-//   for (let i = 0; i < k; i++) {
-//     let maxIndex = i;
-
+// 2.  Sort an Array in Descending Order
+// function selectionSortDesc(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let maxValue = arr[i];
+//     let index = i;
 //     for (let j = i + 1; j < arr.length; j++) {
-//       if (arr[j] < arr[maxIndex]) {
-//         maxIndex = j;
+//       if (arr[j] > maxValue) {
+//         maxValue = arr[j];
+//         index = j;
 //       }
 //     }
 
-//     if (maxIndex !== i) {
-//       const temp = arr[i];
-//       arr[i] = arr[maxIndex];
-//       arr[maxIndex] = temp;
-//     }
+//     arr[index] = arr[i];
+//     arr[i] = maxValue;
 //   }
 
-//   return arr[k - 1];
+//   return arr;
+// }
+// console.log(selectionSortDesc([3, 8, 5, 2, 9]));
+// ***********************************************************************************************************
+
+// 3. Find the Kth Smallest Element Using Selection Logic
+
+// function findKthSmallest(arr, k) {
+//   for (let i = 0; i < k; i++) {
+//     let minValue = arr[i];
+//     let index = i;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < minValue) {
+//         minValue = arr[j];
+//         index = j;
+//       }
+//     }
+
+//     arr[index] = arr[i];
+//     arr[i] = minValue;
+//   }
+
+//   return arr;
 // }
 
-// console.log(findKthSmallest([7, 2, 9, 4, 1], 3));
-// console.log(findKthSmallest([17, 20, 99, 4, 31], 4));
+// console.log(findKthSmallest([7, 2, 9, 4, 1, 0], 3));
+// console.log(findKthSmallest([17, 20, 99, 4, 36, 31, 45], 4));
 
 // ***********************************************************************************************************
 
@@ -80,23 +95,28 @@
 
 // function selectionSortTrackMinIndex(arr) {
 //   for (let i = 0; i < arr.length - 1; i++) {
-//     let minIndex = i;
+//     let minValue = arr[i];
+//     let index = i;
 
 //     for (let j = i + 1; j < arr.length; j++) {
-//       if (arr[j] < arr[minIndex]) {
-//         minIndex = j;
+//       if (arr[j] < minValue) {
+//         minValue = arr[j];
+//         index = j;
 //       }
 //     }
 
-//     console.log(`Pass ${i + 1} → min index = ${minIndex}`);
+//     console.log(`Min index = ${index}`);
 
-//     let temp = arr[i];
-//     arr[i] = arr[minIndex];
-//     arr[minIndex] = temp;
+//     if (i !== index) {
+//       arr[index] = arr[i];
+//       arr[i] = minValue;
+//     }
 //   }
+
+//   return arr;
 // }
 
-// selectionSortTrackMinIndex([4, 2, 5, 3, 1]);
+// console.log(selectionSortTrackMinIndex([4, 2, 5, 3, 1]));
 
 // ***********************************************************************************************************
 
@@ -112,24 +132,54 @@
 
 // 6. Find the K Largest Elements Without Full Sorting
 
-function kLargestElements(arr, k) {
+// function kLargestElements(arr, k) {
+//   let n = arr.length;
+
+//   for (let i = 0; i < k; i++) {
+//     let maxIndex = i;
+
+//     for (let j = i + 1; j < n; j++) {
+//       if (arr[j] > arr[maxIndex]) {
+//         maxIndex = j;
+//       }
+//     }
+
+//     let temp = arr[i];
+//     arr[i] = arr[maxIndex];
+//     arr[maxIndex] = temp;
+//   }
+
+//   return arr.slice(0, k);
+// }
+
+// console.log(kLargestElements([5, 1, 9, 3, 7], 2));
+
+// ***********************************************************************************************************
+
+// HomeWork
+
+// 1. Sort a 2D Array by Second Element in Each Subarray
+
+function bubbleSort2D(arr) {
   let n = arr.length;
 
-  for (let i = 0; i < k; i++) {
-    let maxIndex = i;
-
-    for (let j = i + 1; j < n; j++) {
-      if (arr[j] > arr[maxIndex]) {
-        maxIndex = j;
+  for (let i = 0; i < n - 1; i++) {
+    for (let j = 0; j < n - i - 1; j++) {
+      if (arr[j][1] > arr[j + 1][1]) {
+        let temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
       }
     }
-
-    let temp = arr[i];
-    arr[i] = arr[maxIndex];
-    arr[maxIndex] = temp;
   }
 
-  return arr.slice(0, k);
+  return arr;
 }
 
-console.log(kLargestElements([5, 1, 9, 3, 7], 2));
+console.log(
+  bubbleSort2D([
+    [3, 9],
+    [1, 4],
+    [2, 5],
+  ]),
+);

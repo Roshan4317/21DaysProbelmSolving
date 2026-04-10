@@ -188,18 +188,54 @@
 
 // 2. Sort an Array and Count How Many Times Minimum Changed
 
-function countMinChanges(arr) {
-  let min = arr[0];
-  let count = 1;
+// function countMinChanges(arr) {
+//   let min = arr[0];
+//   let count = 1;
 
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] < min) {
-      min = arr[i];
-      count++;
-    }
+//   for (let i = 1; i < arr.length; i++) {
+//     if (arr[i] < min) {
+//       min = arr[i];
+//       count++;
+//     }
+//   }
+
+//   return count;
+// }
+
+// console.log(countMinChanges([8, 3, 5, 2, 6]));
+
+// ***********************************************************************************************************
+
+// 3. Sort Only Elements at Even Indexes
+
+function sortEvenIndex(arr) {
+  let even = [];
+
+  for (let i = 0; i < arr.length; i += 2) {
+    even.push(arr[i]);
   }
 
-  return count;
+  for (let i = 0; i < even.length - 1; i++) {
+    let minIndex = i;
+
+    for (let j = i + 1; j < even.length; j++) {
+      if (even[j] < even[minIndex]) {
+        minIndex = j;
+      }
+    }
+
+    let temp = even[i];
+    even[i] = even[minIndex];
+    even[minIndex] = temp;
+  }
+
+  let k = 0;
+
+  for (let i = 0; i < arr.length; i += 2) {
+    arr[i] = even[k++];
+  }
+
+  return arr;
 }
 
-console.log(countMinChanges([8, 3, 5, 2, 6]));
+console.log(sortEvenIndex([9, 4, 7, 6, 3, 2]));

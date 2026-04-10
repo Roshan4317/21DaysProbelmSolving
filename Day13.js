@@ -160,26 +160,46 @@
 
 // 1. Sort a 2D Array by Second Element in Each Subarray
 
-function bubbleSort2D(arr) {
-  let n = arr.length;
+// function bubbleSort2D(arr) {
+//   let n = arr.length;
 
-  for (let i = 0; i < n - 1; i++) {
-    for (let j = 0; j < n - i - 1; j++) {
-      if (arr[j][1] > arr[j + 1][1]) {
-        let temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-      }
+//   for (let i = 0; i < n - 1; i++) {
+//     for (let j = 0; j < n - i - 1; j++) {
+//       if (arr[j][1] > arr[j + 1][1]) {
+//         let temp = arr[j];
+//         arr[j] = arr[j + 1];
+//         arr[j + 1] = temp;
+//       }
+//     }
+//   }
+
+//   return arr;
+// }
+
+// console.log(
+//   bubbleSort2D([
+//     [3, 9],
+//     [1, 4],
+//     [2, 5],
+//   ]),
+// );
+
+// ***********************************************************************************************************
+
+// 2. Sort an Array and Count How Many Times Minimum Changed
+
+function countMinChanges(arr) {
+  let min = arr[0];
+  let count = 1;
+
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < min) {
+      min = arr[i];
+      count++;
     }
   }
 
-  return arr;
+  return count;
 }
 
-console.log(
-  bubbleSort2D([
-    [3, 9],
-    [1, 4],
-    [2, 5],
-  ]),
-);
+console.log(countMinChanges([8, 3, 5, 2, 6]));

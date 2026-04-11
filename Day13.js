@@ -318,28 +318,52 @@
 
 // 5. Sort an Array of Objects by Age (Ascending)
 
-function sortByAge(arr) {
-  for (let i = 0; i < arr.length - 1; i++) {
-    let minIndex = i;
+// function sortByAge(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let minIndex = i;
+
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j].age < arr[minIndex].age) {
+//         minIndex = j;
+//       }
+//     }
+
+//     let temp = arr[i];
+//     arr[i] = arr[minIndex];
+//     arr[minIndex] = temp;
+//   }
+
+//   return arr;
+// }
+
+// console.log(
+//   sortByAge([
+//     { name: "John", age: 25 },
+//     { name: "Alice", age: 20 },
+//     { name: "Bob", age: 22 },
+//   ]),
+// );
+
+// ***********************************************************************************************************
+
+// 6. Find the Kth Largest Element Using Selection Logic
+
+function kthLargest(arr, k) {
+  for (let i = 0; i < k; i++) {
+    let maxIndex = i;
 
     for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j].age < arr[minIndex].age) {
-        minIndex = j;
+      if (arr[j] > arr[maxIndex]) {
+        maxIndex = j;
       }
     }
 
     let temp = arr[i];
-    arr[i] = arr[minIndex];
-    arr[minIndex] = temp;
+    arr[i] = arr[maxIndex];
+    arr[maxIndex] = temp;
   }
 
-  return arr;
+  return arr[k - 1];
 }
 
-console.log(
-  sortByAge([
-    { name: "John", age: 25 },
-    { name: "Alice", age: 20 },
-    { name: "Bob", age: 22 },
-  ]),
-);
+console.log(kthLargest([6, 2, 9, 1, 5], 2));

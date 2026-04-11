@@ -294,12 +294,36 @@
 
 // 4. Sort an Array of Characters by ASCII Value
 
-function sortChars(arr) {
+// function sortChars(arr) {
+//   for (let i = 0; i < arr.length - 1; i++) {
+//     let minIndex = i;
+
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j].charCodeAt(0) < arr[minIndex].charCodeAt(0)) {
+//         minIndex = j;
+//       }
+//     }
+
+//     let temp = arr[i];
+//     arr[i] = arr[minIndex];
+//     arr[minIndex] = temp;
+//   }
+
+//   return arr;
+// }
+
+// console.log(sortChars(["d", "A", "c", "B"]));
+
+// ***********************************************************************************************************
+
+// 5. Sort an Array of Objects by Age (Ascending)
+
+function sortByAge(arr) {
   for (let i = 0; i < arr.length - 1; i++) {
     let minIndex = i;
 
     for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j].charCodeAt(0) < arr[minIndex].charCodeAt(0)) {
+      if (arr[j].age < arr[minIndex].age) {
         minIndex = j;
       }
     }
@@ -312,4 +336,10 @@ function sortChars(arr) {
   return arr;
 }
 
-console.log(sortChars(["d", "A", "c", "B"]));
+console.log(
+  sortByAge([
+    { name: "John", age: 25 },
+    { name: "Alice", age: 20 },
+    { name: "Bob", age: 22 },
+  ]),
+);
